@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoLab — Designing for Education Equity</title>
+<meta name="description" content="CoLab builds evidence-informed solutions to address challenges in the education ecosystem, and shares them as digital public goods.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#F3F0E7',
+          ink:   '#12292C',
+          body:  '#264246',
+          gold:  '#B5842B',
+          research: '#0F6E6F',
+          design:   '#B25A34',
+          collab:   '#B5842B',
+          impact:   '#2E4E6E',
+        },
+        fontFamily: {
+          serif: ['Fraunces','serif'],
+          sans:  ['"Hanken Grotesk"','sans-serif'],
+          mono:  ['"IBM Plex Mono"','monospace'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior:smooth; }
+  body { background:#F3F0E7; color:#264246; }
+  ::selection { background:#B5842B; color:#F3F0E7; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid #B5842B; outline-offset:3px; }
+
+  .measure { max-width: 64ch; }
+  .rail-num { font-variant-numeric: tabular-nums; }
+
+  /* section kicker row — the recurring editorial device */
+  .kicker-row { display:flex; align-items:baseline; gap:1rem; }
+  .kicker-num { font-family:'IBM Plex Mono',monospace; font-size:13px; color:#12292C; letter-spacing:.02em; }
+  .kicker-label { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#B5842B; }
+  .kicker-rule { flex:1; height:1px; background:rgba(18,41,44,.18); }
+
+  .hairline { border-color: rgba(18,41,44,.16); }
+  .hairline-t { border-top:1px solid rgba(18,41,44,.16); }
+  .hairline-b { border-bottom:1px solid rgba(18,41,44,.16); }
+
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* nav */
+  #nav { transition: background-color .3s ease, border-color .3s ease; }
+
+  .nav-link { position:relative; font-family:'Hanken Grotesk',sans-serif; }
+  .nav-link::after { content:""; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:#B5842B; transform:scaleX(0); transform-origin:left; transition: transform .25s ease; }
+  .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
+  .nav-link.active { color:#12292C; }
+
+  .burger-line { transition: transform .3s ease, opacity .3s ease; transform-origin:center; }
+  .burger.open .l1 { transform: translateY(6px) rotate(45deg); }
+  .burger.open .l2 { opacity:0; }
+  .burger.open .l3 { transform: translateY(-6px) rotate(-45deg); }
+
+  .btn { font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; }
+  .btn-fill { background:#12292C; color:#F3F0E7; border:1px solid #12292C; transition: background .25s ease, color .25s ease; }
+  .btn-fill:hover { background:#0e2023; }
+  .btn-line { border:1px solid rgba(18,41,44,.4); color:#12292C; transition: border-color .25s ease, background .25s ease; }
+  .btn-line:hover { border-color:#12292C; background: rgba(18,41,44,.05); }
+
+  /* row list (Bridgespan-style) */
+  .work-row { transition: background-color .25s ease; }
+  .work-row:hover { background: rgba(18,41,44,.035); }
+  .work-row:hover .row-arrow { transform: translateX(4px); opacity:1; }
+  .row-arrow { transition: transform .25s ease, opacity .25s ease; opacity:.35; }
+
+  .filter-btn { font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; border:1px solid rgba(18,41,44,.3); transition: all .2s ease; }
+  .filter-btn.active { background:#12292C; color:#F3F0E7; border-color:#12292C; }
+
+  /* pillar top-rule cards (no shadow, no rounding) */
+  .pillar { border-top:3px solid; padding-top:1.25rem; }
+
+  /* connector diagram */
+  .node-dot { fill:#12292C; }
+
+  /* modal */
+  #projectModal .modal-panel { transition: transform .3s ease, opacity .3s ease; }
+
+  /* count-up */
+  .count { font-variant-numeric: tabular-nums; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    * { transition:none !important; }
+  }
+
+  ::-webkit-scrollbar { width:9px; }
+  ::-webkit-scrollbar-thumb { background: rgba(18,41,44,.25); }
+
+  .container-x { max-width:1320px; margin:0 auto; padding-left:1.5rem; padding-right:1.5rem; }
+  @media (min-width:1024px){ .container-x { padding-left:3rem; padding-right:3rem; } }
+
+  /* grid: rail + content */
+  .rail-grid { display:grid; grid-template-columns: 100%; }
+  @media (min-width:1024px){ .rail-grid { grid-template-columns: 140px 1fr; column-gap:2.5rem; } }
+
+  /* sticky thesis (earned pinned-scroll moment) */
+  @media (min-width:1024px){
+    .pin-wrap { position:relative; }
+    .pin-thesis { position:sticky; top:120px; }
+  }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-ink focus:text-paper focus:px-4 focus:py-2">Skip to content</a>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-40 bg-paper/95 backdrop-blur border-b hairline">
+  <div class="container-x flex items-center justify-between py-4">
+    <a href="#top" class="flex items-center gap-2.5">
+      <svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+        <circle cx="3" cy="9" r="3" fill="#0F6E6F"/>
+        <circle cx="13" cy="3" r="3" fill="#B5842B"/>
+        <circle cx="23" cy="9" r="3" fill="#2E4E6E"/>
+        <path d="M6 9H10M16 9H20M13 6V9" stroke="#12292C" stroke-width="1"/>
+      </svg>
+      <span class="font-serif text-xl font-semibold tracking-tight text-ink">CoLab</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] text-body" id="desktopNav">
+      <a href="#top" class="nav-link active" data-nav>Home</a>
+      <a href="#about" class="nav-link" data-nav>About</a>
+      <a href="#research" class="nav-link" data-nav>Research</a>
+      <a href="#approach" class="nav-link" data-nav>Design</a>
+      <a href="#projects" class="nav-link" data-nav>Projects</a>
+      <a href="#insights" class="nav-link" data-nav>Insights</a>
+      <a href="#collaborate" class="nav-link" data-nav>Collaborate</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#collaborate" class="btn btn-fill hidden lg:inline-flex px-5 py-2.5">Let's Collaborate</a>
+      <button id="burgerBtn" class="burger lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="burger-line l1 block w-6 h-[1.5px] bg-ink"></span>
+        <span class="burger-line l2 block w-6 h-[1.5px] bg-ink"></span>
+        <span class="burger-line l3 block w-6 h-[1.5px] bg-ink"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out border-t hairline">
+    <div class="container-x py-6 flex flex-col text-ink font-serif text-lg">
+      <a href="#top" class="py-3 hairline-b" data-nav-mobile>Home</a>
+      <a href="#about" class="py-3 hairline-b" data-nav-mobile>About</a>
+      <a href="#research" class="py-3 hairline-b" data-nav-mobile>Research</a>
+      <a href="#approach" class="py-3 hairline-b" data-nav-mobile>Design</a>
+      <a href="#projects" class="py-3 hairline-b" data-nav-mobile>Projects</a>
+      <a href="#insights" class="py-3 hairline-b" data-nav-mobile>Insights</a>
+      <a href="#collaborate" class="py-3" data-nav-mobile>Collaborate</a>
+      <a href="#collaborate" class="btn btn-fill text-center mt-4 py-3" data-nav-mobile>Let's Collaborate</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 01 — HERO -->
+<section id="top" class="pt-32 lg:pt-40 pb-20">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">01</span>
+      <span class="kicker-label">Evidence</span>
+      <span class="kicker-rule"></span>
+    </div>
+
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-14">
+        <div>
+          <p class="font-mono text-[11px] tracking-[.16em] uppercase text-gold mb-6">Evidence → Design → Collaboration → Impact</p>
+          <h1 class="font-serif text-[2.5rem] leading-[1.08] sm:text-6xl lg:text-[4rem] lg:leading-[1.04] font-medium text-ink">
+            Designing for<br>Education Equity
+          </h1>
+          <p class="mt-7 text-lg text-body measure leading-relaxed">
+            Building evidence, designing solutions and collaborating to create meaningful impact in education — and sharing what works as a digital public good.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="btn btn-fill px-6 py-3.5">Explore Our Work</a>
+            <a href="#collaborate" class="btn btn-line px-6 py-3.5">Collaborate With Us</a>
+          </div>
+        </div>
+
+        <div class="lg:pt-2">
+          <p class="font-mono text-[11px] tracking-[.14em] uppercase text-ink/50 mb-4 hairline-b pb-3">Where the evidence lives</p>
+          <ul class="flex flex-col">
+            <li class="flex items-baseline justify-between py-3.5 hairline-b">
+              <span class="text-sm text-body">Research outputs</span>
+              <span class="font-mono tnum text-ink text-lg">10+</span>
+            </li>
+            <li class="flex items-baseline justify-between py-3.5 hairline-b">
+              <span class="text-sm text-body">Evidence-informed solution packages</span>
+              <span class="font-mono tnum text-ink text-lg">10</span>
+            </li>
+            <li class="flex items-baseline justify-between py-3.5 hairline-b">
+              <span class="text-sm text-body">Courses &amp; workshops — CoLabED</span>
+              <span class="font-mono tnum text-ink text-lg">8</span>
+            </li>
+            <li class="flex items-baseline justify-between py-3.5">
+              <span class="text-sm text-body">Education projects &amp; collaborations</span>
+              <span class="font-mono tnum text-ink text-lg">Multiple</span>
+            </li>
+          </ul>
+          <a href="#research" class="mt-5 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wide text-gold">Read the research <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — SIGNATURE STATS -->
+<section class="hairline-t hairline-b bg-ink text-paper">
+  <div class="container-x py-16">
+    <div class="rail-grid">
+      <div class="hidden lg:flex flex-col justify-start">
+        <span class="kicker-num rail-num text-paper/60">02</span>
+        <span class="kicker-label text-gold mt-2">The record</span>
+      </div>
+      <div>
+        <div class="lg:hidden kicker-row mb-8">
+          <span class="kicker-num rail-num text-paper/60">02</span>
+          <span class="kicker-label text-gold">The record</span>
+          <span class="kicker-rule opacity-20"></span>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
+            <p class="font-mono text-4xl sm:text-5xl count" data-count="10" data-suffix="+">0</p>
+            <p class="text-sm text-paper/60 mt-3">Research outputs</p>
+            <p class="font-mono text-[10px] text-paper/35 mt-2 uppercase tracking-wide">Source: CoLab research library</p>
+          </div>
+          <div>
+            <p class="font-mono text-4xl sm:text-5xl count" data-count="10">0</p>
+            <p class="text-sm text-paper/60 mt-3">Evidence-informed solution packages</p>
+            <p class="font-mono text-[10px] text-paper/35 mt-2 uppercase tracking-wide">Source: CoLab solution packages</p>
+          </div>
+          <div>
+            <p class="font-mono text-4xl sm:text-5xl count" data-count="8">0</p>
+            <p class="text-sm text-paper/60 mt-3">Courses &amp; workshops</p>
+            <p class="font-mono text-[10px] text-paper/35 mt-2 uppercase tracking-wide">Source: CoLabED</p>
+          </div>
+          <div>
+            <p class="font-mono text-4xl sm:text-5xl">Multiple</p>
+            <p class="text-sm text-paper/60 mt-3">Education projects &amp; collaborations</p>
+            <p class="font-mono text-[10px] text-paper/35 mt-2 uppercase tracking-wide">Source: CoLab project portfolio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — WHAT WE DO -->
+<section class="py-24 lg:py-28">
+  <div class="container-x">
+    <div class="kicker-row mb-12">
+      <span class="kicker-num rail-num">03</span>
+      <span class="kicker-label">What we do</span>
+      <span class="kicker-rule"></span>
+    </div>
+
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div>
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-medium measure mb-14">From evidence to impact</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="pillar" style="border-color:#0F6E6F">
+            <p class="font-mono text-xs text-research mb-4">01 / Research</p>
+            <h3 class="font-serif text-xl text-ink mb-2">Evidence that can bear weight</h3>
+            <p class="text-[14.5px] text-body/80 leading-relaxed">Rigorous research that helps understand real challenges in education.</p>
+          </div>
+          <div class="pillar" style="border-color:#B25A34">
+            <p class="font-mono text-xs text-design mb-4">02 / Design</p>
+            <h3 class="font-serif text-xl text-ink mb-2">Programmes built to be used</h3>
+            <p class="text-[14.5px] text-body/80 leading-relaxed">Evidence-informed design to create practical and sustainable solutions.</p>
+          </div>
+          <div class="pillar" style="border-color:#B5842B">
+            <p class="font-mono text-xs text-gold mb-4">03 / Collaborate</p>
+            <h3 class="font-serif text-xl text-ink mb-2">Made with, not for</h3>
+            <p class="text-[14.5px] text-body/80 leading-relaxed">Working with educators, institutions, researchers and ecosystem partners.</p>
+          </div>
+          <div class="pillar" style="border-color:#2E4E6E">
+            <p class="font-mono text-xs mb-4" style="color:#2E4E6E">04 / Impact</p>
+            <h3 class="font-serif text-xl text-ink mb-2">Knowing it worked</h3>
+            <p class="text-[14.5px] text-body/80 leading-relaxed">Turning knowledge and solutions into scalable educational impact.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR SERVICES (folded under What We Do, as short row list) -->
+<section class="pb-24 lg:pb-28">
+  <div class="container-x">
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div class="hairline-t">
+        <div class="grid sm:grid-cols-3">
+          <a href="#research" class="work-row group flex flex-col justify-between p-7 hairline-b sm:border-r hairline">
+            <div>
+              <h4 class="font-serif text-lg text-ink mb-2">Research</h4>
+              <p class="text-[14px] text-body/75 leading-relaxed">Rigorous research and research outputs that help create evidence-informed solutions.</p>
+            </div>
+            <span class="mt-6 font-mono text-[11px] uppercase tracking-wide text-gold inline-flex items-center gap-2">Explore Research <span class="row-arrow">→</span></span>
+          </a>
+          <a href="#approach" class="work-row group flex flex-col justify-between p-7 hairline-b sm:border-r hairline">
+            <div>
+              <h4 class="font-serif text-lg text-ink mb-2">Design</h4>
+              <p class="text-[14px] text-body/75 leading-relaxed">Evidence-informed design that responds to real needs and can scale sustainably.</p>
+            </div>
+            <span class="mt-6 font-mono text-[11px] uppercase tracking-wide text-gold inline-flex items-center gap-2">Explore Design <span class="row-arrow">→</span></span>
+          </a>
+          <a href="#projects" class="work-row group flex flex-col justify-between p-7">
+            <div>
+              <h4 class="font-serif text-lg text-ink mb-2">Solution Packages</h4>
+              <p class="text-[14px] text-body/75 leading-relaxed">Proven solutions packaged for wider dissemination as digital public goods.</p>
+            </div>
+            <span class="mt-6 font-mono text-[11px] uppercase tracking-wide text-gold inline-flex items-center gap-2">Explore Solutions <span class="row-arrow">→</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — HOW WE WORK (owned connector diagram) -->
+<section id="approach" class="py-24 lg:py-28 bg-ink text-paper">
+  <div class="container-x">
+    <div class="kicker-row mb-12">
+      <span class="kicker-num rail-num text-paper/60">04</span>
+      <span class="kicker-label">How we work</span>
+      <span class="kicker-rule opacity-20"></span>
+    </div>
+
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-medium measure mb-4">Evidence-informed design</h2>
+        <p class="text-paper/60 measure mb-16">One line, six nodes — how CoLab turns evidence into a solution the ecosystem can use, and feeds what it learns back into the next cycle.</p>
+
+        <svg viewBox="0 0 1160 200" class="w-full" role="img" aria-label="Diagram: Research leads to Insights, Co-creation, Prototype, Testing, and Scale, which feeds back into Research">
+          <line x1="40" y1="60" x2="1120" y2="60" stroke="#F3F0E7" stroke-opacity=".2" stroke-width="1"/>
+          <path d="M40 60 C 300 150, 860 150, 1120 60" fill="none" stroke="#B5842B" stroke-width="1" stroke-dasharray="4 6" opacity=".55"/>
+
+          <g font-family="IBM Plex Mono" font-size="12" fill="#F3F0E7" fill-opacity=".45">
+            <text x="40" y="100">01</text>
+            <text x="256" y="100">02</text>
+            <text x="472" y="100">03</text>
+            <text x="688" y="100">04</text>
+            <text x="904" y="100">05</text>
+            <text x="1096" y="100">06</text>
+          </g>
+          <g font-family="Fraunces" font-size="19" fill="#F3F0E7">
+            <text x="24" y="130">Research</text>
+            <text x="230" y="130">Insights</text>
+            <text x="440" y="130">Co-creation</text>
+            <text x="662" y="130">Prototype</text>
+            <text x="882" y="130">Testing</text>
+            <text x="1080" y="130">Scale</text>
+          </g>
+
+          <circle class="node-dot" cx="40" cy="60" r="6" fill="#0F6E6F"/>
+          <circle class="node-dot" cx="256" cy="60" r="6" fill="#F3F0E7"/>
+          <circle class="node-dot" cx="472" cy="60" r="6" fill="#B5842B"/>
+          <circle class="node-dot" cx="688" cy="60" r="6" fill="#F3F0E7"/>
+          <circle class="node-dot" cx="904" cy="60" r="6" fill="#F3F0E7"/>
+          <circle class="node-dot" cx="1120" cy="60" r="6" fill="#2E4E6E"/>
+        </svg>
+        <p class="font-mono text-[11px] text-paper/35 mt-6 uppercase tracking-wide">The dotted return curve: what we learn at scale becomes next year's research question.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — SELECTED WORK -->
+<section id="projects" class="py-24 lg:py-28">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">05</span>
+      <span class="kicker-label">Selected work</span>
+      <span class="kicker-rule"></span>
+    </div>
+
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div>
+        <div class="flex items-end justify-between flex-wrap gap-6 mb-10">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-medium measure">Work across the education ecosystem</h2>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-4" id="filterBar" role="group" aria-label="Filter projects by category">
+          <button class="filter-btn active px-3.5 py-2" data-filter="All">All</button>
+          <button class="filter-btn px-3.5 py-2" data-filter="Research">Research</button>
+          <button class="filter-btn px-3.5 py-2" data-filter="Design">Design</button>
+          <button class="filter-btn px-3.5 py-2" data-filter="Pilot">Pilot</button>
+          <button class="filter-btn px-3.5 py-2" data-filter="Mentoring">Mentoring</button>
+          <button class="filter-btn px-3.5 py-2" data-filter="Education Systems">Education Systems</button>
+        </div>
+
+        <div id="projectGrid" class="hairline-t"></div>
+        <p class="font-mono text-[11px] text-ink/40 uppercase tracking-wide mt-6">More detail on each project is coming soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — FEATURED RESEARCH -->
+<section id="research" class="py-24 lg:py-28 hairline-t hairline-b">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">06</span>
+      <span class="kicker-label">Featured research</span>
+      <span class="kicker-rule"></span>
+    </div>
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div>
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-medium measure mb-10">Research that moves education forward</h2>
+        <div id="researchList" class="hairline-t"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — FLAGSHIP STUDY (pinned thesis) -->
+<section class="py-24 lg:py-28">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">07</span>
+      <span class="kicker-label">A closer look</span>
+      <span class="kicker-rule"></span>
+    </div>
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div class="grid lg:grid-cols-2 gap-14 pin-wrap">
+        <div class="pin-thesis">
+          <p class="font-mono text-xs text-gold uppercase tracking-wide mb-4">Literature Review · Research by CoLab</p>
+          <h3 class="font-serif text-3xl sm:text-4xl text-ink leading-tight mb-5">Evidence in Education</h3>
+          <p class="text-body measure leading-relaxed">Why evidence matters to organisations across the education ecosystem, and what it takes to put evidence-informed practice into action — from defining evidence, to building the case for it, to implementing it well.</p>
+          <a href="https://www.colabglobalconsulting.com/evidence-in-education" target="_blank" rel="noopener" class="btn btn-line px-5 py-3 mt-8 inline-flex">Read the paper</a>
+        </div>
+        <div class="flex flex-col">
+          <div class="hairline-t"></div>
+          <div class="py-6 hairline-b">
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wide mb-2">The paper asks</p>
+            <p class="font-serif text-lg text-ink">What counts as evidence in an education programme?</p>
+          </div>
+          <div class="py-6 hairline-b">
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wide mb-2">The paper asks</p>
+            <p class="font-serif text-lg text-ink">Why does evidence-informed practice matter to the wider ecosystem?</p>
+          </div>
+          <div class="py-6 hairline-b">
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wide mb-2">The paper asks</p>
+            <p class="font-serif text-lg text-ink">How can an organisation start implementing evidence-informed programmes?</p>
+          </div>
+          <div class="py-6">
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wide mb-2">License</p>
+            <p class="text-body text-sm">Published by CoLab, packaged for reuse under CC BY-NC — free for the ecosystem to read and apply.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — CoLabED -->
+<section class="py-20 lg:py-24 hairline-t hairline-b">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">08</span>
+      <span class="kicker-label">CoLabED</span>
+      <span class="kicker-rule"></span>
+    </div>
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-14 items-start">
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-medium measure mb-4">Courses &amp; workshops</h2>
+          <p class="text-body measure leading-relaxed">CoLabED is where CoLab's research becomes something practitioners can sit inside — short courses and workshops built on the same evidence base as our research and solution packages.</p>
+        </div>
+        <ul class="font-mono text-sm text-ink/70">
+          <li class="flex items-center justify-between py-3.5 hairline-b"><span>Evidence-informed practice</span><span class="text-ink/30 text-xs">Workshop</span></li>
+          <li class="flex items-center justify-between py-3.5 hairline-b"><span>Mentoring in education</span><span class="text-ink/30 text-xs">Course</span></li>
+          <li class="flex items-center justify-between py-3.5 hairline-b"><span>School leadership development</span><span class="text-ink/30 text-xs">Course</span></li>
+          <li class="flex items-center justify-between py-3.5"><span>Monitoring &amp; evaluation</span><span class="text-ink/30 text-xs">Workshop</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — COLLABORATE -->
+<section id="collaborate" class="py-28 lg:py-32 bg-ink text-paper">
+  <div class="container-x">
+    <div class="kicker-row mb-12">
+      <span class="kicker-num rail-num text-paper/60">09</span>
+      <span class="kicker-label">Collaborate</span>
+      <span class="kicker-rule opacity-20"></span>
+    </div>
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div class="grid lg:grid-cols-[1.3fr_0.7fr] gap-14 items-end">
+        <div>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight">Better education is built together.</h2>
+          <p class="mt-6 text-paper/65 measure leading-relaxed">We collaborate with educators, researchers, institutions, organisations and communities to design solutions that create meaningful change.</p>
+          <a href="#footer" class="btn mt-10 inline-flex px-6 py-3.5" style="background:#B5842B;color:#12292C;border:1px solid #B5842B;">Let's Collaborate</a>
+        </div>
+        <blockquote class="border-l hairline pl-6 lg:mb-2">
+          <p class="font-serif italic text-lg leading-snug text-paper/90">"A global community working to develop and disseminate evidence-informed solution packages across the Global South."</p>
+          <cite class="font-mono text-[11px] text-paper/40 uppercase tracking-wide mt-4 block not-italic">CoLab, Theory of Change</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — INSIGHTS -->
+<section id="insights" class="py-24 lg:py-28">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">10</span>
+      <span class="kicker-label">Insights &amp; ideas</span>
+      <span class="kicker-rule"></span>
+    </div>
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div>
+        <div class="flex items-end justify-between flex-wrap gap-6 mb-10">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-medium measure">From the CoLab journal</h2>
+          <a href="#" class="btn btn-line px-5 py-2.5">View All Insights</a>
+        </div>
+        <div id="blogList" class="hairline-t"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 — ABOUT -->
+<section id="about" class="py-24 lg:py-28 hairline-t">
+  <div class="container-x">
+    <div class="kicker-row mb-10">
+      <span class="kicker-num rail-num">11</span>
+      <span class="kicker-label">About CoLab</span>
+      <span class="kicker-rule"></span>
+    </div>
+    <div class="rail-grid">
+      <div class="hidden lg:block"></div>
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-14">
+        <div>
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-medium leading-tight measure mb-6">Building a more equitable education ecosystem</h2>
+          <p class="text-body measure leading-relaxed">CoLab works at the intersection of research, evidence, design and collaboration to help improve education. We're a global community working to develop and disseminate evidence-informed solution packages across the Global South — an education lab under Mantra4Change.</p>
+          <a href="#" data-soon class="btn btn-fill px-6 py-3.5 mt-9 inline-flex">Learn About CoLab</a>
+        </div>
+        <div class="flex flex-col">
+          <div class="hairline-t"></div>
+          <div class="py-6 hairline-b">
+            <p class="font-mono text-xs text-research uppercase tracking-wide mb-2">Why</p>
+            <p class="font-serif text-lg text-ink">Every child should achieve equal educational outcomes.</p>
+          </div>
+          <div class="py-6 hairline-b">
+            <p class="font-mono text-xs text-design uppercase tracking-wide mb-2">What</p>
+            <p class="font-serif text-lg text-ink">Evidence-informed solutions, built as digital public goods.</p>
+          </div>
+          <div class="py-6">
+            <p class="font-mono text-xs uppercase tracking-wide mb-2" style="color:#2E4E6E">How</p>
+            <p class="font-serif text-lg text-ink">Through collaborative emergence with the ecosystem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer" class="bg-ink text-paper pt-20 pb-10 hairline-t">
+  <div class="container-x">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-5">
+          <svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+            <circle cx="3" cy="9" r="3" fill="#0F6E6F"/>
+            <circle cx="13" cy="3" r="3" fill="#B5842B"/>
+            <circle cx="23" cy="9" r="3" fill="#2E4E6E"/>
+            <path d="M6 9H10M16 9H20M13 6V9" stroke="#F3F0E7" stroke-width="1"/>
+          </svg>
+          <span class="font-serif text-lg font-semibold">CoLab</span>
+        </div>
+        <p class="text-sm text-paper/55 leading-relaxed">An education lab by Mantra4Change.<br>A brand under MIE Design Private Limited.</p>
+      </div>
+
+      <div>
+        <p class="font-mono text-[11px] uppercase tracking-wide text-paper/40 mb-4">CoLab</p>
+        <ul class="space-y-3 text-sm text-paper/65">
+          <li><a href="#about" class="hover:text-paper transition">About</a></li>
+          <li><a href="#approach" class="hover:text-paper transition">Our Approach</a></li>
+          <li><a href="#collaborate" class="hover:text-paper transition">Collaboration</a></li>
+          <li><a href="#" class="hover:text-paper transition" data-soon>CoLab Space</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-mono text-[11px] uppercase tracking-wide text-paper/40 mb-4">Work</p>
+        <ul class="space-y-3 text-sm text-paper/65">
+          <li><a href="#research" class="hover:text-paper transition">Research</a></li>
+          <li><a href="#approach" class="hover:text-paper transition">Design</a></li>
+          <li><a href="#projects" class="hover:text-paper transition">Solution Packages</a></li>
+          <li><a href="#projects" class="hover:text-paper transition">Projects</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-mono text-[11px] uppercase tracking-wide text-paper/40 mb-4">Resources</p>
+        <ul class="space-y-3 text-sm text-paper/65">
+          <li><a href="#research" class="hover:text-paper transition">Research Outputs</a></li>
+          <li><a href="#insights" class="hover:text-paper transition">Blog</a></li>
+          <li><a href="#" class="hover:text-paper transition" data-soon>Publications</a></li>
+          <li><a href="#" class="hover:text-paper transition" data-soon>CoLabCast</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-mono text-[11px] uppercase tracking-wide text-paper/40 mb-4">Connect</p>
+        <ul class="space-y-3 text-sm text-paper/65 mb-6">
+          <li><a href="#" class="hover:text-paper transition" data-soon>Contact</a></li>
+          <li><a href="#" class="hover:text-paper transition" data-soon>Careers</a></li>
+          <li><a href="#" class="hover:text-paper transition" data-soon>Donate</a></li>
+        </ul>
+        <form id="newsletterForm">
+          <label for="newsletterEmail" class="font-mono text-[11px] uppercase tracking-wide text-paper/40 mb-2 block">Monthly newsletter</label>
+          <div class="flex gap-0 hairline border">
+            <input id="newsletterEmail" type="email" required placeholder="you@email.com" class="flex-1 min-w-0 bg-transparent px-3 py-2.5 text-sm placeholder:text-paper/35 text-paper">
+            <button type="submit" class="btn px-4" style="background:#B5842B;color:#12292C;">Join</button>
+          </div>
+          <p id="newsletterMsg" class="font-mono text-[11px] text-gold mt-2 hidden" role="status">Thanks — you're on the list.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="hairline-t pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper/40 font-mono">
+      <p>© 2026 CoLab Global Consulting.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-paper transition" data-soon>Privacy Policy</a>
+        <span>A brand under MIE Design Private Limited</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div id="modalBackdrop" class="absolute inset-0" style="background:rgba(18,41,44,.55);"></div>
+  <div class="modal-panel relative bg-paper max-w-lg w-full p-8 sm:p-10 opacity-0 translate-y-3 border hairline">
+    <button id="modalClose" aria-label="Close" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center hover:bg-ink/5">
+      <svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1L13 13M13 1L1 13" stroke="#12292C" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+    <p id="modalCategory" class="font-mono text-xs text-gold uppercase tracking-wide mb-4"></p>
+    <h3 id="modalTitle" class="font-serif text-2xl sm:text-3xl text-ink mb-4"></h3>
+    <p id="modalDesc" class="text-body leading-relaxed"></p>
+    <p class="font-mono text-[11px] text-ink/35 uppercase tracking-wide mt-6">Full project page coming soon.</p>
+  </div>
+</div>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-ink text-paper text-sm font-mono px-5 py-3 opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
+
+<script>
+/* ---------- Data ---------- */
+const projects = [
+  { name:"Promises to Pilot", cat:["Pilot"], color:"#B25A34", desc:"Piloting new approaches on the ground before they scale." },
+  { name:"Monitoring & Evaluation", cat:["Research"], color:"#0F6E6F", desc:"Tools and frameworks to track what's working — and why." },
+  { name:"Student Experiences", cat:["Research"], color:"#0F6E6F", desc:"Understanding learning from the student's point of view." },
+  { name:"SolvED", cat:["Design"], color:"#B25A34", desc:"A design initiative turning evidence into classroom-ready solutions." },
+  { name:"Super Mentor", cat:["Mentoring"], color:"#2E4E6E", desc:"Strengthening mentoring relationships across the school ecosystem." },
+  { name:"Mentoring Toolkit", cat:["Mentoring","Design"], color:"#2E4E6E", desc:"A practical toolkit for building effective mentoring programs." },
+  { name:"CoLabOrate", cat:["Education Systems"], color:"#B5842B", desc:"An open space for practitioners to discuss and co-create." },
+  { name:"Mentoring Research", cat:["Mentoring","Research"], color:"#2E4E6E", desc:"Studying what makes mentoring work in education settings." },
+  { name:"RehnumaX", cat:["Pilot"], color:"#B25A34", desc:"A pilot exploring new pathways for student support." },
+  { name:"School Leader Professional Development", cat:["Design"], color:"#B25A34", desc:"Designing capability-building programs for school leaders." },
+  { name:"Evidence Community of Practice", cat:["Education Systems","Research"], color:"#B5842B", desc:"Connecting practitioners around the use of evidence in education." },
+  { name:"Education Policy & Reform", cat:["Education Systems"], color:"#B5842B", desc:"Bridging research and policy to shape systemic change." },
+  { name:"Systems Map", cat:["Education Systems"], color:"#B5842B", desc:"Mapping the education ecosystem to see how it connects." },
+  { name:"State of Education Report", cat:["Research"], color:"#0F6E6F", desc:"An annual look at where education stands — and where it's heading." },
+  { name:"CoLabCast", cat:["Education Systems"], color:"#B5842B", desc:"Conversations with educators, researchers and changemakers." },
+];
+
+const research = [
+  { cat:"Literature Review", title:"School Leader Professional Development", desc:"Helps program designers translate evidence on leadership capability into practical professional development for school leaders.", tag:"CC BY-NC" },
+  { cat:"Literature Review", title:"Evidence in Education", desc:"Explores why evidence matters in education, and how organisations can put evidence-informed practice into action.", tag:"CC BY-NC" },
+  { cat:"Research Article", title:"Enriching Learning Experiences", desc:"Maps what makes learning genuinely enjoyable for children at the school, classroom and community level.", tag:"CC BY-NC" },
+  { cat:"Scoping Review", title:"School & District Leadership Impact", desc:"Evidence-based practices that school and district leaders can use to improve student learning outcomes.", tag:"CC BY-NC" },
+  { cat:"Literature Review", title:"School Reintegration", desc:"The challenges schools face after long closures, and practical ways to support students returning to class.", tag:"CC BY-NC" },
+  { cat:"Literature Review", title:"Monitoring and Evaluation", desc:"M&E fundamentals — purpose, the World Bank's standard process, and participatory approaches with stakeholders.", tag:"CC BY-NC" },
+];
+
+const blogPosts = [
+  { cat:"Field Notes", title:"Kalaburagi's Stint with Enabling Enriching Learning Experiences at Scale", desc:"How enriching-learning ideas played out on the ground in Kalaburagi.", time:"5 min" },
+  { cat:"Perspective", title:"Does \\u201CMentoring\\u201D in the Education Sector Make Sense?", desc:"Unpacking what mentoring really means in education — and where it earns its place.", time:"4 min" },
+  { cat:"Perspective", title:"Holistic Education — At School or Home?", desc:"Weighing where holistic learning is best nurtured, and why it may not be either-or.", time:"4 min" },
+];
+
+/* ---------- Render: projects as rows ---------- */
+const projectGrid = document.getElementById('projectGrid');
+function renderProjects(filter){
+  projectGrid.innerHTML = '';
+  projects
+    .filter(p => filter === 'All' || p.cat.includes(filter))
+    .forEach(p => {
+      const row = document.createElement('button');
+      row.className = 'work-row w-full text-left flex items-center gap-6 py-5 hairline-b';
+      row.innerHTML = `
+        <span class="w-2 h-2 shrink-0" style="background:${p.color}"></span>
+        <span class="font-mono text-[11px] uppercase tracking-wide text-ink/40 hidden sm:inline-block w-40 shrink-0">${p.cat.join(' · ')}</span>
+        <span class="font-serif text-lg text-ink flex-1">${p.name}</span>
+        <span class="row-arrow font-mono text-sm text-ink/50">→</span>
+      `;
+      row.addEventListener('click', () => openModal(p));
+      projectGrid.appendChild(row);
+    });
+}
+renderProjects('All');
+
+document.getElementById('filterBar').addEventListener('click', (e) => {
+  const btn = e.target.closest('.filter-btn');
+  if(!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProjects(btn.dataset.filter);
+});
+
+/* ---------- Render: research rows ---------- */
+const researchList = document.getElementById('researchList');
+research.forEach(r => {
+  const row = document.createElement('a');
+  row.href = '#'; row.setAttribute('data-soon','');
+  row.className = 'work-row flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 py-6 hairline-b';
+  row.innerHTML = `
+    <span class="font-mono text-[11px] uppercase tracking-wide text-research w-36 shrink-0">${r.cat}</span>
+    <span class="font-serif text-lg text-ink flex-1">${r.title}</span>
+    <span class="text-sm text-body/70 flex-1 hidden lg:block">${r.desc}</span>
+    <span class="font-mono text-[10px] text-ink/35 border hairline px-2 py-1 shrink-0">${r.tag}</span>
+  `;
+  researchList.appendChild(row);
+});
+
+/* ---------- Render: blog rows ---------- */
+const blogList = document.getElementById('blogList');
+blogPosts.forEach(b => {
+  const row = document.createElement('a');
+  row.href = '#'; row.setAttribute('data-soon','');
+  row.className = 'work-row flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 py-6 hairline-b';
+  row.innerHTML = `
+    <span class="font-mono text-[11px] uppercase tracking-wide text-design w-28 shrink-0">${b.cat}</span>
+    <span class="font-serif text-lg text-ink flex-1">${b.title}</span>
+    <span class="text-sm text-body/70 flex-1 hidden lg:block">${b.desc}</span>
+    <span class="font-mono text-[10px] text-ink/35 shrink-0">${b.time} read</span>
+  `;
+  blogList.appendChild(row);
+});
+
+/* ---------- Modal ---------- */
+const modal = document.getElementById('projectModal');
+const modalPanel = modal.querySelector('.modal-panel');
+let lastFocused = null;
+function openModal(p){
+  lastFocused = document.activeElement;
+  document.getElementById('modalCategory').textContent = p.cat.join(' · ');
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalDesc').textContent = p.desc;
+  modal.classList.remove('hidden'); modal.classList.add('flex');
+  requestAnimationFrame(() => modalPanel.classList.remove('opacity-0','translate-y-3'));
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalClose').focus();
+}
+function closeModal(){
+  modalPanel.classList.add('opacity-0','translate-y-3');
+  setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow=''; if(lastFocused) lastFocused.focus(); }, 250);
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalBackdrop').addEventListener('click', closeModal);
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+/* ---------- Toast for "soon" links ---------- */
+const toast = document.getElementById('toast');
+let toastTimer;
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('[data-soon]');
+  if(!link) return;
+  e.preventDefault();
+  toast.classList.remove('opacity-0'); toast.classList.add('opacity-100');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.classList.remove('opacity-100'); toast.classList.add('opacity-0'); }, 2200);
+});
+
+/* ---------- Nav: mobile menu + active link ---------- */
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+function toggleMenu(open){
+  const isOpen = open !== undefined ? open : (mobileMenu.style.maxHeight === '0px' || !mobileMenu.style.maxHeight);
+  burgerBtn.classList.toggle('open', isOpen);
+  burgerBtn.setAttribute('aria-expanded', isOpen);
+  mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+}
+mobileMenu.style.maxHeight = '0px';
+burgerBtn.addEventListener('click', () => toggleMenu());
+document.querySelectorAll('[data-nav-mobile]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+const navLinks = document.querySelectorAll('[data-nav]');
+const sections = document.querySelectorAll('section[id], footer[id]');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    const id = entry.target.id;
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  });
+}, { threshold: 0.4, rootMargin: '-80px 0px -40% 0px' });
+sections.forEach(s => sectionObserver.observe(s));
+
+/* ---------- Earned motion: count-up on first view ---------- */
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1000;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.6 });
+counters.forEach(el => counterObserver.observe(el));
+
+/* ---------- Newsletter ---------- */
+document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('newsletterMsg').classList.remove('hidden');
+  e.target.reset();
+});
+</script>
+</body>
+</html>
