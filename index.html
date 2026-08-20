@@ -5,24 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CoLab Global Consulting — Designing for Education Equity</title>
 <meta name="description" content="CoLab builds evidence-informed solutions to address challenges in the education ecosystem, and shares them as digital public goods for the world to use.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23073763'/%3E%3Cg transform='translate(4,4)'%3E%3Cpath d='M12 21V12' stroke='%23F6F9FB' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M12 17L8.5 14.5M12 14.5L15.5 12M12 12L9 9.5M12 12L15 9.5' stroke='%231ACEDF' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8.5' cy='14.5' r='1.5' fill='%23F6F9FB'/%3E%3Ccircle cx='15.5' cy='12' r='1.5' fill='%231ACEDF'/%3E%3Ccircle cx='9' cy='9.5' r='1.3' fill='%231ACEDF'/%3E%3Ccircle cx='15' cy='9.5' r='1.3' fill='%23F6F9FB'/%3E%3Ccircle cx='12' cy='8' r='1.5' fill='%23F6F9FB'/%3E%3Ccircle cx='12' cy='12' r='1.2' fill='%231ACEDF'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          navy: { DEFAULT: '#101B33', 50:'#EEF1F6', 100:'#D6DCE9', 700:'#182A4D', 800:'#101B33', 900:'#0A1224' },
-          paper: '#F7F3E9',
-          teal: { DEFAULT:'#1F6F62', 600:'#1F6F62', 700:'#17554A' },
-          gold: { DEFAULT:'#C79A3E', 100:'#F2E3C1' },
-          ink: '#181B22',
+          navy: { DEFAULT: '#073763', 50:'#EAF2F8', 100:'#CFE1EE', 300:'#5A87AC', 600:'#0A4A7E', 700:'#063056', 800:'#052641', 900:'#031729' },
+          sky: { DEFAULT:'#1ACEDF', 100:'#DBF7FA', 600:'#12A7B6' },
+          gold: { DEFAULT:'#FFC857', 100:'#FFF1D6', 600:'#E8A93A' },
+          cardinal: { DEFAULT:'#AD343E', 100:'#F5DFE1' },
+          sage: { DEFAULT:'#5B8C5A', 100:'#E4EEE3' },
+          clay: { DEFAULT:'#B4654A', 100:'#F3E1DB' },
+          sand: { DEFAULT:'#C8895A', 100:'#F5E7DB' },
+          paper: '#F6F9FB',
+          ink: '#0C1B2A',
         },
         fontFamily: {
-          serif: ['"Playfair Display"','serif'],
-          sans: ['Manrope','sans-serif'],
+          sans: ['"Helvetica Neue"','Inter','Arial','sans-serif'],
         },
       }
     }
@@ -30,13 +34,12 @@
 </script>
 <style>
   html { scroll-behavior: smooth; }
-  body { background:#F7F3E9; color:#181B22; }
-  ::selection { background:#C79A3E; color:#101B33; }
+  body { background:#F6F9FB; color:#0C1B2A; }
+  ::selection { background:#1ACEDF; color:#073763; }
 
-  /* focus visibility for accessibility */
-  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid #1F6F62; outline-offset: 3px; border-radius: 2px; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid #1ACEDF; outline-offset: 3px; border-radius: 2px; }
 
-  .container-x { max-width: 1240px; margin-left:auto; margin-right:auto; padding-left:1.5rem; padding-right:1.5rem; }
+  .container-x { max-width: 1260px; margin-left:auto; margin-right:auto; padding-left:1.5rem; padding-right:1.5rem; }
   @media (min-width:1024px){ .container-x { padding-left:2.5rem; padding-right:2.5rem; } }
 
   /* reveal on scroll */
@@ -54,12 +57,12 @@
 
   /* nav */
   #nav { transition: padding .35s ease, background-color .35s ease, box-shadow .35s ease; }
-  #nav.scrolled { box-shadow: 0 1px 0 rgba(16,27,51,.08); }
+  #nav.scrolled { box-shadow: 0 1px 0 rgba(7,55,99,.08), 0 12px 30px -20px rgba(7,55,99,.25); }
 
   .nav-link { position:relative; }
-  .nav-link::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#C79A3E; transform: scaleX(0); transform-origin:left; transition: transform .25s ease; }
+  .nav-link::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#1ACEDF; border-radius:2px; transform: scaleX(0); transform-origin:left; transition: transform .25s ease; }
   .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
-  .nav-link.active { color:#101B33; font-weight:700; }
+  .nav-link.active { color:#073763; font-weight:700; }
 
   /* hamburger */
   .burger-line { transition: transform .3s ease, opacity .3s ease; transform-origin: center; }
@@ -67,15 +70,20 @@
   .burger.open .l2 { opacity: 0; }
   .burger.open .l3 { transform: translateY(-7px) rotate(-45deg); }
 
+  /* full-screen mobile nav */
+  #mobileMenu { position:fixed; inset:0; z-index:45; background:#F6F9FB; display:flex; flex-direction:column; opacity:0; transform: translateY(-10px); pointer-events:none; transition: opacity .3s ease, transform .3s ease; overflow-y:auto; }
+  #mobileMenu.open { opacity:1; transform:translateY(0); pointer-events:auto; }
+
   /* evidence thread (signature element) */
   .thread { position: fixed; left: 28px; top: 50%; transform: translateY(-50%); z-index: 30; }
-  .thread-line { width:1px; background: rgba(16,27,51,.15); }
-  .thread-dot { width:8px; height:8px; border-radius:999px; background:#D6DCE9; border:1px solid rgba(16,27,51,.2); transition: background .35s ease, transform .35s ease, box-shadow .35s ease; }
-  .thread-dot.active { background:#C79A3E; transform: scale(1.35); box-shadow: 0 0 0 4px rgba(199,154,62,.18); }
-  .thread-label { font-family:'Manrope',sans-serif; font-size:10px; letter-spacing:.14em; color:#8A8F98; }
-  .thread-label.active { color:#101B33; font-weight:700; }
+  .thread-line { width:1px; background: rgba(7,55,99,.15); }
+  .thread-dot { width:8px; height:8px; border-radius:999px; background:#CFE1EE; border:1px solid rgba(7,55,99,.2); transition: background .35s ease, transform .35s ease, box-shadow .35s ease; }
+  .thread-dot.active { background:#1ACEDF; transform: scale(1.35); box-shadow: 0 0 0 4px rgba(26,206,223,.22); }
+  .thread-label { font-size:10px; letter-spacing:.14em; color:#8A96A3; }
+  .thread-label.active { color:#073763; font-weight:700; }
 
-  /* hero connected-nodes animation */
+  /* hero background blobs + node animation */
+  .blob { position:absolute; border-radius:9999px; filter: blur(90px); pointer-events:none; }
   .node-drift { animation: drift 9s ease-in-out infinite; }
   .node-drift2 { animation: drift 11s ease-in-out infinite reverse; }
   .node-pulse { animation: pulseOp 3.2s ease-in-out infinite; }
@@ -83,39 +91,37 @@
   @keyframes pulseOp { 0%,100%{ opacity:.35;} 50%{ opacity:1;} }
   @media (prefers-reduced-motion: reduce){ .node-drift,.node-drift2,.node-pulse{ animation:none; } }
 
-  .hairline { border-color: rgba(16,27,51,.12); }
+  .hairline { border-color: rgba(7,55,99,.12); }
 
-  .card-lift { transition: transform .35s cubic-bezier(.16,.8,.28,1), box-shadow .35s ease, border-color .35s ease; }
-  .card-lift:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -20px rgba(16,27,51,.28); border-color: rgba(16,27,51,.18); }
+  .card-lift { transition: transform .35s cubic-bezier(.16,.8,.28,1), box-shadow .35s ease, border-color .35s ease; box-shadow: 0 1px 2px rgba(7,55,99,.04); }
+  .card-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -20px rgba(7,55,99,.28); border-color: rgba(7,55,99,.18); }
 
-  .btn-primary { background:#101B33; color:#F7F3E9; transition: background .3s ease, transform .3s ease; }
-  .btn-primary:hover { background:#182A4D; transform: translateY(-2px); }
-  .btn-ghost { border:1.5px solid rgba(16,27,51,.25); transition: border-color .3s ease, background .3s ease, transform .3s ease; }
-  .btn-ghost:hover { border-color:#101B33; background: rgba(16,27,51,.04); transform: translateY(-2px); }
-  .btn-gold { background:#C79A3E; color:#101B33; transition: background .3s ease, transform .3s ease; }
-  .btn-gold:hover { background:#B5872F; transform: translateY(-2px); }
+  .btn-primary { background:#073763; color:#F6F9FB; transition: background .3s ease, transform .3s ease, box-shadow .3s ease; box-shadow: 0 10px 24px -12px rgba(7,55,99,.55); }
+  .btn-primary:hover { background:#0A4A7E; transform: translateY(-2px); }
+  .btn-ghost { border:1.5px solid rgba(7,55,99,.25); transition: border-color .3s ease, background .3s ease, transform .3s ease; }
+  .btn-ghost:hover { border-color:#073763; background: rgba(7,55,99,.05); transform: translateY(-2px); }
+  .btn-gold { background:#FFC857; color:#073763; transition: background .3s ease, transform .3s ease; }
+  .btn-gold:hover { background:#E8A93A; transform: translateY(-2px); }
+  .btn-sky { background:#1ACEDF; color:#073763; transition: background .3s ease, transform .3s ease; }
+  .btn-sky:hover { background:#12A7B6; color:#F6F9FB; transform: translateY(-2px); }
 
   .tag { font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; }
 
-  .underline-gold { background-image: linear-gradient(#F2E3C1,#F2E3C1); background-repeat:no-repeat; background-size:100% 10px; background-position: 0 88%; }
+  .underline-sky { background-image: linear-gradient(#DBF7FA,#DBF7FA); background-repeat:no-repeat; background-size:100% 12px; background-position: 0 90%; }
 
   .filter-btn { transition: all .25s ease; }
-  .filter-btn.active { background:#101B33; color:#F7F3E9; }
+  .filter-btn.active { background:#073763; color:#F6F9FB; border-color:#073763; }
 
   /* modal */
   #projectModal { transition: opacity .3s ease; }
   #projectModal .modal-panel { transition: transform .35s cubic-bezier(.16,.8,.28,1), opacity .35s ease; }
 
-  img.lazy-fade { transition: opacity .5s ease; }
-
   .counter-num { font-variant-numeric: tabular-nums; }
 
-  .journey-line { stroke-dasharray: 6 8; }
-
-  /* marquee-ish subtle scroller for logos/stages not used; kept minimal per brief */
+  .timeline-rail { position:absolute; left:9px; top:6px; bottom:6px; width:1px; background: rgba(7,55,99,.15); }
 
   ::-webkit-scrollbar { width:10px; }
-  ::-webkit-scrollbar-thumb { background: rgba(16,27,51,.25); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb { background: rgba(7,55,99,.25); border-radius: 999px; }
 </style>
 </head>
 <body class="font-sans antialiased">
@@ -151,13 +157,13 @@
 <header id="nav" class="fixed top-0 inset-x-0 z-40 bg-paper/90 backdrop-blur-md">
   <div class="container-x flex items-center justify-between py-5">
     <a href="#top" class="flex items-center gap-3 group">
-      <span class="w-9 h-9 rounded-full bg-navy flex items-center justify-center">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="4" r="2.4" fill="#C79A3E"/><circle cx="12" cy="4" r="2.4" fill="#F7F3E9"/><circle cx="8" cy="12" r="2.4" fill="#F7F3E9"/><path d="M5.6 5.6L7 10M10.4 5.6L9 10M5.7 4.3H10.3" stroke="#F7F3E9" stroke-width="0.8" opacity="0.7"/></svg>
+      <span class="shrink-0" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 21V12" stroke="#073763" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17L8.5 14.5M12 14.5L15.5 12M12 12L9 9.5M12 12L15 9.5" stroke="#1ACEDF" stroke-width="1.3" stroke-linecap="round"/><circle cx="8.5" cy="14.5" r="1.3" fill="#073763"/><circle cx="15.5" cy="12" r="1.3" fill="#1ACEDF"/><circle cx="9" cy="9.5" r="1.1" fill="#1ACEDF"/><circle cx="15" cy="9.5" r="1.1" fill="#073763"/><circle cx="12" cy="8" r="1.3" fill="#073763"/><circle cx="12" cy="12" r="1" fill="#1ACEDF"/></svg>
       </span>
-      <span class="font-serif text-xl font-semibold tracking-tight text-navy">CoLab</span>
+      <span class="text-xl font-extrabold tracking-tight text-navy">CoLab</span>
     </a>
 
-    <nav class="hidden lg:flex items-center gap-9 text-[14.5px] font-medium text-navy/80" id="desktopNav">
+    <nav class="hidden lg:flex items-center gap-9 text-[14.5px] font-semibold text-navy/75" id="desktopNav">
       <a href="#top" class="nav-link active" data-nav>Home</a>
       <a href="#about" class="nav-link" data-nav>About</a>
       <a href="#research" class="nav-link" data-nav>Research</a>
@@ -169,40 +175,42 @@
 
     <div class="flex items-center gap-3">
       <a href="#collaborate" class="hidden lg:inline-flex btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">Let's Collaborate</a>
-      <button id="burgerBtn" class="burger lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <button id="burgerBtn" class="burger lg:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span class="burger-line l1 block w-6 h-[2px] bg-navy"></span>
         <span class="burger-line l2 block w-6 h-[2px] bg-navy"></span>
         <span class="burger-line l3 block w-6 h-[2px] bg-navy"></span>
       </button>
     </div>
   </div>
-
-  <!-- mobile menu -->
-  <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-[max-height] duration-400 ease-in-out bg-paper border-t hairline">
-    <div class="container-x py-6 flex flex-col gap-1 text-navy">
-      <a href="#top" class="py-3 text-lg font-serif" data-nav-mobile>Home</a>
-      <a href="#about" class="py-3 text-lg font-serif" data-nav-mobile>About</a>
-      <a href="#research" class="py-3 text-lg font-serif" data-nav-mobile>Research</a>
-      <a href="#approach" class="py-3 text-lg font-serif" data-nav-mobile>Design</a>
-      <a href="#projects" class="py-3 text-lg font-serif" data-nav-mobile>Projects</a>
-      <a href="#insights" class="py-3 text-lg font-serif" data-nav-mobile>Insights</a>
-      <a href="#collaborate" class="py-3 text-lg font-serif" data-nav-mobile>Collaborate</a>
-      <a href="#collaborate" class="btn-primary text-center mt-3 font-semibold px-5 py-3 rounded-full" data-nav-mobile>Let's Collaborate</a>
-    </div>
-  </div>
 </header>
+
+<!-- mobile full-screen menu (kept outside the blurred header so its fixed positioning is never re-anchored by the header's backdrop-filter containing block) -->
+<div id="mobileMenu" class="lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile menu">
+  <div class="container-x flex-1 flex flex-col justify-center gap-1 py-24">
+    <a href="#top" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Home</a>
+    <a href="#about" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>About</a>
+    <a href="#research" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Research</a>
+    <a href="#approach" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Design</a>
+    <a href="#projects" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Projects</a>
+    <a href="#insights" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Insights</a>
+    <a href="#collaborate" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Collaborate</a>
+    <a href="#collaborate" class="btn-primary text-center mt-6 font-semibold px-5 py-3.5 rounded-full text-base" data-nav-mobile>Let's Collaborate</a>
+  </div>
+</div>
 
 <main id="main">
 
 <!-- HERO -->
 <section id="top" class="relative pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden">
+  <div class="blob w-[420px] h-[420px] bg-sky/25 -top-32 -right-24" aria-hidden="true"></div>
+  <div class="blob w-[380px] h-[380px] bg-gold/20 bottom-0 -left-32" aria-hidden="true"></div>
   <div class="container-x grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center relative z-10">
     <div>
-      <p class="tag text-teal mb-6 flex items-center gap-2">
-        <span class="w-6 h-px bg-teal"></span> Evidence &nbsp;→&nbsp; Design &nbsp;→&nbsp; Collaboration &nbsp;→&nbsp; Impact
+      <p class="tag text-navy/60 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span class="w-6 h-px bg-sky-600"></span> Evidence &nbsp;→&nbsp; Design &nbsp;→&nbsp; Collaboration &nbsp;→&nbsp; Impact
       </p>
-      <h1 class="font-serif text-[2.6rem] leading-[1.08] sm:text-6xl lg:text-[4.2rem] lg:leading-[1.05] font-semibold text-navy">
-        Designing for<br><span class="italic underline-gold">Education Equity</span>
+      <h1 class="text-[2.5rem] leading-[1.1] sm:text-6xl lg:text-[4.2rem] lg:leading-[1.05] font-extrabold tracking-tight text-navy">
+        Designing for<br><span class="underline-sky">Education Equity</span>
       </h1>
       <p class="mt-7 text-lg text-navy/70 max-w-lg leading-relaxed">
         Building evidence, designing solutions and collaborating to create meaningful impact in education.
@@ -216,25 +224,25 @@
     <div class="relative h-[380px] sm:h-[440px]" aria-hidden="true">
       <svg viewBox="0 0 420 420" class="w-full h-full">
         <g class="node-drift">
-          <line x1="90" y1="120" x2="220" y2="70" stroke="#101B33" stroke-opacity=".18" stroke-width="1.2"/>
-          <line x1="220" y1="70" x2="330" y2="150" stroke="#101B33" stroke-opacity=".18" stroke-width="1.2"/>
-          <line x1="90" y1="120" x2="150" y2="240" stroke="#101B33" stroke-opacity=".18" stroke-width="1.2"/>
+          <line x1="90" y1="120" x2="220" y2="70" stroke="#073763" stroke-opacity=".18" stroke-width="1.2"/>
+          <line x1="220" y1="70" x2="330" y2="150" stroke="#073763" stroke-opacity=".18" stroke-width="1.2"/>
+          <line x1="90" y1="120" x2="150" y2="240" stroke="#073763" stroke-opacity=".18" stroke-width="1.2"/>
         </g>
         <g class="node-drift2">
-          <line x1="150" y1="240" x2="330" y2="150" stroke="#C79A3E" stroke-opacity=".35" stroke-width="1.2"/>
-          <line x1="150" y1="240" x2="270" y2="320" stroke="#1F6F62" stroke-opacity=".4" stroke-width="1.2"/>
-          <line x1="270" y1="320" x2="330" y2="150" stroke="#101B33" stroke-opacity=".15" stroke-width="1.2"/>
+          <line x1="150" y1="240" x2="330" y2="150" stroke="#FFC857" stroke-opacity=".45" stroke-width="1.2"/>
+          <line x1="150" y1="240" x2="270" y2="320" stroke="#1ACEDF" stroke-opacity=".5" stroke-width="1.2"/>
+          <line x1="270" y1="320" x2="330" y2="150" stroke="#073763" stroke-opacity=".15" stroke-width="1.2"/>
         </g>
-        <circle cx="90" cy="120" r="7" fill="#101B33" class="node-pulse"/>
-        <circle cx="220" cy="70" r="10" fill="#C79A3E"/>
-        <circle cx="330" cy="150" r="6" fill="#1F6F62" class="node-pulse"/>
-        <circle cx="150" cy="240" r="13" fill="#101B33"/>
-        <circle cx="270" cy="320" r="8" fill="#C79A3E" class="node-pulse"/>
-        <circle cx="60" cy="300" r="4" fill="#1F6F62"/>
-        <line x1="60" y1="300" x2="150" y2="240" stroke="#1F6F62" stroke-opacity=".3" stroke-width="1"/>
+        <circle cx="90" cy="120" r="7" fill="#073763" class="node-pulse"/>
+        <circle cx="220" cy="70" r="10" fill="#FFC857"/>
+        <circle cx="330" cy="150" r="6" fill="#1ACEDF" class="node-pulse"/>
+        <circle cx="150" cy="240" r="13" fill="#073763"/>
+        <circle cx="270" cy="320" r="8" fill="#FFC857" class="node-pulse"/>
+        <circle cx="60" cy="300" r="4" fill="#1ACEDF"/>
+        <line x1="60" y1="300" x2="150" y2="240" stroke="#1ACEDF" stroke-opacity=".35" stroke-width="1"/>
       </svg>
-      <div class="absolute -bottom-2 left-4 sm:left-10 bg-white/90 backdrop-blur rounded-2xl border hairline px-5 py-4 shadow-sm max-w-[220px]">
-        <p class="font-serif text-2xl text-navy">10+</p>
+      <div class="absolute -bottom-2 left-4 sm:left-10 bg-white/90 backdrop-blur rounded-2xl border hairline px-5 py-4 shadow-lg max-w-[220px]">
+        <p class="text-2xl font-extrabold text-navy">10+</p>
         <p class="text-xs text-navy/60 mt-0.5">Research outputs shaping solutions across the ecosystem</p>
       </div>
     </div>
@@ -245,19 +253,19 @@
 <section class="border-y hairline bg-navy text-paper">
   <div class="container-x py-14 grid grid-cols-2 lg:grid-cols-4 gap-10">
     <div class="reveal">
-      <p class="font-serif text-4xl sm:text-5xl"><span class="counter-num" data-count="10" data-suffix="+">0</span></p>
+      <p class="text-4xl sm:text-5xl font-extrabold"><span class="counter-num" data-count="10" data-suffix="+">0</span></p>
       <p class="text-sm text-paper/60 mt-2 tracking-wide">Research Outputs</p>
     </div>
     <div class="reveal reveal-delay-1">
-      <p class="font-serif text-4xl sm:text-5xl"><span class="counter-num" data-count="10">0</span></p>
+      <p class="text-4xl sm:text-5xl font-extrabold"><span class="counter-num" data-count="10">0</span></p>
       <p class="text-sm text-paper/60 mt-2 tracking-wide">Evidence-Informed Solution Packages</p>
     </div>
     <div class="reveal reveal-delay-2">
-      <p class="font-serif text-4xl sm:text-5xl"><span class="counter-num" data-count="8">0</span></p>
+      <p class="text-4xl sm:text-5xl font-extrabold"><span class="counter-num" data-count="8">0</span></p>
       <p class="text-sm text-paper/60 mt-2 tracking-wide">Courses &amp; Workshops</p>
     </div>
     <div class="reveal reveal-delay-3">
-      <p class="font-serif text-4xl sm:text-5xl">Multiple</p>
+      <p class="text-4xl sm:text-5xl font-extrabold">Multiple</p>
       <p class="text-sm text-paper/60 mt-2 tracking-wide">Education Projects &amp; Collaborations</p>
     </div>
   </div>
@@ -267,29 +275,29 @@
 <section class="py-24 lg:py-32">
   <div class="container-x">
     <div class="max-w-2xl reveal">
-      <p class="tag text-teal mb-4">How we work</p>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy font-semibold">From Evidence to Impact</h2>
+      <p class="tag text-sky-600 mb-4">How we work</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">From Evidence to Impact</h2>
     </div>
 
     <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div class="reveal card-lift bg-white rounded-2xl border hairline p-7">
-        <p class="font-serif text-3xl text-gold mb-6">01</p>
-        <h3 class="font-serif text-xl text-navy mb-2">Research</h3>
+        <p class="text-3xl font-extrabold text-navy mb-6">01</p>
+        <h3 class="text-xl font-bold text-navy mb-2">Research</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed">Rigorous research that helps understand real challenges in education.</p>
       </div>
       <div class="reveal reveal-delay-1 card-lift bg-white rounded-2xl border hairline p-7">
-        <p class="font-serif text-3xl text-gold mb-6">02</p>
-        <h3 class="font-serif text-xl text-navy mb-2">Design</h3>
+        <p class="text-3xl font-extrabold text-sand mb-6">02</p>
+        <h3 class="text-xl font-bold text-navy mb-2">Design</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed">Evidence-informed design to create practical and sustainable solutions.</p>
       </div>
       <div class="reveal reveal-delay-2 card-lift bg-white rounded-2xl border hairline p-7">
-        <p class="font-serif text-3xl text-gold mb-6">03</p>
-        <h3 class="font-serif text-xl text-navy mb-2">Collaborate</h3>
+        <p class="text-3xl font-extrabold text-sky-600 mb-6">03</p>
+        <h3 class="text-xl font-bold text-navy mb-2">Collaborate</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed">Working with educators, institutions, researchers and ecosystem partners.</p>
       </div>
       <div class="reveal reveal-delay-3 card-lift bg-white rounded-2xl border hairline p-7">
-        <p class="font-serif text-3xl text-gold mb-6">04</p>
-        <h3 class="font-serif text-xl text-navy mb-2">Impact</h3>
+        <p class="text-3xl font-extrabold text-gold-600 mb-6">04</p>
+        <h3 class="text-xl font-bold text-navy mb-2">Impact</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed">Turning knowledge and solutions into scalable educational impact.</p>
       </div>
     </div>
@@ -300,28 +308,34 @@
 <section class="py-24 lg:py-32 bg-white border-y hairline">
   <div class="container-x">
     <div class="max-w-2xl reveal">
-      <p class="tag text-teal mb-4">What we offer</p>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy font-semibold">Our Services</h2>
+      <p class="tag text-sky-600 mb-4">What we offer</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">Our Services</h2>
     </div>
 
     <div class="mt-16 grid lg:grid-cols-3 gap-6">
       <article class="reveal card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
-        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6"><circle cx="14" cy="14" r="6" fill="none" stroke="#101B33" stroke-width="1.6"/><path d="M18.5 18.5L27 27" stroke="#C79A3E" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <h3 class="font-serif text-2xl text-navy mb-3">Research</h3>
+        <span class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center mb-6">
+          <svg width="24" height="24" viewBox="0 0 40 40"><circle cx="14" cy="14" r="6" fill="none" stroke="#073763" stroke-width="1.8"/><path d="M18.5 18.5L27 27" stroke="#1ACEDF" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <h3 class="text-2xl font-bold text-navy mb-3">Research</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed flex-1">We support the education ecosystem with rigorous research and research outputs that help create evidence-informed solutions.</p>
-        <a href="#research" class="mt-6 inline-flex items-center gap-2 text-teal font-semibold text-sm group">Explore Research <span class="transition-transform group-hover:translate-x-1">→</span></a>
+        <a href="#research" class="mt-6 inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group">Explore Research <span class="transition-transform group-hover:translate-x-1">→</span></a>
       </article>
       <article class="reveal reveal-delay-1 card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
-        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6"><rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="#101B33" stroke-width="1.6"/><rect x="22" y="22" width="10" height="10" rx="2" fill="#C79A3E"/></svg>
-        <h3 class="font-serif text-2xl text-navy mb-3">Design</h3>
+        <span class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center mb-6">
+          <svg width="24" height="24" viewBox="0 0 40 40"><rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="#073763" stroke-width="1.8"/><rect x="22" y="22" width="10" height="10" rx="2" fill="#C8895A"/></svg>
+        </span>
+        <h3 class="text-2xl font-bold text-navy mb-3">Design</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed flex-1">We use evidence-informed design to build solutions that respond to real needs and can scale sustainably.</p>
-        <a href="#approach" class="mt-6 inline-flex items-center gap-2 text-teal font-semibold text-sm group">Explore Design <span class="transition-transform group-hover:translate-x-1">→</span></a>
+        <a href="#approach" class="mt-6 inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group">Explore Design <span class="transition-transform group-hover:translate-x-1">→</span></a>
       </article>
       <article class="reveal reveal-delay-2 card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
-        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6"><circle cx="14" cy="20" r="5.5" fill="none" stroke="#101B33" stroke-width="1.6"/><circle cx="26" cy="20" r="5.5" fill="none" stroke="#1F6F62" stroke-width="1.6"/></svg>
-        <h3 class="font-serif text-2xl text-navy mb-3">Solution Packages</h3>
+        <span class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center mb-6">
+          <svg width="24" height="24" viewBox="0 0 40 40"><circle cx="14" cy="20" r="5.5" fill="none" stroke="#073763" stroke-width="1.8"/><circle cx="26" cy="20" r="5.5" fill="none" stroke="#1ACEDF" stroke-width="1.8"/></svg>
+        </span>
+        <h3 class="text-2xl font-bold text-navy mb-3">Solution Packages</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed flex-1">We package proven solutions for wider dissemination and support them as digital public goods.</p>
-        <a href="#projects" class="mt-6 inline-flex items-center gap-2 text-teal font-semibold text-sm group">Explore Solutions <span class="transition-transform group-hover:translate-x-1">→</span></a>
+        <a href="#projects" class="mt-6 inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group">Explore Solutions <span class="transition-transform group-hover:translate-x-1">→</span></a>
       </article>
     </div>
   </div>
@@ -331,8 +345,8 @@
 <section id="projects" class="py-24 lg:py-32">
   <div class="container-x">
     <div class="max-w-2xl reveal">
-      <p class="tag text-teal mb-4">Our Projects</p>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy font-semibold">Work across the education ecosystem</h2>
+      <p class="tag text-sky-600 mb-4">Our Projects</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">Work across the education ecosystem</h2>
       <p class="mt-4 text-navy/65">A growing portfolio spanning research, design, pilots, mentoring and systems-level work. More details on each project are coming soon.</p>
     </div>
 
@@ -354,7 +368,7 @@
   <div class="container-x">
     <div class="max-w-2xl reveal">
       <p class="tag text-gold mb-4">Featured Research</p>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold">Research That Moves Education Forward</h2>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Research That Moves Education Forward</h2>
     </div>
 
     <div id="researchGrid" class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -365,45 +379,58 @@
 <section id="approach" class="py-24 lg:py-32 bg-white border-b hairline">
   <div class="container-x">
     <div class="max-w-2xl reveal">
-      <p class="tag text-teal mb-4">Our Approach</p>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy font-semibold">Evidence-Informed Design</h2>
+      <p class="tag text-sky-600 mb-4">Our Approach</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">Evidence-Informed Design</h2>
       <p class="mt-4 text-navy/65">How we turn evidence into practical solutions that work in real classrooms and systems.</p>
     </div>
 
     <div class="mt-16 relative">
-      <svg class="hidden lg:block absolute top-[38px] left-0 w-full" height="4" viewBox="0 0 1200 4" preserveAspectRatio="none" aria-hidden="true">
-        <line x1="0" y1="2" x2="1200" y2="2" stroke="#101B33" stroke-opacity="0.15" stroke-width="2" class="journey-line"/>
+      <svg class="hidden lg:block absolute top-[9px] left-0 w-full" height="2" viewBox="0 0 1200 2" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="0" y1="1" x2="1200" y2="1" stroke="#073763" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="6 8"/>
       </svg>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4 relative">
-        <div class="reveal flex flex-col items-center text-center">
-          <div class="w-[18px] h-[18px] rounded-full bg-navy mb-5 z-10"></div>
-          <h3 class="font-serif text-lg text-navy mb-1.5">Research</h3>
-          <p class="text-xs text-navy/60 leading-relaxed">Ground truth from the field</p>
+      <div class="flex flex-col gap-8 lg:grid lg:grid-cols-6 lg:gap-4 relative">
+        <div class="timeline-rail lg:hidden" aria-hidden="true"></div>
+        <div class="reveal flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+          <div class="w-[18px] h-[18px] rounded-full bg-navy mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
+          <div>
+            <h3 class="text-lg font-bold text-navy mb-1.5">Research</h3>
+            <p class="text-xs text-navy/60 leading-relaxed">Ground truth from the field</p>
+          </div>
         </div>
-        <div class="reveal reveal-delay-1 flex flex-col items-center text-center">
-          <div class="w-[18px] h-[18px] rounded-full bg-navy mb-5 z-10"></div>
-          <h3 class="font-serif text-lg text-navy mb-1.5">Insights</h3>
-          <p class="text-xs text-navy/60 leading-relaxed">Making sense of the evidence</p>
+        <div class="reveal reveal-delay-1 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+          <div class="w-[18px] h-[18px] rounded-full bg-navy mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
+          <div>
+            <h3 class="text-lg font-bold text-navy mb-1.5">Insights</h3>
+            <p class="text-xs text-navy/60 leading-relaxed">Making sense of the evidence</p>
+          </div>
         </div>
-        <div class="reveal reveal-delay-2 flex flex-col items-center text-center">
-          <div class="w-[18px] h-[18px] rounded-full bg-gold mb-5 z-10"></div>
-          <h3 class="font-serif text-lg text-navy mb-1.5">Co-creation</h3>
-          <p class="text-xs text-navy/60 leading-relaxed">Designing with, not for</p>
+        <div class="reveal reveal-delay-2 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+          <div class="w-[18px] h-[18px] rounded-full bg-sand mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
+          <div>
+            <h3 class="text-lg font-bold text-navy mb-1.5">Co-creation</h3>
+            <p class="text-xs text-navy/60 leading-relaxed">Designing with, not for</p>
+          </div>
         </div>
-        <div class="reveal reveal-delay-3 flex flex-col items-center text-center">
-          <div class="w-[18px] h-[18px] rounded-full bg-gold mb-5 z-10"></div>
-          <h3 class="font-serif text-lg text-navy mb-1.5">Prototype</h3>
-          <p class="text-xs text-navy/60 leading-relaxed">A first working version</p>
+        <div class="reveal reveal-delay-3 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+          <div class="w-[18px] h-[18px] rounded-full bg-sand mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
+          <div>
+            <h3 class="text-lg font-bold text-navy mb-1.5">Prototype</h3>
+            <p class="text-xs text-navy/60 leading-relaxed">A first working version</p>
+          </div>
         </div>
-        <div class="reveal reveal-delay-4 flex flex-col items-center text-center">
-          <div class="w-[18px] h-[18px] rounded-full bg-teal mb-5 z-10"></div>
-          <h3 class="font-serif text-lg text-navy mb-1.5">Testing</h3>
-          <p class="text-xs text-navy/60 leading-relaxed">Refined against reality</p>
+        <div class="reveal reveal-delay-4 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+          <div class="w-[18px] h-[18px] rounded-full bg-sky-600 mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
+          <div>
+            <h3 class="text-lg font-bold text-navy mb-1.5">Testing</h3>
+            <p class="text-xs text-navy/60 leading-relaxed">Refined against reality</p>
+          </div>
         </div>
-        <div class="reveal reveal-delay-4 flex flex-col items-center text-center">
-          <div class="w-[18px] h-[18px] rounded-full bg-teal mb-5 z-10"></div>
-          <h3 class="font-serif text-lg text-navy mb-1.5">Scale</h3>
-          <p class="text-xs text-navy/60 leading-relaxed">Shared as a public good</p>
+        <div class="reveal reveal-delay-4 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+          <div class="w-[18px] h-[18px] rounded-full bg-sky-600 mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
+          <div>
+            <h3 class="text-lg font-bold text-navy mb-1.5">Scale</h3>
+            <p class="text-xs text-navy/60 leading-relaxed">Shared as a public good</p>
+          </div>
         </div>
       </div>
     </div>
@@ -411,22 +438,25 @@
 </section>
 
 <!-- COLLABORATION CTA -->
-<section id="collaborate" class="relative py-28 lg:py-36 bg-teal-700 overflow-hidden">
-  <svg class="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none" aria-hidden="true">
-    <line x1="5%" y1="20%" x2="30%" y2="55%" stroke="#F7F3E9" stroke-width="1"/>
-    <line x1="30%" y1="55%" x2="60%" y2="15%" stroke="#F7F3E9" stroke-width="1"/>
-    <line x1="60%" y1="15%" x2="90%" y2="60%" stroke="#F7F3E9" stroke-width="1"/>
-    <line x1="30%" y1="55%" x2="70%" y2="85%" stroke="#F7F3E9" stroke-width="1"/>
-    <circle cx="5%" cy="20%" r="4" fill="#F7F3E9"/>
-    <circle cx="30%" cy="55%" r="6" fill="#C79A3E"/>
-    <circle cx="60%" cy="15%" r="4" fill="#F7F3E9"/>
-    <circle cx="90%" cy="60%" r="5" fill="#F7F3E9"/>
-    <circle cx="70%" cy="85%" r="4" fill="#F7F3E9"/>
+<section id="collaborate" class="relative py-28 lg:py-36 bg-navy overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="5%" y1="20%" x2="30%" y2="55%" stroke="#F6F9FB" stroke-width="1"/>
+    <line x1="30%" y1="55%" x2="60%" y2="15%" stroke="#F6F9FB" stroke-width="1"/>
+    <line x1="60%" y1="15%" x2="90%" y2="60%" stroke="#F6F9FB" stroke-width="1"/>
+    <line x1="30%" y1="55%" x2="70%" y2="85%" stroke="#F6F9FB" stroke-width="1"/>
+    <circle cx="5%" cy="20%" r="4" fill="#F6F9FB"/>
+    <circle cx="30%" cy="55%" r="6" fill="#1ACEDF"/>
+    <circle cx="60%" cy="15%" r="4" fill="#F6F9FB"/>
+    <circle cx="90%" cy="60%" r="5" fill="#F6F9FB"/>
+    <circle cx="70%" cy="85%" r="4" fill="#FFC857"/>
   </svg>
   <div class="container-x relative z-10 text-center max-w-3xl mx-auto reveal">
-    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-semibold leading-tight">Better Education Is Built Together.</h2>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold tracking-tight leading-tight">Better Education Is Built Together.</h2>
     <p class="mt-6 text-white/85 text-lg leading-relaxed">We collaborate with educators, researchers, institutions, organisations and communities to design solutions that create meaningful change.</p>
-    <a href="#footer" class="mt-10 inline-flex btn-gold px-8 py-4 rounded-full font-semibold">Let's Collaborate</a>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="#footer" class="btn-gold px-8 py-4 rounded-full font-semibold">Let's Collaborate</a>
+      <a href="#footer" class="btn-ghost border-white/30 text-white hover:!bg-white/10 hover:!border-white px-8 py-4 rounded-full font-semibold">Get in Touch</a>
+    </div>
   </div>
 </section>
 
@@ -435,10 +465,10 @@
   <div class="container-x">
     <div class="flex flex-wrap items-end justify-between gap-6 reveal">
       <div class="max-w-xl">
-        <p class="tag text-teal mb-4">Insights &amp; Ideas</p>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy font-semibold">From the CoLab journal</h2>
+        <p class="tag text-sky-600 mb-4">Insights &amp; Ideas</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">From the CoLab journal</h2>
       </div>
-      <a href="#" class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">View All Insights</a>
+      <a href="#" data-soon class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">View All Insights</a>
     </div>
 
     <div id="blogGrid" class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -449,13 +479,13 @@
 <section id="about" class="py-24 lg:py-32 bg-white border-y hairline">
   <div class="container-x grid lg:grid-cols-2 gap-16 items-center">
     <div class="reveal order-2 lg:order-1">
-      <p class="tag text-teal mb-4">About CoLab</p>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy font-semibold leading-tight">Building a More Equitable Education Ecosystem</h2>
+      <p class="tag text-sky-600 mb-4">About CoLab</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight leading-tight">Building a More Equitable Education Ecosystem</h2>
       <p class="mt-6 text-navy/70 leading-relaxed">
         CoLab works at the intersection of research, evidence, design and collaboration to help improve education. We're a global community working to develop and disseminate evidence-informed solution packages across the Global South — as an education lab under Mantra4Change.
       </p>
       <div class="mt-8 grid sm:grid-cols-3 gap-5">
-        <div class="border-l-2 border-gold pl-4">
+        <div class="border-l-2 border-sky-600 pl-4">
           <p class="text-xs tag text-navy/50 mb-1">Why</p>
           <p class="text-sm text-navy/70">Every child deserves equal educational outcomes.</p>
         </div>
@@ -463,29 +493,29 @@
           <p class="text-xs tag text-navy/50 mb-1">What</p>
           <p class="text-sm text-navy/70">Evidence-informed solutions built as digital public goods.</p>
         </div>
-        <div class="border-l-2 border-gold pl-4">
+        <div class="border-l-2 border-sand pl-4">
           <p class="text-xs tag text-navy/50 mb-1">How</p>
           <p class="text-sm text-navy/70">Through collaborative emergence with the ecosystem.</p>
         </div>
       </div>
-      <a href="#" class="mt-10 inline-flex btn-primary px-7 py-3.5 rounded-full font-semibold text-[15px]">Learn About CoLab</a>
+      <a href="#" data-soon class="mt-10 inline-flex btn-primary px-7 py-3.5 rounded-full font-semibold text-[15px]">Learn About CoLab</a>
     </div>
 
     <div class="relative order-1 lg:order-2 reveal reveal-delay-1" aria-hidden="true">
       <div class="aspect-[4/3] rounded-3xl bg-paper border hairline flex items-center justify-center overflow-hidden">
         <svg viewBox="0 0 300 220" class="w-3/4">
-          <circle cx="70" cy="60" r="34" fill="none" stroke="#101B33" stroke-width="1.4"/>
-          <circle cx="180" cy="40" r="20" fill="#C79A3E" opacity=".85"/>
-          <circle cx="230" cy="130" r="26" fill="none" stroke="#1F6F62" stroke-width="1.4"/>
-          <circle cx="110" cy="160" r="16" fill="#101B33" opacity=".9"/>
-          <line x1="70" y1="60" x2="180" y2="40" stroke="#101B33" stroke-opacity=".25" stroke-width="1"/>
-          <line x1="180" y1="40" x2="230" y2="130" stroke="#101B33" stroke-opacity=".25" stroke-width="1"/>
-          <line x1="70" y1="60" x2="110" y2="160" stroke="#101B33" stroke-opacity=".25" stroke-width="1"/>
-          <line x1="110" y1="160" x2="230" y2="130" stroke="#101B33" stroke-opacity=".25" stroke-width="1"/>
+          <circle cx="70" cy="60" r="34" fill="none" stroke="#073763" stroke-width="1.6"/>
+          <circle cx="180" cy="40" r="20" fill="#FFC857" opacity=".9"/>
+          <circle cx="230" cy="130" r="26" fill="none" stroke="#1ACEDF" stroke-width="1.6"/>
+          <circle cx="110" cy="160" r="16" fill="#073763" opacity=".9"/>
+          <line x1="70" y1="60" x2="180" y2="40" stroke="#073763" stroke-opacity=".25" stroke-width="1"/>
+          <line x1="180" y1="40" x2="230" y2="130" stroke="#073763" stroke-opacity=".25" stroke-width="1"/>
+          <line x1="70" y1="60" x2="110" y2="160" stroke="#073763" stroke-opacity=".25" stroke-width="1"/>
+          <line x1="110" y1="160" x2="230" y2="130" stroke="#073763" stroke-opacity=".25" stroke-width="1"/>
         </svg>
       </div>
-      <div class="absolute -bottom-6 -right-4 sm:right-6 bg-navy text-paper rounded-2xl px-6 py-5 max-w-[200px] shadow-lg">
-        <p class="font-serif italic text-sm leading-snug">"Nurture the education ecosystem to rapidly evolve ideas and approaches."</p>
+      <div class="absolute -bottom-6 -right-4 sm:right-6 bg-navy text-paper rounded-2xl px-6 py-5 max-w-[200px] shadow-xl">
+        <p class="italic text-sm leading-snug">"Nurture the education ecosystem to rapidly evolve ideas and approaches."</p>
       </div>
     </div>
   </div>
@@ -499,55 +529,56 @@
     <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
       <div class="lg:col-span-1">
         <div class="flex items-center gap-3 mb-5">
-          <span class="w-9 h-9 rounded-full bg-paper/10 flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="4" r="2.4" fill="#C79A3E"/><circle cx="12" cy="4" r="2.4" fill="#F7F3E9"/><circle cx="8" cy="12" r="2.4" fill="#F7F3E9"/></svg>
+          <span class="shrink-0" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 21V12" stroke="#F6F9FB" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17L8.5 14.5M12 14.5L15.5 12M12 12L9 9.5M12 12L15 9.5" stroke="#1ACEDF" stroke-width="1.3" stroke-linecap="round"/><circle cx="8.5" cy="14.5" r="1.3" fill="#F6F9FB"/><circle cx="15.5" cy="12" r="1.3" fill="#1ACEDF"/><circle cx="9" cy="9.5" r="1.1" fill="#1ACEDF"/><circle cx="15" cy="9.5" r="1.1" fill="#F6F9FB"/><circle cx="12" cy="8" r="1.3" fill="#F6F9FB"/><circle cx="12" cy="12" r="1" fill="#1ACEDF"/></svg>
           </span>
-          <span class="font-serif text-lg font-semibold">CoLab</span>
+          <span class="text-lg font-extrabold">CoLab</span>
         </div>
         <p class="text-sm text-paper/55 leading-relaxed">A brand under MIE Design Private Limited. An education lab by Mantra4Change.</p>
+        <p class="text-xs italic text-sky mt-3">From Evidence to Effectiveness</p>
         <div class="flex items-center gap-3 mt-6">
-          <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:bg-paper/10 transition"><svg width="15" height="15" viewBox="0 0 24 24" fill="#F7F3E9"><path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.63 1.34 2.98 2.98 2.98 1.63 0 2.97-1.35 2.97-2.98C7.95 4.84 6.6 3.5 4.98 3.5zM2.4 21.5h5.16V8.75H2.4V21.5zM9.9 8.75v12.75h5.15v-6.32c0-1.67.32-3.28 2.38-3.28 2.03 0 2.06 1.9 2.06 3.39v6.21H24v-7.13c0-4.48-.96-7.93-6.2-7.93-2.52 0-4.2 1.38-4.9 2.7h-.07v-2.4H9.9z"/></svg></a>
-          <a href="#" aria-label="Twitter / X" class="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:bg-paper/10 transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="#F7F3E9"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.1l-5.6-6.9L4.2 22H1l8.1-9.3L1 2h7.2l5 6.4L18.9 2zm-1.2 18h1.9L6.3 4H4.3l13.4 16z"/></svg></a>
-          <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:bg-paper/10 transition"><svg width="15" height="15" viewBox="0 0 24 24" fill="#F7F3E9"><path d="M23.5 6.2s-.23-1.64-.94-2.36c-.9-.95-1.9-.95-2.36-1.01C16.9 2.5 12 2.5 12 2.5h-.01s-4.9 0-8.2.33c-.46.06-1.46.06-2.36 1.01C.72 4.56.5 6.2.5 6.2S.27 8.12.27 10.04v1.8c0 1.92.23 3.84.23 3.84s.23 1.64.93 2.36c.9.95 2.08.92 2.6 1.02 1.9.18 8 .24 8 .24s4.9 0 8.2-.33c.46-.06 1.46-.06 2.36-1.01.71-.72.94-2.36.94-2.36s.23-1.92.23-3.84v-1.8c0-1.92-.23-3.84-.23-3.84zM9.7 14.9V7.3l6.5 3.8-6.5 3.8z"/></svg></a>
+          <a href="#" data-soon aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:bg-paper/10 hover:border-sky transition"><svg width="15" height="15" viewBox="0 0 24 24" fill="#F6F9FB"><path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.63 1.34 2.98 2.98 2.98 1.63 0 2.97-1.35 2.97-2.98C7.95 4.84 6.6 3.5 4.98 3.5zM2.4 21.5h5.16V8.75H2.4V21.5zM9.9 8.75v12.75h5.15v-6.32c0-1.67.32-3.28 2.38-3.28 2.03 0 2.06 1.9 2.06 3.39v6.21H24v-7.13c0-4.48-.96-7.93-6.2-7.93-2.52 0-4.2 1.38-4.9 2.7h-.07v-2.4H9.9z"/></svg></a>
+          <a href="#" data-soon aria-label="Twitter / X" class="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:bg-paper/10 hover:border-sky transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="#F6F9FB"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.1l-5.6-6.9L4.2 22H1l8.1-9.3L1 2h7.2l5 6.4L18.9 2zm-1.2 18h1.9L6.3 4H4.3l13.4 16z"/></svg></a>
+          <a href="#" data-soon aria-label="YouTube" class="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:bg-paper/10 hover:border-sky transition"><svg width="15" height="15" viewBox="0 0 24 24" fill="#F6F9FB"><path d="M23.5 6.2s-.23-1.64-.94-2.36c-.9-.95-1.9-.95-2.36-1.01C16.9 2.5 12 2.5 12 2.5h-.01s-4.9 0-8.2.33c-.46.06-1.46.06-2.36 1.01C.72 4.56.5 6.2.5 6.2S.27 8.12.27 10.04v1.8c0 1.92.23 3.84.23 3.84s.23 1.64.93 2.36c.9.95 2.08.92 2.6 1.02 1.9.18 8 .24 8 .24s4.9 0 8.2-.33c.46-.06 1.46-.06 2.36-1.01.71-.72.94-2.36.94-2.36s.23-1.92.23-3.84v-1.8c0-1.92-.23-3.84-.23-3.84zM9.7 14.9V7.3l6.5 3.8-6.5 3.8z"/></svg></a>
         </div>
       </div>
 
       <div>
-        <h4 class="font-serif text-base mb-4">CoLab</h4>
+        <h4 class="text-base font-bold mb-4">CoLab</h4>
         <ul class="space-y-3 text-sm text-paper/60">
-          <li><a href="#about" class="hover:text-paper transition">About</a></li>
-          <li><a href="#approach" class="hover:text-paper transition">Our Approach</a></li>
-          <li><a href="#collaborate" class="hover:text-paper transition">Collaboration</a></li>
-          <li><a href="#" class="hover:text-paper transition" data-soon>CoLab Space</a></li>
+          <li><a href="#about" class="hover:text-sky transition">About</a></li>
+          <li><a href="#approach" class="hover:text-sky transition">Our Approach</a></li>
+          <li><a href="#collaborate" class="hover:text-sky transition">Collaboration</a></li>
+          <li><a href="#" class="hover:text-sky transition" data-soon>CoLab Space</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-serif text-base mb-4">Work</h4>
+        <h4 class="text-base font-bold mb-4">Work</h4>
         <ul class="space-y-3 text-sm text-paper/60">
-          <li><a href="#research" class="hover:text-paper transition">Research</a></li>
-          <li><a href="#approach" class="hover:text-paper transition">Design</a></li>
-          <li><a href="#projects" class="hover:text-paper transition">Solution Packages</a></li>
-          <li><a href="#projects" class="hover:text-paper transition">Projects</a></li>
+          <li><a href="#research" class="hover:text-sky transition">Research</a></li>
+          <li><a href="#approach" class="hover:text-sky transition">Design</a></li>
+          <li><a href="#projects" class="hover:text-sky transition">Solution Packages</a></li>
+          <li><a href="#projects" class="hover:text-sky transition">Projects</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-serif text-base mb-4">Resources</h4>
+        <h4 class="text-base font-bold mb-4">Resources</h4>
         <ul class="space-y-3 text-sm text-paper/60">
-          <li><a href="#research" class="hover:text-paper transition">Research Outputs</a></li>
-          <li><a href="#insights" class="hover:text-paper transition">Blog</a></li>
-          <li><a href="#" class="hover:text-paper transition" data-soon>Publications</a></li>
-          <li><a href="#" class="hover:text-paper transition" data-soon>CoLabCast</a></li>
+          <li><a href="#research" class="hover:text-sky transition">Research Outputs</a></li>
+          <li><a href="#insights" class="hover:text-sky transition">Blog</a></li>
+          <li><a href="#" class="hover:text-sky transition" data-soon>Publications</a></li>
+          <li><a href="#" class="hover:text-sky transition" data-soon>CoLabCast</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-serif text-base mb-4">Connect</h4>
+        <h4 class="text-base font-bold mb-4">Connect</h4>
         <ul class="space-y-3 text-sm text-paper/60 mb-6">
-          <li><a href="#" class="hover:text-paper transition" data-soon>Contact</a></li>
-          <li><a href="#" class="hover:text-paper transition" data-soon>Careers</a></li>
-          <li><a href="#" class="hover:text-paper transition" data-soon>Donate</a></li>
+          <li><a href="#" class="hover:text-sky transition" data-soon>Contact</a></li>
+          <li><a href="#" class="hover:text-sky transition" data-soon>Careers</a></li>
+          <li><a href="#" class="hover:text-sky transition" data-soon>Donate</a></li>
         </ul>
         <form id="newsletterForm" class="mt-2">
           <label for="newsletterEmail" class="text-xs text-paper/50 mb-2 block">Monthly newsletter</label>
@@ -555,15 +586,15 @@
             <input id="newsletterEmail" type="email" required placeholder="you@email.com" class="flex-1 min-w-0 bg-paper/10 border border-paper/20 rounded-full px-4 py-2.5 text-sm placeholder:text-paper/40 text-paper focus:bg-paper/15">
             <button type="submit" class="btn-gold px-4 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap">Join</button>
           </div>
-          <p id="newsletterMsg" class="text-xs text-gold mt-2 hidden" role="status">Thanks — you're on the list.</p>
+          <p id="newsletterMsg" class="text-xs text-sky mt-2 hidden" role="status">Thanks — you're on the list.</p>
         </form>
       </div>
     </div>
 
-    <div class="border-t border-paper/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper/45">
+    <div class="border-t border-paper/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper/45 text-center sm:text-left">
       <p>© 2026 CoLab Global Consulting. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="hover:text-paper transition" data-soon>Privacy Policy</a>
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+        <a href="#" class="hover:text-sky transition" data-soon>Privacy Policy</a>
         <span>A brand under MIE Design Private Limited</span>
       </div>
     </div>
@@ -575,10 +606,10 @@
   <div id="modalBackdrop" class="absolute inset-0 bg-navy/60 backdrop-blur-sm"></div>
   <div class="modal-panel relative bg-white rounded-3xl max-w-lg w-full p-8 sm:p-10 opacity-0 translate-y-4">
     <button id="modalClose" aria-label="Close" class="absolute top-5 right-5 w-9 h-9 rounded-full border hairline flex items-center justify-center hover:bg-paper transition">
-      <svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1L13 13M13 1L1 13" stroke="#101B33" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1L13 13M13 1L1 13" stroke="#073763" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
-    <p id="modalCategory" class="tag text-teal mb-3"></p>
-    <h3 id="modalTitle" class="font-serif text-2xl sm:text-3xl text-navy mb-4"></h3>
+    <p id="modalCategory" class="tag text-sky-600 mb-3"></p>
+    <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-navy mb-4"></h3>
     <p id="modalDesc" class="text-navy/70 leading-relaxed"></p>
     <p class="text-xs text-navy/40 mt-6">Full project page coming soon.</p>
   </div>
@@ -595,11 +626,11 @@ const projects = [
   { name:"Student Experiences", cat:["Research"], desc:"Understanding learning from the student's point of view." },
   { name:"SolvED", cat:["Design"], desc:"A design initiative turning evidence into classroom-ready solutions." },
   { name:"Super Mentor", cat:["Mentoring"], desc:"Strengthening mentoring relationships across the school ecosystem." },
-  { name:"Mentoring Toolkit", cat:["Mentoring","Design"], desc:"A practical toolkit for building effective mentoring programs." },
+  { name:"Mentoring Toolkit", cat:["Mentoring","Design"], desc:"A practical toolkit for building effective mentoring programmes." },
   { name:"CoLabOrate", cat:["Education Systems"], desc:"An open space for practitioners to discuss and co-create." },
   { name:"Mentoring Research", cat:["Mentoring","Research"], desc:"Studying what makes mentoring work in education settings." },
   { name:"RehnumaX", cat:["Pilot"], desc:"A pilot exploring new pathways for student support." },
-  { name:"School Leader Professional Development", cat:["Design"], desc:"Designing capability-building programs for school leaders." },
+  { name:"School Leader Professional Development", cat:["Design"], desc:"Designing capability-building programmes for school leaders." },
   { name:"Evidence Community of Practice", cat:["Education Systems","Research"], desc:"Connecting practitioners around the use of evidence in education." },
   { name:"Education Policy & Reform", cat:["Education Systems"], desc:"Bridging research and policy to shape systemic change." },
   { name:"Systems Map", cat:["Education Systems"], desc:"Mapping the education ecosystem to see how it connects." },
@@ -608,7 +639,7 @@ const projects = [
 ];
 
 const research = [
-  { cat:"Literature Review", title:"School Leader Professional Development", desc:"Helps program designers translate evidence on leadership capability into practical professional development programs for school leaders.", tag:"CC BY-NC" },
+  { cat:"Literature Review", title:"School Leader Professional Development", desc:"Helps programme designers translate evidence on leadership capability into practical professional development programmes for school leaders.", tag:"CC BY-NC" },
   { cat:"Literature Review", title:"Evidence in Education", desc:"Explores why evidence matters in education, and how organisations across the ecosystem can put evidence-informed practice into action.", tag:"CC BY-NC" },
   { cat:"Research Article", title:"Enriching Learning Experiences", desc:"Maps what makes learning genuinely enjoyable for children at the school, classroom and community level.", tag:"CC BY-NC" },
   { cat:"Scoping Review", title:"School & District Leadership Impact", desc:"A review of evidence-based practices that school and district leaders can use to improve student learning outcomes.", tag:"CC BY-NC" },
@@ -618,9 +649,18 @@ const research = [
 
 const blogPosts = [
   { cat:"Field Notes", title:"Kalaburagi's Stint with Enabling Enriching Learning Experiences at Scale", desc:"A look at how enriching-learning ideas played out on the ground in Kalaburagi.", time:"5 min read" },
-  { cat:"Perspective", title:"Does \\u201CMentoring\\u201D in the Education Sector Make Sense?", desc:"Unpacking what mentoring really means — and whether it earns its place in education.", time:"4 min read" },
+  { cat:"Perspective", title:"Does “Mentoring” in the Education Sector Make Sense?", desc:"Unpacking what mentoring really means — and whether it earns its place in education.", time:"4 min read" },
   { cat:"Perspective", title:"Holistic Education — At School or Home?", desc:"Weighing where holistic learning is best nurtured, and why it may not be either-or.", time:"4 min read" },
 ];
+
+/* category → brand accent, used for project tags and filter active state */
+const catColor = {
+  Research: { text:'text-navy', bg:'bg-navy/10' },
+  Design: { text:'text-sand', bg:'bg-sand/15' },
+  Pilot: { text:'text-cardinal', bg:'bg-cardinal/10' },
+  Mentoring: { text:'text-sage', bg:'bg-sage/15' },
+  'Education Systems': { text:'text-sky-600', bg:'bg-sky/15' },
+};
 
 /* ---------- Render projects ---------- */
 const projectGrid = document.getElementById('projectGrid');
@@ -628,14 +668,14 @@ function renderProjects(filter){
   projectGrid.innerHTML = '';
   projects
     .filter(p => filter === 'All' || p.cat.includes(filter))
-    .forEach((p, i) => {
+    .forEach((p) => {
       const el = document.createElement('article');
       el.className = 'reveal in card-lift bg-white rounded-2xl border hairline p-7 cursor-pointer flex flex-col';
       el.tabIndex = 0;
       el.setAttribute('role','button');
       el.innerHTML = `
-        <div class="flex flex-wrap gap-2 mb-5">${p.cat.map(c=>`<span class="tag text-teal bg-teal/10 px-2.5 py-1 rounded-full">${c}</span>`).join('')}</div>
-        <h3 class="font-serif text-xl text-navy mb-2">${p.name}</h3>
+        <div class="flex flex-wrap gap-2 mb-5">${p.cat.map(c=>{const cc=catColor[c]||catColor.Research; return `<span class="tag ${cc.text} ${cc.bg} px-2.5 py-1 rounded-full">${c}</span>`;}).join('')}</div>
+        <h3 class="text-xl font-bold text-navy mb-2">${p.name}</h3>
         <p class="text-[14.5px] text-navy/60 leading-relaxed flex-1">${p.desc}</p>
         <span class="mt-5 text-sm font-semibold text-navy/70 inline-flex items-center gap-2">View project <span>→</span></span>
       `;
@@ -659,13 +699,13 @@ document.getElementById('filterBar').addEventListener('click', (e) => {
 const researchGrid = document.getElementById('researchGrid');
 research.forEach(r => {
   const el = document.createElement('article');
-  el.className = 'reveal card-lift bg-navy-700 bg-[#182A4D] rounded-2xl border border-paper/10 p-7 flex flex-col';
+  el.className = 'reveal card-lift bg-navy-700 rounded-2xl border border-paper/10 p-7 flex flex-col';
   el.innerHTML = `
     <div class="flex items-center justify-between mb-5">
       <span class="tag text-gold">${r.cat}</span>
       <span class="text-[10px] text-paper/40 border border-paper/20 rounded-full px-2 py-1">${r.tag}</span>
     </div>
-    <h3 class="font-serif text-lg leading-snug mb-3">${r.title}</h3>
+    <h3 class="text-lg font-bold leading-snug mb-3">${r.title}</h3>
     <p class="text-[14px] text-paper/60 leading-relaxed flex-1">${r.desc}</p>
     <a href="#" data-soon class="mt-6 text-sm font-semibold text-gold inline-flex items-center gap-2">Read More <span>→</span></a>
   `;
@@ -674,7 +714,7 @@ research.forEach(r => {
 
 /* ---------- Render blog ---------- */
 const blogGrid = document.getElementById('blogGrid');
-const blogGradients = ['from-teal to-navy','from-gold to-navy','from-navy to-teal'];
+const blogGradients = ['from-sky-600 to-navy','from-gold to-navy','from-navy to-sand'];
 blogPosts.forEach((b,i) => {
   const el = document.createElement('article');
   el.className = 'reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col';
@@ -682,10 +722,10 @@ blogPosts.forEach((b,i) => {
     <div class="h-40 bg-gradient-to-br ${blogGradients[i % blogGradients.length]} opacity-90"></div>
     <div class="p-7 flex flex-col flex-1">
       <div class="flex items-center gap-3 mb-3">
-        <span class="tag text-teal">${b.cat}</span>
+        <span class="tag text-sky-600">${b.cat}</span>
         <span class="text-xs text-navy/40">${b.time}</span>
       </div>
-      <h3 class="font-serif text-lg leading-snug text-navy mb-3">${b.title}</h3>
+      <h3 class="text-lg font-bold leading-snug text-navy mb-3">${b.title}</h3>
       <p class="text-[14px] text-navy/60 leading-relaxed flex-1">${b.desc}</p>
       <a href="#" data-soon class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Read More <span>→</span></a>
     </div>
@@ -739,14 +779,15 @@ window.addEventListener('scroll', () => {
 const burgerBtn = document.getElementById('burgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 function toggleMenu(open){
-  const isOpen = open !== undefined ? open : mobileMenu.style.maxHeight === '0px' || !mobileMenu.style.maxHeight;
+  const isOpen = open !== undefined ? open : !mobileMenu.classList.contains('open');
   burgerBtn.classList.toggle('open', isOpen);
   burgerBtn.setAttribute('aria-expanded', isOpen);
-  mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  mobileMenu.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
-mobileMenu.style.maxHeight = '0px';
 burgerBtn.addEventListener('click', () => toggleMenu());
 document.querySelectorAll('[data-nav-mobile]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+window.addEventListener('resize', () => { if(window.innerWidth >= 1024) toggleMenu(false); });
 
 /* ---------- Scroll reveal ---------- */
 const revealEls = document.querySelectorAll('.reveal');
