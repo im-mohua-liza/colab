@@ -216,24 +216,34 @@
     </div>
 
     <div class="relative h-[380px] sm:h-[440px] min-w-0" aria-hidden="true">
-      <svg viewBox="0 0 420 420" class="w-full h-full">
+      <svg viewBox="0 0 420 460" class="w-full h-full">
+        <circle cx="240" cy="140" r="140" fill="#1ACEDF" opacity="0.09"/>
+        <circle cx="140" cy="330" r="110" fill="#FFC857" opacity="0.10"/>
         <g class="node-drift">
-          <line x1="90" y1="120" x2="220" y2="70" stroke="#073763" stroke-opacity=".18" stroke-width="1.2"/>
-          <line x1="220" y1="70" x2="330" y2="150" stroke="#073763" stroke-opacity=".18" stroke-width="1.2"/>
-          <line x1="90" y1="120" x2="150" y2="240" stroke="#073763" stroke-opacity=".18" stroke-width="1.2"/>
+          <path d="M205 445 C200 395 212 355 204 310 C198 278 208 250 202 215" stroke="#073763" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.85"/>
+          <path d="M204 340 C170 330 130 320 95 300" stroke="#073763" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+          <path d="M203 300 C240 285 285 275 325 265" stroke="#1ACEDF" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.75"/>
         </g>
         <g class="node-drift2">
-          <line x1="150" y1="240" x2="330" y2="150" stroke="#FFC857" stroke-opacity=".45" stroke-width="1.2"/>
-          <line x1="150" y1="240" x2="270" y2="320" stroke="#1ACEDF" stroke-opacity=".5" stroke-width="1.2"/>
-          <line x1="270" y1="320" x2="330" y2="150" stroke="#073763" stroke-opacity=".15" stroke-width="1.2"/>
+          <path d="M203 250 C165 220 130 190 100 155" stroke="#1ACEDF" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+          <path d="M202 220 C235 195 270 175 305 145" stroke="#073763" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.65"/>
+          <path d="M202 215 C198 180 206 145 200 105" stroke="#073763" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
         </g>
-        <circle cx="90" cy="120" r="7" fill="#073763" class="node-pulse"/>
-        <circle cx="220" cy="70" r="10" fill="#FFC857"/>
-        <circle cx="330" cy="150" r="6" fill="#1ACEDF" class="node-pulse"/>
-        <circle cx="150" cy="240" r="13" fill="#073763"/>
-        <circle cx="270" cy="320" r="8" fill="#FFC857" class="node-pulse"/>
-        <circle cx="60" cy="300" r="4" fill="#1ACEDF"/>
-        <line x1="60" y1="300" x2="150" y2="240" stroke="#1ACEDF" stroke-opacity=".35" stroke-width="1"/>
+        <!-- Evidence -->
+        <circle cx="95" cy="300" r="10" fill="#073763" class="node-pulse"/>
+        <circle cx="78" cy="288" r="5" fill="#1ACEDF"/>
+        <!-- Design -->
+        <circle cx="325" cy="265" r="9" fill="#1ACEDF" class="node-pulse"/>
+        <circle cx="340" cy="250" r="5" fill="#073763"/>
+        <!-- Collaboration -->
+        <circle cx="100" cy="155" r="9" fill="#1ACEDF" class="node-pulse"/>
+        <circle cx="85" cy="140" r="5" fill="#FFC857"/>
+        <!-- Impact (secondary) -->
+        <circle cx="305" cy="145" r="9" fill="#073763" class="node-pulse"/>
+        <circle cx="318" cy="130" r="5" fill="#1ACEDF"/>
+        <!-- Apex -->
+        <circle cx="200" cy="105" r="20" fill="none" stroke="#FFC857" stroke-width="1.5" opacity="0.4"/>
+        <circle cx="200" cy="105" r="14" fill="#FFC857" class="node-pulse"/>
       </svg>
       <div class="absolute -bottom-2 left-4 sm:left-10 bg-white/90 backdrop-blur rounded-2xl border hairline px-5 py-4 shadow-lg max-w-[220px]">
         <p class="text-2xl font-extrabold text-navy">10+</p>
@@ -259,7 +269,7 @@
       <p class="text-xs sm:text-sm text-paper/60 mt-2 tracking-wide break-words">Courses &amp; Workshops</p>
     </div>
     <div class="reveal reveal-delay-3 min-w-0">
-      <p class="text-xl sm:text-4xl lg:text-5xl font-extrabold break-words">Multiple</p>
+      <p class="text-xl sm:text-4xl lg:text-5xl font-extrabold break-words"><span class="counter-num" data-count="15" data-suffix="+">0</span></p>
       <p class="text-xs sm:text-sm text-paper/60 mt-2 tracking-wide break-words">Education Projects &amp; Collaborations</p>
     </div>
   </div>
