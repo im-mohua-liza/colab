@@ -215,36 +215,8 @@
       </div>
     </div>
 
-    <div class="relative h-[380px] sm:h-[440px] min-w-0" aria-hidden="true">
-      <svg viewBox="0 0 420 460" class="w-full h-full">
-        <circle cx="240" cy="140" r="140" fill="#1ACEDF" opacity="0.09"/>
-        <circle cx="140" cy="330" r="110" fill="#FFC857" opacity="0.10"/>
-        <g class="node-drift">
-          <path d="M205 445 C200 395 212 355 204 310 C198 278 208 250 202 215" stroke="#073763" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.85"/>
-          <path d="M204 340 C170 330 130 320 95 300" stroke="#073763" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.7"/>
-          <path d="M203 300 C240 285 285 275 325 265" stroke="#1ACEDF" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.75"/>
-        </g>
-        <g class="node-drift2">
-          <path d="M203 250 C165 220 130 190 100 155" stroke="#1ACEDF" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.7"/>
-          <path d="M202 220 C235 195 270 175 305 145" stroke="#073763" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.65"/>
-          <path d="M202 215 C198 180 206 145 200 105" stroke="#073763" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-        </g>
-        <!-- Evidence -->
-        <circle cx="95" cy="300" r="10" fill="#073763" class="node-pulse"/>
-        <circle cx="78" cy="288" r="5" fill="#1ACEDF"/>
-        <!-- Design -->
-        <circle cx="325" cy="265" r="9" fill="#1ACEDF" class="node-pulse"/>
-        <circle cx="340" cy="250" r="5" fill="#073763"/>
-        <!-- Collaboration -->
-        <circle cx="100" cy="155" r="9" fill="#1ACEDF" class="node-pulse"/>
-        <circle cx="85" cy="140" r="5" fill="#FFC857"/>
-        <!-- Impact (secondary) -->
-        <circle cx="305" cy="145" r="9" fill="#073763" class="node-pulse"/>
-        <circle cx="318" cy="130" r="5" fill="#1ACEDF"/>
-        <!-- Apex -->
-        <circle cx="200" cy="105" r="20" fill="none" stroke="#FFC857" stroke-width="1.5" opacity="0.4"/>
-        <circle cx="200" cy="105" r="14" fill="#FFC857" class="node-pulse"/>
-      </svg>
+    <div class="relative h-[380px] sm:h-[440px] min-w-0">
+      <img src="images/hero-girls.webp" alt="Students CoLab works with across the education ecosystem" class="w-full h-full object-cover rounded-3xl shadow-xl">
       <div class="absolute -bottom-2 left-4 sm:left-10 bg-white/90 backdrop-blur rounded-2xl border hairline px-5 py-4 shadow-lg max-w-[220px]">
         <p class="text-2xl font-extrabold text-navy">10+</p>
         <p class="text-xs text-navy/60 mt-0.5">Research outputs shaping solutions across the ecosystem</p>
@@ -605,14 +577,17 @@
 <!-- PROJECT MODAL -->
 <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div id="modalBackdrop" class="absolute inset-0 bg-navy/60 backdrop-blur-sm"></div>
-  <div class="modal-panel relative bg-white rounded-3xl max-w-lg w-full p-8 sm:p-10 opacity-0 translate-y-4">
-    <button id="modalClose" aria-label="Close" class="absolute top-5 right-5 w-9 h-9 rounded-full border hairline flex items-center justify-center hover:bg-paper transition">
+  <div class="modal-panel relative bg-white rounded-3xl max-w-lg w-full overflow-hidden opacity-0 translate-y-4">
+    <button id="modalClose" aria-label="Close" class="absolute top-5 right-5 z-10 w-9 h-9 rounded-full bg-white/90 border hairline flex items-center justify-center hover:bg-paper transition">
       <svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1L13 13M13 1L1 13" stroke="#073763" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
-    <p id="modalCategory" class="tag text-sky-600 mb-3"></p>
-    <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-navy mb-4"></h3>
-    <p id="modalDesc" class="text-navy/70 leading-relaxed"></p>
-    <p class="text-xs text-navy/40 mt-6">Full project page coming soon.</p>
+    <div class="h-44 overflow-hidden"><img id="modalImg" src="" alt="" class="w-full h-full object-cover"></div>
+    <div class="p-8 sm:p-10">
+      <p id="modalCategory" class="tag text-sky-600 mb-3"></p>
+      <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-navy mb-4"></h3>
+      <p id="modalDesc" class="text-navy/70 leading-relaxed"></p>
+      <p class="text-xs text-navy/40 mt-6">Full project page coming soon.</p>
+    </div>
   </div>
 </div>
 
@@ -622,21 +597,21 @@
 <script>
 /* ---------- Data ---------- */
 const projects = [
-  { name:"Promises to Pilot", cat:["Pilot"], desc:"Piloting new approaches on the ground before they scale." },
-  { name:"Monitoring & Evaluation", cat:["Research"], desc:"Tools and frameworks to track what's working — and why." },
-  { name:"Student Experiences", cat:["Research"], desc:"Understanding learning from the student's point of view." },
-  { name:"SolvED", cat:["Design"], desc:"A design initiative turning evidence into classroom-ready solutions." },
-  { name:"Super Mentor", cat:["Mentoring"], desc:"Strengthening mentoring relationships across the school ecosystem." },
-  { name:"Mentoring Toolkit", cat:["Mentoring","Design"], desc:"A practical toolkit for building effective mentoring programmes." },
-  { name:"CoLabOrate", cat:["Education Systems"], desc:"An open space for practitioners to discuss and co-create." },
-  { name:"Mentoring Research", cat:["Mentoring","Research"], desc:"Studying what makes mentoring work in education settings." },
-  { name:"RehnumaX", cat:["Pilot"], desc:"A pilot exploring new pathways for student support." },
-  { name:"School Leader Professional Development", cat:["Design"], desc:"Designing capability-building programmes for school leaders." },
-  { name:"Evidence Community of Practice", cat:["Education Systems","Research"], desc:"Connecting practitioners around the use of evidence in education." },
-  { name:"Education Policy & Reform", cat:["Education Systems"], desc:"Bridging research and policy to shape systemic change." },
-  { name:"Systems Map", cat:["Education Systems"], desc:"Mapping the education ecosystem to see how it connects." },
-  { name:"State of Education Report", cat:["Research"], desc:"An annual look at where education stands — and where it's heading." },
-  { name:"CoLabCast", cat:["Education Systems"], desc:"Conversations with educators, researchers and changemakers." },
+  { name:"Promises to Pilot", cat:["Pilot"], desc:"Piloting new approaches on the ground before they scale.", img:"images/school-girls.webp" },
+  { name:"Monitoring & Evaluation", cat:["Research"], desc:"Tools and frameworks to track what's working — and why.", img:"images/classroom-teacher.webp" },
+  { name:"Student Experiences", cat:["Research"], desc:"Understanding learning from the student's point of view.", img:"images/student-portrait.webp" },
+  { name:"SolvED", cat:["Design"], desc:"A design initiative turning evidence into classroom-ready solutions.", img:"images/workshop-table.webp" },
+  { name:"Super Mentor", cat:["Mentoring"], desc:"Strengthening mentoring relationships across the school ecosystem.", img:"images/mentoring-art.webp" },
+  { name:"Mentoring Toolkit", cat:["Mentoring","Design"], desc:"A practical toolkit for building effective mentoring programmes.", img:"images/community-gathering.webp" },
+  { name:"CoLabOrate", cat:["Education Systems"], desc:"An open space for practitioners to discuss and co-create.", img:"images/community-scene.webp" },
+  { name:"Mentoring Research", cat:["Mentoring","Research"], desc:"Studying what makes mentoring work in education settings.", img:"images/mentoring-art.webp" },
+  { name:"RehnumaX", cat:["Pilot"], desc:"A pilot exploring new pathways for student support.", img:"images/field-exploring.webp" },
+  { name:"School Leader Professional Development", cat:["Design"], desc:"Designing capability-building programmes for school leaders.", img:"images/classroom-teacher.webp" },
+  { name:"Evidence Community of Practice", cat:["Education Systems","Research"], desc:"Connecting practitioners around the use of evidence in education.", img:"images/workshop-table.webp" },
+  { name:"Education Policy & Reform", cat:["Education Systems"], desc:"Bridging research and policy to shape systemic change.", img:"images/community-scene.webp" },
+  { name:"Systems Map", cat:["Education Systems"], desc:"Mapping the education ecosystem to see how it connects.", img:"images/field-exploring.webp" },
+  { name:"State of Education Report", cat:["Research"], desc:"An annual look at where education stands — and where it's heading.", img:"images/hero-girls.webp" },
+  { name:"CoLabCast", cat:["Education Systems"], desc:"Conversations with educators, researchers and changemakers.", img:"images/workshop-table.webp" },
 ];
 
 const research = [
@@ -671,14 +646,17 @@ function renderProjects(filter){
     .filter(p => filter === 'All' || p.cat.includes(filter))
     .forEach((p) => {
       const el = document.createElement('article');
-      el.className = 'reveal in card-lift bg-white rounded-2xl border hairline p-7 cursor-pointer flex flex-col';
+      el.className = 'reveal in card-lift bg-white rounded-2xl border hairline overflow-hidden cursor-pointer flex flex-col';
       el.tabIndex = 0;
       el.setAttribute('role','button');
       el.innerHTML = `
-        <div class="flex flex-wrap gap-2 mb-5">${p.cat.map(c=>{const cc=catColor[c]||catColor.Research; return `<span class="tag ${cc.text} ${cc.bg} px-2.5 py-1 rounded-full">${c}</span>`;}).join('')}</div>
-        <h3 class="text-xl font-bold text-navy mb-2">${p.name}</h3>
-        <p class="text-[14.5px] text-navy/60 leading-relaxed flex-1">${p.desc}</p>
-        <span class="mt-5 text-sm font-semibold text-navy/70 inline-flex items-center gap-2">View project <span>→</span></span>
+        <div class="h-40 overflow-hidden"><img src="${p.img}" alt="" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="flex flex-wrap gap-2 mb-5">${p.cat.map(c=>{const cc=catColor[c]||catColor.Research; return `<span class="tag ${cc.text} ${cc.bg} px-2.5 py-1 rounded-full">${c}</span>`;}).join('')}</div>
+          <h3 class="text-xl font-bold text-navy mb-2">${p.name}</h3>
+          <p class="text-[14.5px] text-navy/60 leading-relaxed flex-1">${p.desc}</p>
+          <span class="mt-5 text-sm font-semibold text-navy/70 inline-flex items-center gap-2">View project <span>→</span></span>
+        </div>
       `;
       const open = () => openModal(p);
       el.addEventListener('click', open);
@@ -743,6 +721,7 @@ function openModal(p){
   document.getElementById('modalCategory').textContent = p.cat.join(' · ');
   document.getElementById('modalTitle').textContent = p.name;
   document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalImg').src = p.img;
   modal.classList.remove('hidden');
   modal.classList.add('flex');
   requestAnimationFrame(() => { modalPanel.classList.remove('opacity-0','translate-y-4'); });
