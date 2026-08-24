@@ -699,7 +699,7 @@ function renderProjects(filter){
       el.tabIndex = 0;
       el.setAttribute('role','button');
       el.innerHTML = `
-        <div class="h-40 overflow-hidden"><img src="${p.img}" alt="" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-40 overflow-hidden"><img src="${p.img}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover"></div>
         <div class="p-7 flex flex-col flex-1">
           <div class="flex flex-wrap gap-2 mb-5">${p.cat.map(c=>{const cc=catColor[c]||catColor.Research; return `<span class="tag ${cc.text} ${cc.bg} px-2.5 py-1 rounded-full">${c}</span>`;}).join('')}</div>
           <h3 class="text-xl font-bold text-navy mb-2">${p.name}</h3>
@@ -746,7 +746,7 @@ blogPosts.forEach((b) => {
   const el = document.createElement('article');
   el.className = 'reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col';
   el.innerHTML = `
-    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="" loading="lazy" class="w-full h-full object-cover"></div>
+    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="${b.title}" loading="lazy" class="w-full h-full object-cover"></div>
     <div class="p-7 flex flex-col flex-1">
       <div class="flex items-center gap-3 mb-3">
         <span class="tag text-sky-600">${b.cat}</span>
@@ -769,7 +769,9 @@ function openModal(p){
   document.getElementById('modalCategory').textContent = p.cat.join(' · ');
   document.getElementById('modalTitle').textContent = p.name;
   document.getElementById('modalDesc').textContent = p.desc;
-  document.getElementById('modalImg').src = p.img;
+  const modalImgEl = document.getElementById('modalImg');
+  modalImgEl.src = p.img;
+  modalImgEl.alt = p.name;
   modal.classList.remove('hidden');
   modal.classList.add('flex');
   requestAnimationFrame(() => { modalPanel.classList.remove('opacity-0','translate-y-4'); });
