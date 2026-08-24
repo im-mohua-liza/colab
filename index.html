@@ -75,7 +75,12 @@
   #mobileMenu.open { opacity:1; transform:translateY(0); pointer-events:auto; }
 
   /* evidence thread (signature element) */
-  .thread { position: fixed; left: 28px; top: 50%; transform: translateY(-50%); z-index: 30; }
+  /* plain-CSS fallback: hidden by default, only shown at xl+ (1280px), independent of Tailwind's JIT */
+  .thread { display:none; position: fixed; left: 28px; top: 50%; transform: translateY(-50%); z-index: 30; }
+  @media (min-width:1280px){ .thread { display:flex; } }
+  /* same fallback for the desktop nav + its CTA button, so they never appear on mobile if Tailwind fails to load */
+  #desktopNav, #navCta { display:none; }
+  @media (min-width:1024px){ #desktopNav { display:flex; } #navCta { display:inline-flex; } }
   .thread-line { width:1px; background: rgba(7,55,99,.15); }
   .thread-dot { width:8px; height:8px; border-radius:999px; background:#CFE1EE; border:1px solid rgba(7,55,99,.2); transition: background .35s ease, transform .35s ease, box-shadow .35s ease; }
   .thread-dot.active { background:#1ACEDF; transform: scale(1.35); box-shadow: 0 0 0 4px rgba(26,206,223,.22); }
@@ -171,7 +176,7 @@
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href="#collaborate" class="hidden lg:inline-flex btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">Let's Collaborate</a>
+      <a href="#collaborate" id="navCta" class="hidden lg:inline-flex btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">Let's Collaborate</a>
       <button id="burgerBtn" class="burger lg:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span class="burger-line l1 block w-6 h-[2px] bg-navy"></span>
         <span class="burger-line l2 block w-6 h-[2px] bg-navy"></span>
