@@ -61,8 +61,11 @@
   .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
   .nav-link.active { color:#073763; font-weight:700; }
 
-  /* hamburger */
-  .burger-line { transition: transform .3s ease, opacity .3s ease; transform-origin: center; }
+  /* hamburger: plain-CSS fallback so the icon renders even if the Tailwind CDN
+     script is slow/blocked (the spans have no intrinsic size otherwise) */
+  #burgerBtn { width:40px; height:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; position:relative; z-index:50; }
+  @media (min-width:1024px){ #burgerBtn { display:none; } }
+  .burger-line { display:block; width:24px; height:2px; background:#073763; transition: transform .3s ease, opacity .3s ease; transform-origin: center; }
   .burger.open .l1 { transform: translateY(7px) rotate(45deg); }
   .burger.open .l2 { opacity: 0; }
   .burger.open .l3 { transform: translateY(-7px) rotate(-45deg); }
