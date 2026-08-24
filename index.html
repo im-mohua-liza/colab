@@ -322,24 +322,24 @@
 
     <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6">
       <article class="reveal card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
-        <span class="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-6">
-          <svg width="24" height="24" viewBox="0 0 40 40"><circle cx="14" cy="14" r="6" fill="none" stroke="#073763" stroke-width="1.8"/><path d="M18.5 18.5L27 27" stroke="#1ACEDF" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center mb-6 shadow-md">
+          <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="14" cy="14" r="7" fill="none" stroke="#F6F9FB" stroke-width="2.2"/><path d="M19 19L28 28" stroke="#1ACEDF" stroke-width="2.4" stroke-linecap="round"/></svg>
         </span>
         <h3 class="text-2xl font-bold text-navy mb-3">Research</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed flex-1">We support the education ecosystem with rigorous research and research outputs that help create evidence-informed solutions.</p>
         <a href="#research" class="mt-6 inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group">Explore Research <span class="transition-transform group-hover:translate-x-1">→</span></a>
       </article>
       <article class="reveal reveal-delay-1 card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
-        <span class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center mb-6">
-          <svg width="24" height="24" viewBox="0 0 40 40"><rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="#073763" stroke-width="1.8"/><rect x="22" y="22" width="10" height="10" rx="2" fill="#C8895A"/></svg>
+        <span class="w-14 h-14 rounded-xl bg-gold flex items-center justify-center mb-6 shadow-md">
+          <svg width="26" height="26" viewBox="0 0 40 40"><rect x="7" y="7" width="11" height="11" rx="2.5" fill="none" stroke="#073763" stroke-width="2.2"/><rect x="22" y="22" width="11" height="11" rx="2.5" fill="#073763"/></svg>
         </span>
         <h3 class="text-2xl font-bold text-navy mb-3">Design</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed flex-1">We use evidence-informed design to build solutions that respond to real needs and can scale sustainably.</p>
         <a href="#approach" class="mt-6 inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group">Explore Design <span class="transition-transform group-hover:translate-x-1">→</span></a>
       </article>
       <article class="reveal reveal-delay-2 card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
-        <span class="w-12 h-12 rounded-xl bg-sky/15 flex items-center justify-center mb-6">
-          <svg width="24" height="24" viewBox="0 0 40 40"><circle cx="14" cy="20" r="5.5" fill="none" stroke="#073763" stroke-width="1.8"/><circle cx="26" cy="20" r="5.5" fill="none" stroke="#1ACEDF" stroke-width="1.8"/></svg>
+        <span class="w-14 h-14 rounded-xl bg-sky flex items-center justify-center mb-6 shadow-md">
+          <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="14" cy="20" r="6" fill="none" stroke="#073763" stroke-width="2.2"/><circle cx="26" cy="20" r="6" fill="#073763"/></svg>
         </span>
         <h3 class="text-2xl font-bold text-navy mb-3">Solution Packages</h3>
         <p class="text-[15px] text-navy/65 leading-relaxed flex-1">We package proven solutions for wider dissemination and support them as digital public goods.</p>
@@ -671,9 +671,9 @@ const research = [
 ];
 
 const blogPosts = [
-  { cat:"Field Notes", title:"Kalaburagi's Stint with Enabling Enriching Learning Experiences at Scale", desc:"A look at how enriching-learning ideas played out on the ground in Kalaburagi.", time:"5 min read" },
-  { cat:"Perspective", title:"Does “Mentoring” in the Education Sector Make Sense?", desc:"Unpacking what mentoring really means — and whether it earns its place in education.", time:"4 min read" },
-  { cat:"Perspective", title:"Holistic Education — At School or Home?", desc:"Weighing where holistic learning is best nurtured, and why it may not be either-or.", time:"4 min read" },
+  { cat:"Research Snippet", title:"The Most Significant Change Technique: An Evidence Synthesis", desc:"A research snippet exploring the Most Significant Change technique as a tool for capturing real impact stories.", date:"17 July 2026", img:"images/insights/shikshagraha-campaign.webp", href:"https://colabglobal.org/the-most-significant-change-technique-a-research-snippet/" },
+  { cat:"Perspective", title:"Rethinking Evidence", desc:"A perspective on what counts as evidence in education — and why the definition matters.", date:"5 June 2026", img:"images/insights/rethinking-evidence.webp", href:"https://colabglobal.org/rethinking-evidence/" },
+  { cat:"Insight", title:"A Third Dimension to a Public Good", desc:"Exploring what it takes to turn a solution into a true global public good.", date:"1 December 2025", img:"images/insights/public-good-dimension.webp", href:"https://colabglobal.org/a-third-dimension-to-a-public-good/" },
 ];
 
 /* category → brand accent, used for project tags and filter active state */
@@ -740,20 +740,19 @@ research.forEach(r => {
 
 /* ---------- Render blog ---------- */
 const blogGrid = document.getElementById('blogGrid');
-const blogGradients = ['from-sky-600 to-navy','from-gold to-navy','from-navy to-sand'];
-blogPosts.forEach((b,i) => {
+blogPosts.forEach((b) => {
   const el = document.createElement('article');
   el.className = 'reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col';
   el.innerHTML = `
-    <div class="h-40 bg-gradient-to-br ${blogGradients[i % blogGradients.length]} opacity-90"></div>
+    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="" loading="lazy" class="w-full h-full object-cover"></div>
     <div class="p-7 flex flex-col flex-1">
       <div class="flex items-center gap-3 mb-3">
         <span class="tag text-sky-600">${b.cat}</span>
-        <span class="text-xs text-navy/40">${b.time}</span>
+        <span class="text-xs text-navy/40">${b.date}</span>
       </div>
       <h3 class="text-lg font-bold leading-snug text-navy mb-3">${b.title}</h3>
       <p class="text-[14px] text-navy/60 leading-relaxed flex-1">${b.desc}</p>
-      <a href="#" data-soon class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Read More <span>→</span></a>
+      <a href="${b.href}" target="_blank" rel="noopener" class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Read More <span>→</span></a>
     </div>
   `;
   blogGrid.appendChild(el);
