@@ -595,13 +595,45 @@
     <circle cx="90%" cy="60%" r="5" fill="#F6F9FB"/>
     <circle cx="70%" cy="85%" r="4" fill="#FFC857"/>
   </svg>
-  <div class="container-x relative z-10 text-center max-w-3xl mx-auto reveal">
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold tracking-tight leading-tight">Better Education Is Built Together.</h2>
-    <p class="mt-6 text-white/85 text-lg leading-relaxed">We collaborate with educators, researchers, institutions, organisations and communities to design solutions that create meaningful change.</p>
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-      <a href="#footer" class="btn-gold px-8 py-4 rounded-full font-semibold">Let's Collaborate</a>
-      <a href="#footer" class="btn-ghost border-white/30 text-white hover:!bg-white/10 hover:!border-white px-8 py-4 rounded-full font-semibold">Get in Touch</a>
+  <div class="container-x relative z-10 reveal">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold tracking-tight leading-tight">Better Education Is Built Together.</h2>
+      <p class="mt-6 text-white/85 text-lg leading-relaxed">We collaborate with educators, researchers, institutions, organisations and communities to design solutions that create meaningful change.</p>
     </div>
+
+    <div class="mt-14 max-w-2xl mx-auto bg-paper rounded-3xl p-7 sm:p-10 shadow-2xl min-w-0">
+      <form id="collabForm" action="https://formspree.io/f/COLAB_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="New collaboration enquiry — CoLab website">
+        <label for="collabCompany" class="sr-only">Leave this field empty</label>
+        <input id="collabCompany" type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="collabName" class="text-xs font-semibold text-navy/70 mb-1.5 block">Full name</label>
+            <input id="collabName" name="name" type="text" required autocomplete="name" class="w-full min-w-0 border border-navy/15 rounded-xl px-4 py-3 text-[15px] text-navy placeholder:text-navy/35 focus:outline-none focus:border-sky-600 transition" placeholder="Jane Doe">
+          </div>
+          <div>
+            <label for="collabEmail" class="text-xs font-semibold text-navy/70 mb-1.5 block">Email</label>
+            <input id="collabEmail" name="email" type="email" required autocomplete="email" class="w-full min-w-0 border border-navy/15 rounded-xl px-4 py-3 text-[15px] text-navy placeholder:text-navy/35 focus:outline-none focus:border-sky-600 transition" placeholder="jane@organisation.org">
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label for="collabOrg" class="text-xs font-semibold text-navy/70 mb-1.5 block">Organisation <span class="font-normal text-navy/40">(optional)</span></label>
+          <input id="collabOrg" name="organisation" type="text" autocomplete="organization" class="w-full min-w-0 border border-navy/15 rounded-xl px-4 py-3 text-[15px] text-navy placeholder:text-navy/35 focus:outline-none focus:border-sky-600 transition" placeholder="Your school, NGO or institution">
+        </div>
+
+        <div class="mt-5">
+          <label for="collabMessage" class="text-xs font-semibold text-navy/70 mb-1.5 block">How can we help?</label>
+          <textarea id="collabMessage" name="message" rows="4" required class="w-full min-w-0 border border-navy/15 rounded-xl px-4 py-3 text-[15px] text-navy placeholder:text-navy/35 focus:outline-none focus:border-sky-600 transition resize-none" placeholder="Tell us a bit about your project or partnership idea."></textarea>
+        </div>
+
+        <button type="submit" id="collabSubmit" class="btn-primary w-full mt-6 px-7 py-3.5 rounded-full font-semibold text-[15px]">Send message</button>
+        <p id="collabMsg" class="hidden mt-4 text-sm text-center" role="status"></p>
+      </form>
+    </div>
+
+    <p class="mt-8 text-center text-white/70 text-sm">Prefer email? Write to us directly at <a href="mailto:info@colabglobalconsulting.com" class="text-sky underline hover:text-white transition">info@colabglobalconsulting.com</a></p>
   </div>
 </section>
 
@@ -1025,6 +1057,38 @@ document.getElementById('newsletterForm').addEventListener('submit', (e) => {
   e.preventDefault();
   document.getElementById('newsletterMsg').classList.remove('hidden');
   e.target.reset();
+});
+
+/* ---------- Collaborate form (Formspree) ---------- */
+const collabForm = document.getElementById('collabForm');
+const collabSubmit = document.getElementById('collabSubmit');
+const collabMsg = document.getElementById('collabMsg');
+collabForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  collabSubmit.disabled = true;
+  collabSubmit.textContent = 'Sending…';
+  collabMsg.classList.add('hidden');
+  try {
+    const res = await fetch(collabForm.action, {
+      method: 'POST',
+      body: new FormData(collabForm),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      collabMsg.textContent = "Thanks — your message is on its way. We'll be in touch soon.";
+      collabMsg.className = 'mt-4 text-sm text-center text-sage font-medium';
+      collabForm.reset();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (err) {
+    collabMsg.textContent = "Something went wrong sending that. Please email us directly at info@colabglobalconsulting.com.";
+    collabMsg.className = 'mt-4 text-sm text-center text-cardinal font-medium';
+  } finally {
+    collabMsg.classList.remove('hidden');
+    collabSubmit.disabled = false;
+    collabSubmit.textContent = 'Send message';
+  }
 });
 </script>
 </body>
