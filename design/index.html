@@ -30,6 +30,7 @@
 <link rel="icon" type="image/png" href="/colab/logo.png">
 <link rel="stylesheet" href="/colab/css/tailwind.css">
 <link rel="stylesheet" href="/colab/css/site.css">
+<link rel="stylesheet" href="/colab/css/enhance.css">
 </head>
 <body class="font-sans antialiased">
 
@@ -78,66 +79,102 @@
 
 <main id="main">
 
-<!-- PAGE HEADER -->
-<section class="relative pt-40 pb-16 lg:pt-48 lg:pb-20 overflow-hidden bg-white border-b hairline">
-  <div class="blob w-[380px] h-[380px] bg-gold/20 -top-32 -right-24" aria-hidden="true"></div>
-  <div class="container-x relative z-10">
-    <p class="tag text-sky-600 mb-4">Our Approach</p>
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight max-w-2xl">Evidence-Informed Design</h1>
-    <p class="mt-4 text-navy/65 max-w-xl">How we turn evidence into practical solutions that work in real classrooms and systems.</p>
+<!-- HERO -->
+<section class="relative pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden bg-white">
+  <div class="mesh-bg" aria-hidden="true"></div>
+  <div class="blob float-a w-[280px] h-[280px] bg-gold/25 -top-20 -right-16" aria-hidden="true"></div>
+
+  <div class="container-x relative z-10 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center">
+    <div class="reveal min-w-0">
+      <p class="tag text-sky-600 mb-5 flex items-center gap-2"><span class="w-6 h-px bg-sky-600"></span> Our Approach</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] text-navy font-extrabold tracking-tight">Evidence-Informed <span class="underline-sky">Design</span></h1>
+      <p class="mt-7 text-lg text-navy/70 max-w-lg leading-relaxed">How we turn evidence into practical solutions that work in real classrooms and systems — designed with the people who use them, not for them.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <span class="w-9 h-9 rounded-full bg-navy border-2 border-white shadow-md -mr-3" aria-hidden="true"></span>
+        <span class="w-9 h-9 rounded-full bg-sand border-2 border-white shadow-md -mr-3" aria-hidden="true"></span>
+        <span class="w-9 h-9 rounded-full bg-sky-600 border-2 border-white shadow-md -mr-3" aria-hidden="true"></span>
+        <span class="w-9 h-9 rounded-full bg-gold border-2 border-white shadow-md" aria-hidden="true"></span>
+        <p class="ml-4 self-center text-sm text-navy/55">Six stages, one continuous loop</p>
+      </div>
+    </div>
+
+    <div class="relative reveal reveal-delay-1 min-w-0 h-[420px] sm:h-[460px]" aria-hidden="true">
+      <svg class="absolute inset-0 w-full h-full opacity-25" aria-hidden="true">
+        <line x1="20%" y1="20%" x2="55%" y2="48%" stroke="#073763" stroke-width="1" class="dash-flow"/>
+        <line x1="55%" y1="48%" x2="30%" y2="78%" stroke="#073763" stroke-width="1" class="dash-flow"/>
+      </svg>
+
+      <div class="glass-card float-a absolute top-2 left-0 sm:left-4 w-52 sm:w-56 aspect-[4/3] rounded-2xl -rotate-6 flex flex-col justify-between p-5 z-10">
+        <span class="icon-badge bg-navy w-11 h-11 rounded-xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="#F6F9FB" stroke-width="1.8"/><path d="M14.5 14.5 20 20" stroke="#1ACEDF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <p class="text-sm font-bold text-navy">Research first</p>
+      </div>
+
+      <div class="glass-card float-b absolute bottom-6 right-0 sm:right-2 w-52 sm:w-56 aspect-[4/3] rounded-2xl rotate-3 flex flex-col justify-between p-5 z-20">
+        <span class="icon-badge bg-gold w-11 h-11 rounded-xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="#073763" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6" fill="#073763"/></svg></span>
+        <p class="text-sm font-bold text-navy">Co-designed</p>
+      </div>
+
+      <div class="glass-card float-a absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 aspect-square rounded-2xl rotate-2 flex items-center justify-center z-30">
+        <div class="flex gap-2.5">
+          <span class="w-6 h-6 rounded-full bg-navy"></span>
+          <span class="w-6 h-6 rounded-full bg-sky-600"></span>
+          <span class="w-6 h-6 rounded-full bg-gold"></span>
+          <span class="w-6 h-6 rounded-full bg-sand"></span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- APPROACH TIMELINE -->
-<section class="py-24 lg:py-32 bg-white border-b hairline">
+<section class="py-24 lg:py-32 bg-paper border-y hairline overflow-hidden">
   <div class="container-x">
-    <div class="relative">
-      <svg class="hidden lg:block absolute top-[9px] left-0 w-full" height="2" viewBox="0 0 1200 2" preserveAspectRatio="none" aria-hidden="true">
-        <line x1="0" y1="1" x2="1200" y2="1" stroke="#073763" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="6 8"/>
-      </svg>
-      <div class="flex flex-col gap-8 lg:grid lg:grid-cols-6 lg:gap-4 relative">
-        <div class="timeline-rail lg:hidden" aria-hidden="true"></div>
-        <div class="reveal flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
-          <div class="w-[18px] h-[18px] rounded-full bg-navy mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
-          <div>
-            <h3 class="text-lg font-bold text-navy mb-1.5">Research</h3>
-            <p class="text-xs text-navy/70 leading-relaxed">Ground truth from the field</p>
-          </div>
+    <div class="max-w-2xl reveal">
+      <p class="tag text-sky-600 mb-4">The Process</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">From evidence to a shared public good</h2>
+    </div>
+
+    <div class="mt-16 timeline-connector timeline-connector-h grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-4">
+      <div class="reveal flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+        <span class="icon-badge bg-navy shrink-0 lg:mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="#F6F9FB" stroke-width="1.8"/><path d="M14.5 14.5 20 20" stroke="#1ACEDF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-1.5">Research</h3>
+          <p class="text-xs text-navy/70 leading-relaxed">Ground truth from the field</p>
         </div>
-        <div class="reveal reveal-delay-1 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
-          <div class="w-[18px] h-[18px] rounded-full bg-navy mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
-          <div>
-            <h3 class="text-lg font-bold text-navy mb-1.5">Insights</h3>
-            <p class="text-xs text-navy/70 leading-relaxed">Making sense of the evidence</p>
-          </div>
+      </div>
+      <div class="reveal reveal-delay-1 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+        <span class="icon-badge bg-navy shrink-0 lg:mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3c3 3 4.5 6.5 4.5 10a4.5 4.5 0 0 1-9 0c0-3.5 1.5-7 4.5-10Z" stroke="#F6F9FB" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-1.5">Insights</h3>
+          <p class="text-xs text-navy/70 leading-relaxed">Making sense of the evidence</p>
         </div>
-        <div class="reveal reveal-delay-2 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
-          <div class="w-[18px] h-[18px] rounded-full bg-sand mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
-          <div>
-            <h3 class="text-lg font-bold text-navy mb-1.5">Co-creation</h3>
-            <p class="text-xs text-navy/70 leading-relaxed">Designing with, not for</p>
-          </div>
+      </div>
+      <div class="reveal reveal-delay-2 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+        <span class="icon-badge bg-sand shrink-0 lg:mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="9" r="3" stroke="#F6F9FB" stroke-width="1.8"/><circle cx="17" cy="9" r="3" stroke="#F6F9FB" stroke-width="1.8"/><path d="M3 20c.5-3 2.5-5 5-5s4.5 2 5 5M13 20c.5-3 2.2-5 4.5-5s4 2 4.5 5" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-1.5">Co-creation</h3>
+          <p class="text-xs text-navy/70 leading-relaxed">Designing with, not for</p>
         </div>
-        <div class="reveal reveal-delay-3 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
-          <div class="w-[18px] h-[18px] rounded-full bg-sand mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
-          <div>
-            <h3 class="text-lg font-bold text-navy mb-1.5">Prototype</h3>
-            <p class="text-xs text-navy/70 leading-relaxed">A first working version</p>
-          </div>
+      </div>
+      <div class="reveal reveal-delay-3 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+        <span class="icon-badge bg-sand shrink-0 lg:mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="#F6F9FB" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.6" fill="#F6F9FB"/></svg></span>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-1.5">Prototype</h3>
+          <p class="text-xs text-navy/70 leading-relaxed">A first working version</p>
         </div>
-        <div class="reveal reveal-delay-4 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
-          <div class="w-[18px] h-[18px] rounded-full bg-sky-600 mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
-          <div>
-            <h3 class="text-lg font-bold text-navy mb-1.5">Testing</h3>
-            <p class="text-xs text-navy/70 leading-relaxed">Refined against reality</p>
-          </div>
+      </div>
+      <div class="reveal reveal-delay-4 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+        <span class="icon-badge bg-sky-600 shrink-0 lg:mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12.5 11 15l4.5-5.5" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8.5" stroke="#F6F9FB" stroke-width="1.8"/></svg></span>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-1.5">Testing</h3>
+          <p class="text-xs text-navy/70 leading-relaxed">Refined against reality</p>
         </div>
-        <div class="reveal reveal-delay-4 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
-          <div class="w-[18px] h-[18px] rounded-full bg-sky-600 mt-1 lg:mt-0 lg:mb-5 shrink-0"></div>
-          <div>
-            <h3 class="text-lg font-bold text-navy mb-1.5">Scale</h3>
-            <p class="text-xs text-navy/70 leading-relaxed">Shared as a public good</p>
-          </div>
+      </div>
+      <div class="reveal reveal-delay-4 flex items-start gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center relative z-10">
+        <span class="icon-badge bg-sky-600 shrink-0 lg:mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#F6F9FB" stroke-width="1.8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-1.5">Scale</h3>
+          <p class="text-xs text-navy/70 leading-relaxed">Shared as a public good</p>
         </div>
       </div>
     </div>
@@ -145,7 +182,7 @@
 </section>
 
 <!-- DESIGN PROJECTS -->
-<section class="py-24 lg:py-32 bg-paper">
+<section class="py-24 lg:py-32 bg-white">
   <div class="container-x">
     <div class="flex flex-wrap items-end justify-between gap-6 reveal">
       <div class="max-w-xl">
@@ -156,28 +193,28 @@
     </div>
 
     <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <a href="/colab/projects" class="reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
-        <div class="h-40 overflow-hidden"><img src="/colab/images/workshop-table.webp" alt="SolvED" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="p-7 flex flex-col flex-1">
-          <span class="tag text-sand-700 bg-sand/15 px-2.5 py-1 rounded-full w-fit mb-5">Design</span>
-          <h3 class="text-xl font-bold text-navy mb-2">SolvED</h3>
-          <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">A design initiative turning evidence into classroom-ready solutions.</p>
+      <a href="/colab/projects" class="reveal showcase-card card-lift aspect-[4/5]">
+        <img src="/colab/images/workshop-table.webp" alt="SolvED" loading="lazy" class="w-full h-full object-cover">
+        <span class="showcase-tag tag text-navy bg-white/90 px-2.5 py-1 rounded-full">Design</span>
+        <div class="showcase-overlay">
+          <h3 class="text-white font-bold text-xl mb-1.5">SolvED</h3>
+          <p class="text-white/80 text-sm leading-relaxed">A design initiative turning evidence into classroom-ready solutions.</p>
         </div>
       </a>
-      <a href="/colab/projects" class="reveal reveal-delay-1 card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
-        <div class="h-40 overflow-hidden"><img src="/colab/images/community-gathering.webp" alt="Mentoring Toolkit" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="p-7 flex flex-col flex-1">
-          <span class="tag text-sand-700 bg-sand/15 px-2.5 py-1 rounded-full w-fit mb-5">Design</span>
-          <h3 class="text-xl font-bold text-navy mb-2">Mentoring Toolkit</h3>
-          <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">A practical toolkit for building effective mentoring programmes.</p>
+      <a href="/colab/projects" class="reveal reveal-delay-1 showcase-card card-lift aspect-[4/5]">
+        <img src="/colab/images/community-gathering.webp" alt="Mentoring Toolkit" loading="lazy" class="w-full h-full object-cover">
+        <span class="showcase-tag tag text-navy bg-white/90 px-2.5 py-1 rounded-full">Design</span>
+        <div class="showcase-overlay">
+          <h3 class="text-white font-bold text-xl mb-1.5">Mentoring Toolkit</h3>
+          <p class="text-white/80 text-sm leading-relaxed">A practical toolkit for building effective mentoring programmes.</p>
         </div>
       </a>
-      <a href="/colab/projects" class="reveal reveal-delay-2 card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
-        <div class="h-40 overflow-hidden"><img src="/colab/images/classroom-teacher.webp" alt="School Leader Professional Development" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="p-7 flex flex-col flex-1">
-          <span class="tag text-sand-700 bg-sand/15 px-2.5 py-1 rounded-full w-fit mb-5">Design</span>
-          <h3 class="text-xl font-bold text-navy mb-2">School Leader Professional Development</h3>
-          <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">Designing capability-building programmes for school leaders.</p>
+      <a href="/colab/projects" class="reveal reveal-delay-2 showcase-card card-lift aspect-[4/5]">
+        <img src="/colab/images/classroom-teacher.webp" alt="School Leader Professional Development" loading="lazy" class="w-full h-full object-cover">
+        <span class="showcase-tag tag text-navy bg-white/90 px-2.5 py-1 rounded-full">Design</span>
+        <div class="showcase-overlay">
+          <h3 class="text-white font-bold text-xl mb-1.5">School Leader Professional Development</h3>
+          <p class="text-white/80 text-sm leading-relaxed">Designing capability-building programmes for school leaders.</p>
         </div>
       </a>
     </div>

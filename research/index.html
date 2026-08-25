@@ -30,6 +30,7 @@
 <link rel="icon" type="image/png" href="/colab/logo.png">
 <link rel="stylesheet" href="/colab/css/tailwind.css">
 <link rel="stylesheet" href="/colab/css/site.css">
+<link rel="stylesheet" href="/colab/css/enhance.css">
 </head>
 <body class="font-sans antialiased">
 
@@ -78,24 +79,59 @@
 
 <main id="main">
 
-<!-- PAGE HEADER -->
-<section class="relative pt-40 pb-16 lg:pt-48 lg:pb-20 overflow-hidden bg-navy text-paper">
-  <div class="container-x relative z-10">
-    <p class="tag text-gold mb-4">Research</p>
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight max-w-2xl">Research That Moves Education Forward</h1>
-    <p class="mt-4 text-paper/70 max-w-xl">Literature reviews, reports and toolkits — grounded in evidence, built for practitioners.</p>
+<!-- HERO -->
+<section class="relative pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden bg-navy text-paper">
+  <div class="mesh-bg-dark" aria-hidden="true"></div>
+  <div class="absolute inset-0 opacity-40" aria-hidden="true">
+    <svg class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+      <line x1="8%" y1="18%" x2="28%" y2="42%" stroke="#F6F9FB" stroke-width="1" stroke-opacity=".18" class="dash-flow"/>
+      <line x1="28%" y1="42%" x2="15%" y2="70%" stroke="#F6F9FB" stroke-width="1" stroke-opacity=".14"/>
+      <line x1="72%" y1="12%" x2="90%" y2="35%" stroke="#F6F9FB" stroke-width="1" stroke-opacity=".16" class="dash-flow"/>
+      <line x1="90%" y1="35%" x2="78%" y2="62%" stroke="#F6F9FB" stroke-width="1" stroke-opacity=".14"/>
+      <circle cx="8%" cy="18%" r="3" fill="#1ACEDF"/>
+      <circle cx="28%" cy="42%" r="4" fill="#FFC857" class="glow-dot"/>
+      <circle cx="15%" cy="70%" r="3" fill="#1ACEDF" opacity=".7"/>
+      <circle cx="72%" cy="12%" r="3" fill="#FFC857"/>
+      <circle cx="90%" cy="35%" r="4" fill="#1ACEDF" class="glow-dot"/>
+      <circle cx="78%" cy="62%" r="3" fill="#F6F9FB" opacity=".6"/>
+    </svg>
+  </div>
+
+  <div class="container-x relative z-10 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center">
+    <div class="reveal min-w-0">
+      <p class="tag text-gold mb-5 flex items-center gap-2"><span class="w-6 h-px bg-gold"></span> Research</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-[3.3rem] leading-[1.08] font-extrabold tracking-tight">Research That Moves <span class="text-sky">Education Forward</span></h1>
+      <p class="mt-7 text-lg text-paper/70 max-w-lg leading-relaxed">Literature reviews, reports and toolkits — grounded in evidence, built for practitioners across the education ecosystem.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="#featured" class="glass-card-dark rounded-full px-5 py-2.5 text-sm font-semibold hover:border-sky/50 transition">Featured Research</a>
+        <a href="#insights" class="glass-card-dark rounded-full px-5 py-2.5 text-sm font-semibold hover:border-sky/50 transition">Insights</a>
+        <a href="#events" class="glass-card-dark rounded-full px-5 py-2.5 text-sm font-semibold hover:border-sky/50 transition">Events</a>
+      </div>
+    </div>
+
+    <div class="relative reveal reveal-delay-1 min-w-0">
+      <div class="ring-frame max-w-md mx-auto">
+        <div class="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl">
+          <img src="/colab/images/events/ai-in-research.webp" alt="Illustration of CoLab's AI-assisted research workflow, from literature exploration to synthesis and reporting" class="w-full h-full object-cover">
+        </div>
+      </div>
+      <div class="glass-card-dark float-a absolute -bottom-6 -right-2 sm:-right-6 rounded-2xl px-6 py-4 max-w-[210px]" aria-hidden="true">
+        <p class="text-xs tag text-sky mb-1">CC BY-NC</p>
+        <p class="text-sm text-paper/85 leading-snug">Open literature reviews &amp; toolkits</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FEATURED RESEARCH -->
-<section class="py-24 lg:py-32 bg-navy text-paper border-t border-paper/10">
+<section id="featured" class="py-24 lg:py-32 bg-navy text-paper border-t border-paper/10">
   <div class="container-x">
     <div id="researchGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
 </section>
 
 <!-- INSIGHTS / BLOG -->
-<section class="py-24 lg:py-32 bg-white border-y hairline">
+<section id="insights" class="py-24 lg:py-32 bg-white border-y hairline">
   <div class="container-x">
     <div class="flex flex-wrap items-end justify-between gap-6 reveal">
       <div class="max-w-xl">
@@ -110,7 +146,7 @@
 </section>
 
 <!-- EVENTS -->
-<section class="py-24 lg:py-32 bg-paper">
+<section id="events" class="py-24 lg:py-32 bg-paper">
   <div class="container-x">
     <div class="max-w-2xl reveal">
       <p class="tag text-sky-600 mb-4">Events</p>
@@ -258,18 +294,27 @@ const blogPosts = [
   { cat:"Insight", title:"A Third Dimension to a Public Good", desc:"Exploring what it takes to turn a solution into a true global public good.", date:"1 December 2025", img:"/colab/images/insights/public-good-dimension.webp", href:"https://colabglobal.org/a-third-dimension-to-a-public-good/" },
 ];
 
+const researchIcons = {
+  'Literature Review': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z" stroke="#FFC857" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 0 2.5-2.5v-13Z" stroke="#FFC857" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+  'Research Article': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="#FFC857" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="#FFC857" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 13h8M8 17h5" stroke="#FFC857" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  'Scoping Review': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="#FFC857" stroke-width="1.6"/><path d="m19.5 19.5-4.3-4.3" stroke="#FFC857" stroke-width="1.6" stroke-linecap="round"/></svg>',
+};
+
 const researchGrid = document.getElementById('researchGrid');
 research.forEach(r => {
   const el = document.createElement('article');
-  el.className = 'reveal card-lift bg-navy-700 rounded-2xl border border-paper/10 p-7 flex flex-col';
+  el.className = 'reveal shimmer-card card-lift bg-navy-700 rounded-2xl border border-paper/10 p-7 flex flex-col relative overflow-hidden';
   const link = r.pdf
     ? `<a href="${r.pdf}" download class="mt-6 text-sm font-semibold text-gold inline-flex items-center gap-2">Download PDF <span class="text-paper/40 font-normal">(${r.size})</span> <span>↓</span></a>`
     : `<span class="mt-6 text-sm font-semibold text-paper/35 inline-flex items-center gap-2">Coming soon</span>`;
+  const icon = researchIcons[r.cat] || researchIcons['Research Article'];
   el.innerHTML = `
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-sky via-gold to-sky opacity-70"></div>
     <div class="flex items-center justify-between mb-5">
-      <span class="tag text-gold">${r.cat}</span>
+      <span class="icon-badge bg-paper/10 w-11 h-11 rounded-xl">${icon}</span>
       <span class="text-[10px] text-paper/40 border border-paper/20 rounded-full px-2 py-1">${r.tag}</span>
     </div>
+    <p class="tag text-gold mb-2">${r.cat}</p>
     <h3 class="text-lg font-bold leading-snug mb-3">${r.title}</h3>
     <p class="text-[14px] text-paper/60 leading-relaxed flex-1">${r.desc}</p>
     ${link}
@@ -280,9 +325,9 @@ research.forEach(r => {
 const blogGrid = document.getElementById('blogGrid');
 blogPosts.forEach((b) => {
   const el = document.createElement('article');
-  el.className = 'reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col';
+  el.className = 'reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col group';
   el.innerHTML = `
-    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="${b.title}" loading="lazy" class="w-full h-full object-cover"></div>
+    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="${b.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
     <div class="p-7 flex flex-col flex-1">
       <div class="flex items-center gap-3 mb-3">
         <span class="tag text-sky-600">${b.cat}</span>
