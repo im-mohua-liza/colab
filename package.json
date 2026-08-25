@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/im-mohua-liza/colab#readme",
   "devDependencies": {
+    "lighthouse": "^13.4.1",
     "tailwindcss": "^3.4.19"
   }
 }
