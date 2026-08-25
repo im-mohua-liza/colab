@@ -800,11 +800,11 @@ const projects = [
 
 const research = [
   { cat:"Literature Review", title:"School Leader Professional Development", desc:"Helps programme designers translate evidence on leadership capability into practical professional development programmes for school leaders.", tag:"CC BY-NC" },
-  { cat:"Literature Review", title:"Evidence in Education", desc:"Explores why evidence matters in education, and how organisations across the ecosystem can put evidence-informed practice into action.", tag:"CC BY-NC" },
+  { cat:"Literature Review", title:"Evidence in Education", desc:"Explores why evidence matters in education, and how organisations across the ecosystem can put evidence-informed practice into action.", tag:"CC BY-NC", pdf:"resources/Evidence-in-Education.pdf", size:"1.2 MB" },
   { cat:"Research Article", title:"Enriching Learning Experiences", desc:"Maps what makes learning genuinely enjoyable for children at the school, classroom and community level.", tag:"CC BY-NC" },
-  { cat:"Scoping Review", title:"School & District Leadership Impact", desc:"A review of evidence-based practices that school and district leaders can use to improve student learning outcomes.", tag:"CC BY-NC" },
+  { cat:"Scoping Review", title:"School & District Leadership Impact", desc:"A review of evidence-based practices that school and district leaders can use to improve student learning outcomes.", tag:"CC BY-NC", pdf:"resources/School-and-District-Leadership-Impact.pdf", size:"2.4 MB" },
   { cat:"Literature Review", title:"School Reintegration", desc:"Examines the challenges schools face after long closures, and practical ways to support students returning to the classroom.", tag:"CC BY-NC" },
-  { cat:"Literature Review", title:"Monitoring and Evaluation", desc:"Covers M&E fundamentals — purpose, the World Bank's standard process, and participatory approaches involving stakeholders.", tag:"CC BY-NC" },
+  { cat:"Literature Review", title:"Monitoring and Evaluation", desc:"Covers M&E fundamentals — purpose, the World Bank's standard process, and participatory approaches involving stakeholders.", tag:"CC BY-NC", pdf:"resources/Monitoring-and-Evaluation.pdf", size:"2.7 MB" },
 ];
 
 const blogPosts = [
@@ -863,6 +863,9 @@ const researchGrid = document.getElementById('researchGrid');
 research.forEach(r => {
   const el = document.createElement('article');
   el.className = 'reveal card-lift bg-navy-700 rounded-2xl border border-paper/10 p-7 flex flex-col';
+  const link = r.pdf
+    ? `<a href="${r.pdf}" download class="mt-6 text-sm font-semibold text-gold inline-flex items-center gap-2">Download PDF <span class="text-paper/40 font-normal">(${r.size})</span> <span>↓</span></a>`
+    : `<span class="mt-6 text-sm font-semibold text-paper/35 inline-flex items-center gap-2">Coming soon</span>`;
   el.innerHTML = `
     <div class="flex items-center justify-between mb-5">
       <span class="tag text-gold">${r.cat}</span>
@@ -870,7 +873,7 @@ research.forEach(r => {
     </div>
     <h3 class="text-lg font-bold leading-snug mb-3">${r.title}</h3>
     <p class="text-[14px] text-paper/60 leading-relaxed flex-1">${r.desc}</p>
-    <a href="#" data-soon class="mt-6 text-sm font-semibold text-gold inline-flex items-center gap-2">Read More <span>→</span></a>
+    ${link}
   `;
   researchGrid.appendChild(el);
 });
