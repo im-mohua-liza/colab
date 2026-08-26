@@ -71,12 +71,34 @@ if (toast) {
   });
 }
 
-/* ---------- Newsletter (footer, every page) ---------- */
+/* ---------- Newsletter (footer, every page) — sends for real ---------- */
+const OS_INBOX = 'sahariar@colabglobal.org';
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
-  newsletterForm.addEventListener('submit', (e) => {
+  newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const input = newsletterForm.querySelector('input[type="email"]');
+    try {
+      await fetch('https://formsubmit.co/ajax/' + OS_INBOX, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email: input ? input.value : '',
+          _subject: 'Newsletter signup — CoLab website',
+          _template: 'table'
+        })
+      });
+    } catch (_) { /* the thanks note still shows; misses surface in the inbox check */ }
     document.getElementById('newsletterMsg').classList.remove('hidden');
     e.target.reset();
   });
+}
+
+/* ---------- Contact form: show the sent state after the redirect back ---------- */
+const collabMsgEl = document.getElementById('collabMsg');
+if (collabMsgEl && new URLSearchParams(location.search).get('sent') === '1') {
+  collabMsgEl.textContent = 'Thank you — your message is on its way. We usually reply within two working days.';
+  collabMsgEl.classList.remove('hidden');
+  collabMsgEl.style.color = '#5B8C5A';
+  collabMsgEl.scrollIntoView({ block: 'center' });
 }
