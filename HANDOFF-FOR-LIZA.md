@@ -54,6 +54,30 @@ What changed in your pages (design untouched, markup templates identical):
   `content/` file keys — the CRM pipeline and the renderers read them.
 - Pushing to `main` = live in about a minute. There is no staging.
 
+### 3. The content is now REAL (27 Aug — sourced from the CRM + colabglobal.org)
+
+- **Stats band** now carries real aggregates: 10+ research outputs, **24 completed
+  engagements**, **1,378 workshop participants**, 15 partner organisations.
+- **9 real engagements** added to `projects.json` (Impact Evaluation · WEP,
+  PBL Toolkit · Education Above All, Design Sprint Playbooks · C4EC, Adversity
+  Study · Shiksharth…). Only partners CoLab already names publicly are named;
+  everything else stays inside the aggregate numbers.
+- **5 real testimonials** (was 2) — including C4EC and Mantra4Change. The
+  renderer now works without a logo (IDO has none).
+- **Identity corrected everywhere**: CoLab is an independent research, design
+  and innovation lab founded 2019, working across education, women's
+  empowerment, livelihoods and environmental sustainability. The old
+  "education lab under Mantra4Change / brand under MIE Design" lines are gone
+  (24 references across 6 pages), and the About page quote is now the real
+  mission, verbatim.
+- **NEW `content/team.json`** — the real 9-person team (names, roles,
+  one-line bios from colabglobal.org), ready for you to design a Team section
+  on the About page whenever you like. That's a design task, so it's yours.
+- Design ideas waiting for you (your lane): a Team section from `team.json`,
+  and an Insights section — CoLab has real published articles on
+  colabglobal.org (Rethinking Evidence, AI in Research, Most Significant
+  Change…) that could be linked or mirrored.
+
 ## What comes next (so nothing surprises you)
 
 - The CoLab OS will soon *write* to `content/` too: when a partnership is won
