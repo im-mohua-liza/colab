@@ -196,5 +196,21 @@
     ],
     "desc": "A study with Shiksharth on learning in adversity — evidence from some of the hardest contexts.",
     "img": "/colab/images/student-portrait.webp"
+  },
+  {
+    "name": "Capacity Building · Shikshagraha",
+    "cat": [
+      "Education Systems"
+    ],
+    "desc": "Capacity Building delivered with Shikshagraha.",
+    "img": "/colab/images/workshop-table.webp"
+  },
+  {
+    "name": "Assessments · Mantra4Change",
+    "cat": [
+      "Research"
+    ],
+    "desc": "Assessments delivered with Mantra4Change.",
+    "img": "/colab/images/community-scene.webp"
   }
 ]
