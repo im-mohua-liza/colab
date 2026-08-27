@@ -167,6 +167,17 @@
 </section>
 
 <!-- WHY THIS WORK MATTERS -->
+<section class="py-24 lg:py-32 bg-white border-b hairline">
+  <div class="container-x">
+    <div class="max-w-2xl">
+      <p class="tag text-sky-600 mb-4">Our People</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">The team behind the work</h2>
+      <p class="mt-5 text-navy/70 leading-relaxed text-lg">Researchers, designers and builders — led from Bangalore, working across the Global South.</p>
+    </div>
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="teamGrid"></div>
+  </div>
+</section>
+
 <section class="py-24 lg:py-32 bg-paper border-b hairline">
   <div class="container-x">
     <div class="max-w-2xl reveal">
@@ -387,5 +398,33 @@
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy text-paper text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
 
 <script src="/colab/js/site.js" defer></script>
+
+<script>
+fetch('/colab/content/team.json').then(r => r.json()).then(list => {
+  const grid = document.getElementById('teamGrid');
+  if (!grid) return;
+  const tints = [
+    ['bg-navy/10',    'text-navy'],
+    ['bg-sky/15',     'text-sky-700'],
+    ['bg-gold/20',    'text-gold-600'],
+    ['bg-sage/15',    'text-sage'],
+    ['bg-cardinal/10','text-cardinal'],
+    ['bg-sand/15',    'text-sand-700']
+  ];
+  grid.innerHTML = list.map((m, i) => {
+    const [bg, tx] = tints[i % tints.length];
+    const ini = m.name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+    const delay = i % 3 ? ` reveal-delay-${i % 3}` : '';
+    return `<article class="reveal in${delay} card-lift bg-white rounded-2xl border hairline p-7 flex flex-col">
+      <div class="w-14 h-14 rounded-2xl ${bg} flex items-center justify-center mb-5">
+        <span class="text-lg font-extrabold ${tx}">${ini}</span>
+      </div>
+      <h3 class="text-lg font-bold text-navy">${m.name}</h3>
+      <p class="tag text-sky-600 mt-1 mb-3">${m.role}</p>
+      <p class="text-[14px] text-navy/70 leading-relaxed flex-1">${m.bio}</p>
+    </article>`;
+  }).join('');
+});
+</script>
 </body>
 </html>
