@@ -1,0 +1,12 @@
+{
+  "hero": {
+    "value": "10+",
+    "note": "Research outputs shaping solutions across the ecosystem"
+  },
+  "band": [
+    { "count": 10, "suffix": "+", "label": "Research Outputs" },
+    { "count": 10, "suffix": "",  "label": "Evidence-Informed Solution Packages" },
+    { "count": 8,  "suffix": "",  "label": "Courses & Workshops" },
+    { "count": 15, "suffix": "+", "label": "Education Projects & Collaborations" }
+  ]
+}

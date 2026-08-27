@@ -104,8 +104,8 @@
     <div class="relative h-[380px] sm:h-[440px] min-w-0">
       <img src="/colab/images/hero-girls.webp" alt="Students CoLab works with across the education ecosystem" class="w-full h-full object-cover rounded-3xl shadow-xl">
       <div class="absolute -bottom-2 left-4 sm:left-10 bg-white/90 backdrop-blur rounded-2xl border hairline px-5 py-4 shadow-lg max-w-[220px]">
-        <p class="text-2xl font-extrabold text-navy">10+</p>
-        <p class="text-xs text-navy/70 mt-0.5">Research outputs shaping solutions across the ecosystem</p>
+        <p class="text-2xl font-extrabold text-navy" id="heroStatValue">10+</p>
+        <p class="text-xs text-navy/70 mt-0.5" id="heroStatNote">Research outputs shaping solutions across the ecosystem</p>
       </div>
     </div>
   </div>
@@ -196,32 +196,7 @@
       <a href="/colab/projects" class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">View All Projects</a>
     </div>
 
-    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <a href="/colab/projects" class="reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
-        <div class="h-40 overflow-hidden"><img src="/colab/images/school-girls.webp" alt="Promises to Pilot" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="p-7 flex flex-col flex-1">
-          <span class="tag text-cardinal bg-cardinal/10 px-2.5 py-1 rounded-full w-fit mb-5">Pilot</span>
-          <h3 class="text-xl font-bold text-navy mb-2">Promises to Pilot</h3>
-          <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">Piloting new approaches on the ground before they scale.</p>
-        </div>
-      </a>
-      <a href="/colab/projects" class="reveal reveal-delay-1 card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
-        <div class="h-40 overflow-hidden"><img src="/colab/images/workshop-table.webp" alt="SolvED" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="p-7 flex flex-col flex-1">
-          <span class="tag text-sand-700 bg-sand/15 px-2.5 py-1 rounded-full w-fit mb-5">Design</span>
-          <h3 class="text-xl font-bold text-navy mb-2">SolvED</h3>
-          <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">A design initiative turning evidence into classroom-ready solutions.</p>
-        </div>
-      </a>
-      <a href="/colab/projects" class="reveal reveal-delay-2 card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
-        <div class="h-40 overflow-hidden"><img src="/colab/images/classroom-teacher.webp" alt="Monitoring & Evaluation" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="p-7 flex flex-col flex-1">
-          <span class="tag text-navy bg-navy/10 px-2.5 py-1 rounded-full w-fit mb-5">Research</span>
-          <h3 class="text-xl font-bold text-navy mb-2">Monitoring &amp; Evaluation</h3>
-          <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">Tools and frameworks to track what's working — and why.</p>
-        </div>
-      </a>
-    </div>
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="featuredGrid"></div>
   </div>
 </section>
 
@@ -336,5 +311,42 @@
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy text-paper text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
 
 <script src="/colab/js/site.js" defer></script>
+
+<script>
+fetch('/colab/content/stats.json').then(r => r.json()).then(s => {
+  const hv = document.getElementById('heroStatValue'), hn = document.getElementById('heroStatNote');
+  if (hv && s.hero) { hv.textContent = s.hero.value; hn.textContent = s.hero.note; }
+  document.querySelectorAll('.counter-num').forEach((el, i) => {
+    const b = s.band[i];
+    if (!b) return;
+    el.dataset.count = b.count;
+    if (b.suffix) el.dataset.suffix = b.suffix; else delete el.dataset.suffix;
+    if (el.textContent !== '0') el.textContent = b.count + (b.suffix || '');
+  });
+});
+fetch('/colab/content/projects.json').then(r => r.json()).then(list => {
+  const grid = document.getElementById('featuredGrid');
+  if (!grid) return;
+  const catColor = {
+    'Pilot':             { text: 'text-cardinal',  bg: 'bg-cardinal/10' },
+    'Design':            { text: 'text-sand-700',  bg: 'bg-sand/15' },
+    'Research':          { text: 'text-navy',      bg: 'bg-navy/10' },
+    'Mentoring':         { text: 'text-sage',      bg: 'bg-sage/15' },
+    'Education Systems': { text: 'text-sky-700',   bg: 'bg-sky/15' }
+  };
+  const featured = list.filter(p => p.featured).sort((a, b) => a.featured - b.featured);
+  grid.innerHTML = featured.map((p, i) => {
+    const c = catColor[p.cat[0]] || catColor['Research'];
+    const delay = i ? ` reveal-delay-${Math.min(i,4)}` : '';
+    return `<a href="/colab/projects" class="reveal in${delay} card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col">
+      <div class="h-40 overflow-hidden"><img src="${p.img}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7 flex flex-col flex-1">
+        <span class="tag ${c.text} ${c.bg} px-2.5 py-1 rounded-full w-fit mb-5">${p.cat[0]}</span>
+        <h3 class="text-xl font-bold text-navy mb-2">${p.name}</h3>
+        <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">${p.desc}</p>
+      </div></a>`;
+  }).join('');
+});
+</script>
 </body>
 </html>

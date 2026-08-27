@@ -1,0 +1,23 @@
+name: validate-content
+# A broken content file must never reach the live site silently.
+on:
+  push:
+    paths: ["content/**"]
+  pull_request:
+    paths: ["content/**"]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: JSON must parse
+        run: |
+          set -e
+          for f in content/*.json; do
+            jq empty "$f" && echo "OK $f"
+          done
+      - name: Required keys present
+        run: |
+          jq -e 'type == "array" and all(.[]; has("name") and has("cat") and has("desc") and has("img"))' content/projects.json > /dev/null && echo "OK projects shape"
+          jq -e 'has("hero") and has("band") and (.band | length == 4)' content/stats.json > /dev/null && echo "OK stats shape"
+          jq -e 'type == "array" and all(.[]; has("quote") and has("name") and has("org"))' content/testimonials.json > /dev/null && echo "OK testimonials shape"

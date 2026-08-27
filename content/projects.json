@@ -1,0 +1,17 @@
+[
+  { "name": "Promises to Pilot", "cat": ["Pilot"], "desc": "Piloting new approaches on the ground before they scale.", "img": "/colab/images/school-girls.webp", "featured": 1 },
+  { "name": "Monitoring & Evaluation", "cat": ["Research"], "desc": "Tools and frameworks to track what's working — and why.", "img": "/colab/images/classroom-teacher.webp", "featured": 3 },
+  { "name": "Student Experiences", "cat": ["Research"], "desc": "Understanding learning from the student's point of view.", "img": "/colab/images/student-portrait.webp" },
+  { "name": "SolvED", "cat": ["Design"], "desc": "A design initiative turning evidence into classroom-ready solutions.", "img": "/colab/images/workshop-table.webp", "featured": 2 },
+  { "name": "Super Mentor", "cat": ["Mentoring"], "desc": "Strengthening mentoring relationships across the school ecosystem.", "img": "/colab/images/mentoring-art.webp" },
+  { "name": "Mentoring Toolkit", "cat": ["Mentoring", "Design"], "desc": "A practical toolkit for building effective mentoring programmes.", "img": "/colab/images/community-gathering.webp" },
+  { "name": "CoLabOrate", "cat": ["Education Systems"], "desc": "An open space for practitioners to discuss and co-create.", "img": "/colab/images/community-scene.webp" },
+  { "name": "Mentoring Research", "cat": ["Mentoring", "Research"], "desc": "Studying what makes mentoring work in education settings.", "img": "/colab/images/mentoring-art.webp" },
+  { "name": "RehnumaX", "cat": ["Pilot"], "desc": "A pilot exploring new pathways for student support.", "img": "/colab/images/field-exploring.webp" },
+  { "name": "School Leader Professional Development", "cat": ["Design"], "desc": "Designing capability-building programmes for school leaders.", "img": "/colab/images/classroom-teacher.webp" },
+  { "name": "Evidence Community of Practice", "cat": ["Education Systems", "Research"], "desc": "Connecting practitioners around the use of evidence in education.", "img": "/colab/images/workshop-table.webp" },
+  { "name": "Education Policy & Reform", "cat": ["Education Systems"], "desc": "Bridging research and policy to shape systemic change.", "img": "/colab/images/community-scene.webp" },
+  { "name": "Systems Map", "cat": ["Education Systems"], "desc": "Mapping the education ecosystem to see how it connects.", "img": "/colab/images/field-exploring.webp" },
+  { "name": "State of Education Report", "cat": ["Research"], "desc": "An annual look at where education stands — and where it's heading.", "img": "/colab/images/hero-girls.webp" },
+  { "name": "CoLabCast", "cat": ["Education Systems"], "desc": "Conversations with educators, researchers and changemakers.", "img": "/colab/images/workshop-table.webp" }
+]
