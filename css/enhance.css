@@ -144,6 +144,25 @@
   .img-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
+/* ---------- Torn-paper photo edge (colabglobal.org-style real-photo cutout) ---------- */
+.torn-mask-top {
+  clip-path: polygon(
+    0% 7%, 4% 2%, 8% 8%, 12% 1%, 16% 6%, 20% 0%, 24% 5%, 28% 1%, 32% 7%,
+    36% 2%, 40% 6%, 44% 0%, 48% 5%, 52% 1%, 56% 7%, 60% 2%, 64% 6%, 68% 0%,
+    72% 5%, 76% 1%, 80% 7%, 84% 2%, 88% 6%, 92% 0%, 96% 5%, 100% 1%,
+    100% 100%, 0% 100%
+  );
+}
+.torn-mask-bottom {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 93%,
+    96% 98%, 92% 92%, 88% 99%, 84% 93%, 80% 100%, 76% 94%, 72% 99%,
+    68% 93%, 64% 98%, 60% 92%, 56% 99%, 52% 94%, 48% 100%, 44% 93%,
+    40% 98%, 36% 92%, 32% 99%, 28% 94%, 24% 100%, 20% 93%, 16% 98%,
+    12% 92%, 8% 99%, 4% 94%, 0% 99%
+  );
+}
+
 /* ---------- Lightweight scroll parallax (JS-driven translateY, see site.js) ---------- */
 .parallax-img { transform: scale(1.12) translateY(var(--parallax-y, 0px)); will-change: transform; }
 @media (prefers-reduced-motion: reduce) {
