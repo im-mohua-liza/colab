@@ -98,30 +98,30 @@
       </div>
     </div>
 
-    <div class="relative reveal reveal-delay-4 min-w-0 h-[420px] sm:h-[460px]" aria-hidden="true">
-      <svg class="absolute inset-0 w-full h-full opacity-25" aria-hidden="true">
-        <line x1="20%" y1="20%" x2="55%" y2="48%" stroke="#073763" stroke-width="1" class="dash-flow"/>
-        <line x1="55%" y1="48%" x2="30%" y2="78%" stroke="#073763" stroke-width="1" class="dash-flow"/>
-      </svg>
-
-      <div class="glass-card float-a absolute top-2 left-0 sm:left-4 w-52 sm:w-56 aspect-[4/3] rounded-2xl -rotate-6 flex flex-col justify-between p-5 z-10">
-        <span class="icon-badge bg-navy w-11 h-11 rounded-xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="#F6F9FB" stroke-width="1.8"/><path d="M14.5 14.5 20 20" stroke="#1ACEDF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <p class="text-sm font-bold text-navy">Research first</p>
-      </div>
-
-      <div class="glass-card float-b absolute bottom-6 right-0 sm:right-2 w-52 sm:w-56 aspect-[4/3] rounded-2xl rotate-3 flex flex-col justify-between p-5 z-20">
-        <span class="icon-badge bg-gold w-11 h-11 rounded-xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="#073763" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6" fill="#073763"/></svg></span>
-        <p class="text-sm font-bold text-navy">Co-designed</p>
-      </div>
-
-      <div class="glass-card float-a absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 aspect-square rounded-2xl rotate-2 flex items-center justify-center z-30">
-        <div class="flex gap-2.5">
-          <span class="w-6 h-6 rounded-full bg-navy"></span>
-          <span class="w-6 h-6 rounded-full bg-sky-600"></span>
-          <span class="w-6 h-6 rounded-full bg-gold"></span>
-          <span class="w-6 h-6 rounded-full bg-sand"></span>
+    <div class="relative reveal reveal-delay-4 min-w-0">
+      <div class="ring-frame max-w-sm mx-auto">
+        <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+          <img src="/colab/images/human-centered-design.webp" alt="A mother and daughter — the real people at the centre of CoLab's human-centred design process" class="img-reveal parallax-img w-full h-full object-cover">
         </div>
       </div>
+      <div class="glass-card float-a absolute -top-5 -left-3 sm:-left-8 rounded-2xl px-5 py-4 max-w-[180px]" aria-hidden="true">
+        <span class="icon-badge bg-navy w-10 h-10 rounded-lg mb-2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="#F6F9FB" stroke-width="1.8"/><path d="M14.5 14.5 20 20" stroke="#1ACEDF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <p class="text-xs font-bold text-navy">Research first</p>
+      </div>
+      <div class="glass-card float-b absolute -bottom-5 -right-3 sm:-right-6 rounded-2xl px-5 py-4 max-w-[180px]" aria-hidden="true">
+        <span class="icon-badge bg-gold w-10 h-10 rounded-lg mb-2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="#073763" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6" fill="#073763"/></svg></span>
+        <p class="text-xs font-bold text-navy">Co-designed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="bg-navy py-6 border-y border-paper/10">
+  <div class="text-marquee dir-rtl" style="--mq-speed:24s">
+    <div class="text-marquee-track">
+      <span class="text-marquee-item text-2xl sm:text-3xl font-extrabold text-paper/90 tracking-tight">Research First <span class="text-gold mx-2">•</span> Co-Creation <span class="text-sky mx-2">•</span> Human-Centred <span class="text-gold mx-2">•</span> Rapid Prototyping <span class="text-sky mx-2">•</span> Tested in the Field <span class="text-gold mx-2">•</span> Built to Scale <span class="text-sky mx-2">•</span></span>
+      <span class="text-marquee-item text-2xl sm:text-3xl font-extrabold text-paper/90 tracking-tight" aria-hidden="true">Research First <span class="text-gold mx-2">•</span> Co-Creation <span class="text-sky mx-2">•</span> Human-Centred <span class="text-gold mx-2">•</span> Rapid Prototyping <span class="text-sky mx-2">•</span> Tested in the Field <span class="text-gold mx-2">•</span> Built to Scale <span class="text-sky mx-2">•</span></span>
     </div>
   </div>
 </section>
@@ -194,7 +194,7 @@
 
     <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <a href="/colab/projects/" class="reveal showcase-card card-lift aspect-[4/5]">
-        <img src="/colab/images/workshop-table.webp" alt="SolvED" loading="lazy" class="w-full h-full object-cover">
+        <img src="/colab/images/workshop-table.webp" alt="SolvED" loading="lazy" class="img-reveal w-full h-full object-cover">
         <span class="showcase-tag tag text-navy bg-white/90 px-2.5 py-1 rounded-full">Design</span>
         <div class="showcase-overlay">
           <h3 class="text-white font-bold text-xl mb-1.5">SolvED</h3>
@@ -202,7 +202,7 @@
         </div>
       </a>
       <a href="/colab/projects/" class="reveal reveal-delay-1 showcase-card card-lift aspect-[4/5]">
-        <img src="/colab/images/community-gathering.webp" alt="Mentoring Toolkit" loading="lazy" class="w-full h-full object-cover">
+        <img src="/colab/images/community-gathering.webp" alt="Mentoring Toolkit" loading="lazy" class="img-reveal w-full h-full object-cover">
         <span class="showcase-tag tag text-navy bg-white/90 px-2.5 py-1 rounded-full">Design</span>
         <div class="showcase-overlay">
           <h3 class="text-white font-bold text-xl mb-1.5">Mentoring Toolkit</h3>
@@ -210,7 +210,7 @@
         </div>
       </a>
       <a href="/colab/projects/" class="reveal reveal-delay-2 showcase-card card-lift aspect-[4/5]">
-        <img src="/colab/images/classroom-teacher.webp" alt="School Leader Professional Development" loading="lazy" class="w-full h-full object-cover">
+        <img src="/colab/images/classroom-teacher.webp" alt="School Leader Professional Development" loading="lazy" class="img-reveal w-full h-full object-cover">
         <span class="showcase-tag tag text-navy bg-white/90 px-2.5 py-1 rounded-full">Design</span>
         <div class="showcase-overlay">
           <h3 class="text-white font-bold text-xl mb-1.5">School Leader Professional Development</h3>

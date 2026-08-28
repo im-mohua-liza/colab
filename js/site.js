@@ -23,13 +23,33 @@ if (navEl) {
   }, { passive: true });
 }
 
-/* ---------- Scroll reveal ---------- */
-const revealEls = document.querySelectorAll('.reveal');
+/* ---------- Scroll reveal (also covers .img-reveal image entrances) ---------- */
+const revealEls = document.querySelectorAll('.reveal, .img-reveal');
 if (revealEls.length) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); revealObserver.unobserve(entry.target); } });
   }, { threshold: 0.15 });
   revealEls.forEach(el => revealObserver.observe(el));
+}
+
+/* ---------- Lightweight scroll parallax for .parallax-img ---------- */
+const parallaxEls = document.querySelectorAll('.parallax-img');
+if (parallaxEls.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let parallaxTicking = false;
+  function updateParallax(){
+    parallaxEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < -100 || rect.top > window.innerHeight + 100) return;
+      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+      const offset = Math.max(-22, Math.min(22, center * -0.05));
+      el.style.setProperty('--parallax-y', offset.toFixed(1) + 'px');
+    });
+    parallaxTicking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!parallaxTicking) { requestAnimationFrame(updateParallax); parallaxTicking = true; }
+  }, { passive: true });
+  updateParallax();
 }
 
 /* ---------- Animated counters ---------- */

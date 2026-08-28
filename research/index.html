@@ -130,6 +130,32 @@
   </div>
 </section>
 
+<!-- MARQUEE -->
+<section class="bg-white py-6 border-b hairline">
+  <div class="text-marquee" style="--mq-speed:30s">
+    <div class="text-marquee-track">
+      <span class="text-marquee-item text-2xl sm:text-3xl font-extrabold text-navy/85 tracking-tight">Literature Reviews <span class="text-sky-600 mx-2">•</span> Scoping Reviews <span class="text-gold-600 mx-2">•</span> Evidence Synthesis <span class="text-sky-600 mx-2">•</span> Field Research <span class="text-gold-600 mx-2">•</span> Monitoring &amp; Evaluation <span class="text-sky-600 mx-2">•</span></span>
+      <span class="text-marquee-item text-2xl sm:text-3xl font-extrabold text-navy/85 tracking-tight" aria-hidden="true">Literature Reviews <span class="text-sky-600 mx-2">•</span> Scoping Reviews <span class="text-gold-600 mx-2">•</span> Evidence Synthesis <span class="text-sky-600 mx-2">•</span> Field Research <span class="text-gold-600 mx-2">•</span> Monitoring &amp; Evaluation <span class="text-sky-600 mx-2">•</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL IMAGE BAND -->
+<section class="py-24 lg:py-32 bg-paper border-b hairline overflow-hidden">
+  <div class="container-x grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal min-w-0">
+      <p class="tag text-sky-600 mb-4">Evidence From the Field</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight leading-tight">Research starts with real people, not just data.</h2>
+      <p class="mt-6 text-navy/65 leading-relaxed text-lg">Every literature review and study on this page is grounded in conversations, classrooms and communities across the Global South — understanding lived experience before we design a single solution.</p>
+    </div>
+    <div class="relative reveal reveal-delay-1 min-w-0">
+      <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+        <img src="/colab/images/student-portrait.webp" alt="A student from one of the communities CoLab's research is grounded in" class="img-reveal parallax-img w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INSIGHTS / BLOG -->
 <section id="insights" class="py-24 lg:py-32 bg-white border-y hairline">
   <div class="container-x">
@@ -156,7 +182,7 @@
 
     <div class="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
       <article class="reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col min-w-0">
-        <div class="h-48 overflow-hidden"><img src="/colab/images/events/ai-in-research.webp" alt="Promotional banner for the CoLab 'AI in Research' workshop, illustrating a six-step AI-assisted research workflow" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-48 overflow-hidden"><img src="/colab/images/events/ai-in-research.webp" alt="Promotional banner for the CoLab 'AI in Research' workshop, illustrating a six-step AI-assisted research workflow" loading="lazy" class="img-reveal w-full h-full object-cover"></div>
         <div class="p-8 flex flex-col flex-1">
           <div class="flex items-center justify-between mb-5">
             <span class="tag text-sky-600 bg-sky/10 px-2.5 py-1 rounded-full">Upcoming</span>
@@ -170,7 +196,7 @@
       </article>
 
       <article class="reveal reveal-delay-1 card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col min-w-0 opacity-80">
-        <div class="h-48 overflow-hidden"><img src="/colab/images/events/framing-effective-indicators.webp" alt="Promotional banner for the CoLab 'Framing Effective Indicators' workshop, showing a facilitator leading a group through an inputs-to-impact logic model" loading="lazy" class="w-full h-full object-cover grayscale-[40%]"></div>
+        <div class="h-48 overflow-hidden"><img src="/colab/images/events/framing-effective-indicators.webp" alt="Promotional banner for the CoLab 'Framing Effective Indicators' workshop, showing a facilitator leading a group through an inputs-to-impact logic model" loading="lazy" class="img-reveal w-full h-full object-cover grayscale-[40%]"></div>
         <div class="p-8 flex flex-col flex-1">
           <div class="flex items-center justify-between mb-5">
             <span class="tag text-navy/45 bg-navy/5 px-2.5 py-1 rounded-full">Past event</span>
@@ -327,7 +353,7 @@ blogPosts.forEach((b) => {
   const el = document.createElement('article');
   el.className = 'reveal card-lift bg-white rounded-2xl border hairline overflow-hidden flex flex-col group';
   el.innerHTML = `
-    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="${b.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
+    <div class="h-40 overflow-hidden"><img src="${b.img}" alt="${b.title}" loading="lazy" class="img-reveal w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
     <div class="p-7 flex flex-col flex-1">
       <div class="flex items-center gap-3 mb-3">
         <span class="tag text-sky-600">${b.cat}</span>
