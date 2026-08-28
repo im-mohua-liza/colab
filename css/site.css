@@ -8,15 +8,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (min-width:1024px){ .container-x { padding-left:2.5rem; padding-right:2.5rem; } }
 
 /* reveal on scroll */
-.reveal { opacity:0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.16,.8,.28,1), transform .7s cubic-bezier(.16,.8,.28,1); }
+.reveal { opacity:0; transform: translateY(26px); transition: opacity 1s cubic-bezier(.16,.8,.28,1), transform 1s cubic-bezier(.16,.8,.28,1); }
 .reveal.in { opacity:1; transform: translateY(0); }
-.reveal-delay-1.in { transition-delay: .08s; }
-.reveal-delay-2.in { transition-delay: .16s; }
-.reveal-delay-3.in { transition-delay: .24s; }
-.reveal-delay-4.in { transition-delay: .32s; }
+.reveal-delay-1.in { transition-delay: .2s; }
+.reveal-delay-2.in { transition-delay: .4s; }
+.reveal-delay-3.in { transition-delay: .6s; }
+.reveal-delay-4.in { transition-delay: .8s; }
+
+/* When a reveal block wraps a heading directly (the common tag+h2+p section-intro
+   pattern), animate the heading and what follows it as independently staggered
+   elements instead of one flat block, so paragraphs visibly follow the heading. */
+.reveal:has(> h1, > h2, > h3) { opacity:1; transform:none; transition:none; }
+.reveal:has(> h1, > h2, > h3) > * {
+  opacity:0; transform: translateY(24px);
+  transition: opacity .9s cubic-bezier(.16,.8,.28,1), transform .9s cubic-bezier(.16,.8,.28,1);
+}
+.reveal.in:has(> h1, > h2, > h3) > * { opacity:1; transform:translateY(0); }
+.reveal:has(> h1, > h2, > h3) > :is(h1,h2,h3) ~ * { transition-delay: .2s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+  .reveal, .reveal:has(> h1, > h2, > h3) > * { opacity:1 !important; transform:none !important; transition:none !important; }
   html { scroll-behavior:auto; }
 }
 
