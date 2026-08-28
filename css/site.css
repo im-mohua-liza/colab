@@ -52,6 +52,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @keyframes pulseOp { 0%,100%{ opacity:.35;} 50%{ opacity:1;} }
 @media (prefers-reduced-motion: reduce){ .node-drift,.node-drift2,.node-pulse{ animation:none; } }
 
+/* auto-sliding logo marquee */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marqueeScroll 32s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
 .hairline { border-color: rgba(7,55,99,.12); }
 
 .card-lift { transition: transform .35s cubic-bezier(.16,.8,.28,1), box-shadow .35s ease, border-color .35s ease; box-shadow: 0 1px 2px rgba(7,55,99,.04); }
