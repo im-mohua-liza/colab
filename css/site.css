@@ -1,5 +1,22 @@
 html { scroll-behavior: smooth; }
 body { background:#F6F9FB; color:#0C1B2A; }
+
+/* Faint fixed CoLab logo watermark, visible across every section regardless of
+   its own background colour. Sits above content at very low opacity rather
+   than behind it, since most sections use full-bleed solid backgrounds that
+   would otherwise hide a body-level background entirely. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background-image: url(/colab/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(58vw, 560px);
+  opacity: 0.045;
+  pointer-events: none;
+}
 ::selection { background:#1ACEDF; color:#073763; }
 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #1ACEDF; outline-offset: 3px; border-radius: 2px; }
