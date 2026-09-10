@@ -14,6 +14,24 @@ if (burgerBtn && mobileMenu) {
   window.addEventListener('resize', () => { if (window.innerWidth >= 1024) toggleMenu(false); });
 }
 
+/* ---------- Interactive "How We Work" journey selector ---------- */
+const journeySteps = document.querySelectorAll('.journey-step');
+if (journeySteps.length) {
+  const journeyPanels = document.querySelectorAll('.journey-panel-content');
+  const journeyFill = document.getElementById('journeyFill');
+  function setJourneyStep(index) {
+    journeySteps.forEach((btn, i) => {
+      const active = i === index;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    journeyPanels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
+    if (journeyFill) journeyFill.style.width = (index / (journeySteps.length - 1)) * 100 + '%';
+  }
+  journeySteps.forEach((btn, i) => btn.addEventListener('click', () => setJourneyStep(i)));
+  setJourneyStep(0);
+}
+
 /* ---------- Nav scroll shadow ---------- */
 const navEl = document.getElementById('nav');
 if (navEl) {

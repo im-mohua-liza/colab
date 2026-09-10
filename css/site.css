@@ -87,6 +87,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
+/* interactive "How We Work" journey selector */
+.journey-row { display:flex; justify-content:space-between; align-items:flex-start; position:relative; gap: 0.5rem; }
+.journey-line { position:absolute; top:24px; left:0; right:0; height:2px; background:rgba(7,55,99,.12); }
+.journey-line-fill { position:absolute; top:24px; left:0; height:2px; background:#12A7B6; width:0%; transition:width .5s cubic-bezier(.16,.8,.28,1); }
+.journey-step { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:.75rem; background:none; border:0; cursor:pointer; padding:.25rem; flex:1; }
+.journey-dot { width:48px; height:48px; border-radius:9999px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; border:2px solid rgba(7,55,99,.18); background:#F6F9FB; color:rgba(7,55,99,.4); transition: transform .3s cubic-bezier(.16,.8,.28,1), background-color .3s ease-out, border-color .3s ease-out, color .3s ease-out, box-shadow .3s ease-out; }
+.journey-step:hover .journey-dot { border-color:#12A7B6; color:#073763; }
+.journey-step:focus-visible .journey-dot { outline: 2px solid #1ACEDF; outline-offset: 2px; }
+.journey-step.is-active .journey-dot { background:#073763; border-color:#073763; color:#F6F9FB; transform:scale(1.1); box-shadow:0 8px 20px -8px rgba(7,55,99,.5); }
+.journey-label { font-size:13px; font-weight:600; color:rgba(7,55,99,.45); text-align:center; max-width:100px; transition: color .3s ease-out; }
+.journey-step.is-active .journey-label { color:#073763; }
+.journey-panel-content { display:none; }
+.journey-panel-content.is-active { display:block; animation: journeyFadeIn .5s cubic-bezier(.16,.8,.28,1); }
+@keyframes journeyFadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .journey-dot, .journey-line-fill, .journey-label { transition:none; }
+  .journey-panel-content.is-active { animation:none; }
+}
+@media (max-width: 639px) {
+  .journey-row { flex-wrap: wrap; row-gap: 1.5rem; justify-content: center; }
+  .journey-line, .journey-line-fill { display:none; }
+  .journey-step { flex: 0 0 auto; width: 30%; }
+  .journey-label { max-width:80px; font-size:11px; }
+}
+
 .hairline { border-color: rgba(7,55,99,.12); }
 
 .card-lift { transition: transform .35s cubic-bezier(.16,.8,.28,1), box-shadow .35s ease-out, border-color .35s ease-out; box-shadow: 0 1px 2px rgba(7,55,99,.04); }

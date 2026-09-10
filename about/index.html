@@ -419,32 +419,66 @@
     <div class="max-w-2xl reveal">
       <p class="tag text-sky-600 mb-4">How We Work</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">From Evidence to Impact</h2>
+      <p class="mt-4 text-navy/65">Click through the journey a CoLab programme takes, from first evidence to lasting scale.</p>
     </div>
 
-    <div class="mt-16 timeline-connector-h grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
-      <div class="reveal flex flex-col items-start relative z-10">
-        <span class="icon-badge bg-navy mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="#F6F9FB" stroke-width="1.8"/><path d="M14.5 14.5 20 20" stroke="#1ACEDF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <p class="tag text-navy/40 mb-1.5">Step 01</p>
-        <h3 class="text-xl font-bold text-navy mb-2">Research</h3>
-        <p class="text-[15px] text-navy/65 leading-relaxed">Rigorous research that helps understand real challenges in education.</p>
+    <div class="mt-16 reveal reveal-delay-1">
+      <div class="journey-row">
+        <div class="journey-line" aria-hidden="true"></div>
+        <div class="journey-line-fill" id="journeyFill" aria-hidden="true"></div>
+        <button type="button" class="journey-step is-active" data-step="0" aria-selected="true" aria-controls="journeyPanel0">
+          <span class="journey-dot">1</span>
+          <span class="journey-label">Research</span>
+        </button>
+        <button type="button" class="journey-step" data-step="1" aria-selected="false" aria-controls="journeyPanel1">
+          <span class="journey-dot">2</span>
+          <span class="journey-label">Piloting</span>
+        </button>
+        <button type="button" class="journey-step" data-step="2" aria-selected="false" aria-controls="journeyPanel2">
+          <span class="journey-dot">3</span>
+          <span class="journey-label">Program Design</span>
+        </button>
+        <button type="button" class="journey-step" data-step="3" aria-selected="false" aria-controls="journeyPanel3">
+          <span class="journey-dot">4</span>
+          <span class="journey-label">Evaluation</span>
+        </button>
+        <button type="button" class="journey-step" data-step="4" aria-selected="false" aria-controls="journeyPanel4">
+          <span class="journey-dot">5</span>
+          <span class="journey-label">Scaling</span>
+        </button>
       </div>
-      <div class="reveal reveal-delay-1 flex flex-col items-start relative z-10">
-        <span class="icon-badge bg-sand mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v4M12 17v4M4.5 8.5 8 10.5M16 13.5l3.5 2M4.5 15.5 8 13.5M16 10.5l3.5-2" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" stroke="#F6F9FB" stroke-width="1.8"/></svg></span>
-        <p class="tag text-navy/40 mb-1.5">Step 02</p>
-        <h3 class="text-xl font-bold text-navy mb-2">Design</h3>
-        <p class="text-[15px] text-navy/65 leading-relaxed">Evidence-informed design to create practical and sustainable solutions.</p>
+    </div>
+
+    <div class="mt-12 reveal reveal-delay-2 glass-card rounded-3xl p-8 sm:p-10 lg:p-12" aria-live="polite">
+      <div class="journey-panel-content is-active" id="journeyPanel0">
+        <span class="icon-badge bg-navy mb-6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="#F6F9FB" stroke-width="1.8"/><path d="M14.5 14.5 20 20" stroke="#1ACEDF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <p class="tag text-navy/40 mb-2">Step 1 of 5</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy mb-4">Research</h3>
+        <p class="text-navy/65 leading-relaxed text-lg max-w-2xl">We start with rigorous research — literature reviews, landscaping and diagnostic studies — to understand what's really happening in a context, and what the rest of the world can teach us.</p>
       </div>
-      <div class="reveal reveal-delay-2 flex flex-col items-start relative z-10">
-        <span class="icon-badge bg-sky-600 mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="9" r="3" stroke="#F6F9FB" stroke-width="1.8"/><circle cx="17" cy="9" r="3" stroke="#F6F9FB" stroke-width="1.8"/><path d="M3 20c.5-3 2.5-5 5-5s4.5 2 5 5M13 20c.5-3 2.2-5 4.5-5s4 2 4.5 5" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <p class="tag text-navy/40 mb-1.5">Step 03</p>
-        <h3 class="text-xl font-bold text-navy mb-2">Collaborate</h3>
-        <p class="text-[15px] text-navy/65 leading-relaxed">Working with educators, institutions, researchers and ecosystem partners.</p>
+      <div class="journey-panel-content" id="journeyPanel1">
+        <span class="icon-badge bg-sand mb-6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3" stroke="#F6F9FB" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M7.5 14h9" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <p class="tag text-navy/40 mb-2">Step 2 of 5</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy mb-4">Piloting</h3>
+        <p class="text-navy/65 leading-relaxed text-lg max-w-2xl">Ideas are co-implemented as pilot studies and tested against real needs assessments, so we learn what's relevant and doable before committing further.</p>
       </div>
-      <div class="reveal reveal-delay-3 flex flex-col items-start relative z-10">
-        <span class="icon-badge bg-gold mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c3 3 4.5 6.5 4.5 10a4.5 4.5 0 0 1-9 0c0-3.5 1.5-7 4.5-10Z" stroke="#073763" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 15.5 6 19M15 15.5 18 19" stroke="#073763" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <p class="tag text-navy/40 mb-1.5">Step 04</p>
-        <h3 class="text-xl font-bold text-navy mb-2">Impact</h3>
-        <p class="text-[15px] text-navy/65 leading-relaxed">Turning knowledge and solutions into scalable educational impact.</p>
+      <div class="journey-panel-content" id="journeyPanel2">
+        <span class="icon-badge bg-sage mb-6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="#F6F9FB" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6" fill="#F6F9FB"/></svg></span>
+        <p class="tag text-navy/40 mb-2">Step 3 of 5</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy mb-4">Program Design</h3>
+        <p class="text-navy/65 leading-relaxed text-lg max-w-2xl">We co-create a theory of change and a practical programme strategy — turning evidence and pilot learning into a plan built for real classrooms and communities.</p>
+      </div>
+      <div class="journey-panel-content" id="journeyPanel3">
+        <span class="icon-badge bg-gold mb-6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2" stroke="#073763" stroke-width="1.6"/><path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1Z" stroke="#073763" stroke-width="1.6"/><path d="M8.5 13.5 11 16l4.5-5" stroke="#12A7B6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p class="tag text-navy/40 mb-2">Step 4 of 5</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy mb-4">Evaluation</h3>
+        <p class="text-navy/65 leading-relaxed text-lg max-w-2xl">Every programme carries its own monitoring &amp; evaluation framework, backed by third-party assessments, so we can track what's actually working.</p>
+      </div>
+      <div class="journey-panel-content" id="journeyPanel4">
+        <span class="icon-badge bg-sky-600 mb-6"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20V13M9 20V9M14 20V6M19 20V3" stroke="#F6F9FB" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <p class="tag text-navy/40 mb-2">Step 5 of 5</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy mb-4">Scaling</h3>
+        <p class="text-navy/65 leading-relaxed text-lg max-w-2xl">What works becomes a reusable toolkit or a digital public good — designed for scale and shared across our ecosystem of partners.</p>
       </div>
     </div>
   </div>
