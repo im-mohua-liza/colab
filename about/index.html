@@ -582,24 +582,16 @@
 fetch('/colab/content/team.json').then(r => r.json()).then(list => {
   const grid = document.getElementById('teamGrid');
   if (!grid) return;
-  const tints = [
-    ['bg-navy/10',    'text-navy'],
-    ['bg-sky/15',     'text-sky-700'],
-    ['bg-gold/20',    'text-gold-600'],
-    ['bg-sage/15',    'text-sage'],
-    ['bg-cardinal/10','text-cardinal'],
-    ['bg-sand/15',    'text-sand-700']
-  ];
   grid.innerHTML = list.map((m, i) => {
-    const [bg, tx] = tints[i % tints.length];
-    const ini = m.name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
     const delay = i % 3 ? ` reveal-delay-${i % 3}` : '';
+    const tags = (m.expertise || '').split(',').map(s => s.trim()).filter(Boolean);
     return `<article class="reveal in${delay} card-lift bg-white rounded-2xl border hairline p-7 flex flex-col">
-      <div class="w-14 h-14 rounded-2xl ${bg} flex items-center justify-center mb-5">
-        <span class="text-lg font-extrabold ${tx}">${ini}</span>
-      </div>
+      <img src="${m.photo}" alt="${m.name}" loading="lazy" class="w-20 h-20 rounded-full object-cover mb-5 border-2 border-white shadow-md">
       <h3 class="text-lg font-bold text-navy">${m.name}</h3>
       <p class="tag text-sky-600 mt-1 mb-3">${m.role}</p>
+      <div class="flex flex-wrap gap-1.5 mb-4">
+        ${tags.map(t => `<span class="text-[11px] font-medium text-navy/60 bg-paper border hairline px-2.5 py-1 rounded-full">${t}</span>`).join('')}
+      </div>
       <p class="text-[14px] text-navy/70 leading-relaxed flex-1">${m.bio}</p>
     </article>`;
   }).join('');
