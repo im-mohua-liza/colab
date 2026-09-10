@@ -273,6 +273,30 @@
   </div>
 </section>
 
+<!-- SHARED STORIES / TESTIMONIALS -->
+<section class="relative py-24 lg:py-32 bg-navy text-paper overflow-hidden">
+  <div class="mesh-bg-dark" aria-hidden="true"></div>
+  <div class="container-x relative z-10">
+    <div class="max-w-2xl mx-auto reveal text-center">
+      <p class="tag text-sky mb-4">Testimonials</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Shared Stories of Success and Change</h2>
+    </div>
+
+    <div class="mt-14 reveal reveal-delay-1 max-w-2xl mx-auto">
+      <div id="storyTrack" class="min-h-[280px] sm:min-h-[240px]"></div>
+      <div class="flex items-center justify-center gap-5 mt-10">
+        <button type="button" id="storyPrev" class="story-nav-btn" aria-label="Previous story">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="storyDots" class="flex items-center gap-2.5"></div>
+        <button type="button" id="storyNext" class="story-nav-btn" aria-label="Next story">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SHORT CTA -->
 <section class="relative py-24 lg:py-32 bg-navy overflow-hidden">
   <svg class="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="none" aria-hidden="true">
@@ -419,6 +443,34 @@ fetch('/colab/content/projects.json').then(r => r.json()).then(list => {
         <p class="text-[14.5px] text-navy/70 leading-relaxed flex-1">${p.desc}</p>
       </div></a>`;
   }).join('');
+});
+fetch('/colab/content/testimonials.json').then(r => r.json()).then(list => {
+  const track = document.getElementById('storyTrack');
+  const dotsWrap = document.getElementById('storyDots');
+  if (!track || !list.length) return;
+  track.innerHTML = list.map((t, i) => `
+    <div class="journey-panel-content${i === 0 ? ' is-active' : ''}" data-slide="${i}">
+      <svg width="34" height="26" viewBox="0 0 34 26" class="mb-6 mx-auto" aria-hidden="true"><path d="M0 26V15.6C0 6.4 5.4 1 13.4 0l1.8 4.2C9.6 5.6 7 9 7 13.2h6.4V26H0Zm19.6 0V15.6c0-9.2 5.4-14.6 13.4-15.6l1.8 4.2c-5.6 1.4-8.2 4.8-8.2 9v4.2h6.4V26H19.6Z" fill="#1ACEDF" opacity="0.6"/></svg>
+      <p class="text-xl sm:text-2xl font-medium leading-relaxed text-center text-paper/90">"${t.quote}"</p>
+      <div class="mt-8 flex flex-col items-center gap-1">
+        ${t.logo ? '<img src="' + t.logo + '" alt="' + t.org + '" loading="lazy" class="h-8 w-auto object-contain mb-3 opacity-90">' : ''}
+        <p class="font-semibold text-paper">${t.name}</p>
+        <p class="text-sm text-paper/55">${t.org}</p>
+      </div>
+    </div>`).join('');
+  dotsWrap.innerHTML = list.map((_, i) => `<button type="button" class="story-dot${i === 0 ? ' is-active' : ''}" data-dot="${i}" aria-label="Show story ${i + 1} of ${list.length}"></button>`).join('');
+
+  const slides = track.querySelectorAll('.journey-panel-content');
+  const dots = dotsWrap.querySelectorAll('.story-dot');
+  let current = 0;
+  function showStory(i) {
+    current = (i + slides.length) % slides.length;
+    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === current));
+    dots.forEach((d, idx) => d.classList.toggle('is-active', idx === current));
+  }
+  dots.forEach((d, i) => d.addEventListener('click', () => showStory(i)));
+  document.getElementById('storyPrev').addEventListener('click', () => showStory(current - 1));
+  document.getElementById('storyNext').addEventListener('click', () => showStory(current + 1));
 });
 </script>
 </body>
