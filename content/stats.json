@@ -2,11 +2,5 @@
   "hero": {
     "value": "10+",
     "note": "Research outputs shaping solutions across the ecosystem"
-  },
-  "band": [
-    { "count": 10,   "suffix": "+", "label": "Research Outputs" },
-    { "count": 24,   "suffix": "",  "label": "Completed Engagements" },
-    { "count": 1378, "suffix": "",  "label": "Workshop Participants" },
-    { "count": 15,   "suffix": "",  "label": "Partner Organisations" }
-  ]
+  }
 }
