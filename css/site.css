@@ -125,6 +125,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .hairline { border-color: rgba(7,55,99,.12); }
 
+/* "Our Team" portrait treatment: brush-stroke accent behind a circular photo */
+.team-photo-wrap { position:relative; width:128px; height:128px; margin:0 auto; }
+.team-photo-splash { position:absolute; inset:-16px; color:#1ACEDF; opacity:.6; z-index:0; pointer-events:none; }
+.team-photo-wrap.is-flipped .team-photo-splash { transform: scaleX(-1); }
+.team-photo-wrap img { position:relative; z-index:1; }
+
+.team-arrow-btn { width:44px; height:44px; border-radius:9999px; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(26,206,223,.55); color:#1ACEDF; background:#fff; cursor:pointer; transition: background-color .25s ease-out, color .25s ease-out, border-color .25s ease-out, transform .2s ease-out; }
+.team-arrow-btn:hover { background:#1ACEDF; color:#fff; border-color:#1ACEDF; }
+.team-arrow-btn:active { transform: scale(.92); }
+.team-arrow-btn svg { transition: transform .3s ease-out; }
+.team-arrow-btn.is-open svg { transform: rotate(90deg); }
+
+.team-bio-panel { display:grid; grid-template-rows:0fr; transition: grid-template-rows .35s ease-out; }
+.team-bio-panel.is-open { grid-template-rows:1fr; }
+.team-bio-panel > div { overflow:hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .team-arrow-btn, .team-arrow-btn svg, .team-bio-panel { transition:none; }
+}
+
 .card-lift { transition: transform .35s cubic-bezier(.16,.8,.28,1), box-shadow .35s ease-out, border-color .35s ease-out; box-shadow: 0 1px 2px rgba(7,55,99,.04); }
 .card-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -20px rgba(7,55,99,.28); border-color: rgba(7,55,99,.18); }
 

@@ -243,7 +243,7 @@
       <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">The team behind the work</h2>
       <p class="mt-5 text-navy/70 leading-relaxed text-lg">Researchers, designers and builders — led from Bangalore, working across the Global South.</p>
     </div>
-    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="teamGrid"></div>
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16" id="teamGrid"></div>
   </div>
 </section>
 
@@ -615,16 +615,34 @@ fetch('/colab/content/team.json').then(r => r.json()).then(list => {
   grid.innerHTML = list.map((m, i) => {
     const delay = i % 3 ? ` reveal-delay-${i % 3}` : '';
     const tags = (m.expertise || '').split(',').map(s => s.trim()).filter(Boolean);
-    return `<article class="reveal in${delay} card-lift bg-white rounded-2xl border hairline p-7 flex flex-col">
-      <img src="${m.photo}" alt="${m.name}" loading="lazy" class="w-20 h-20 rounded-full object-cover mb-5 border-2 border-white shadow-md">
-      <h3 class="text-lg font-bold text-navy">${m.name}</h3>
-      <p class="tag text-sky-600 mt-1 mb-3">${m.role}</p>
-      <div class="flex flex-wrap gap-1.5 mb-4">
-        ${tags.map(t => `<span class="text-[11px] font-medium text-navy/60 bg-paper border hairline px-2.5 py-1 rounded-full">${t}</span>`).join('')}
+    return `<article class="reveal in${delay} text-center">
+      <div class="team-photo-wrap${i % 2 ? ' is-flipped' : ''}">
+        <svg class="team-photo-splash" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M10,55 C4,40 14,20 34,12 C46,7 56,15 50,25 C66,9 90,15 92,35 C96,55 84,70 90,80 C79,96 58,84 48,92 C33,101 13,90 9,75 C4,64 15,60 10,55 Z"/></svg>
+        <img src="${m.photo}" alt="${m.name}" loading="lazy" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover mx-auto border-4 border-white shadow-lg">
       </div>
-      <p class="text-[14px] text-navy/70 leading-relaxed flex-1">${m.bio}</p>
+      <h3 class="mt-6 text-lg font-bold text-navy">${m.name}</h3>
+      <p class="tag text-sky-600 mt-1.5">${m.role}</p>
+      <button type="button" class="team-arrow-btn mx-auto mt-5" data-team-toggle aria-expanded="false" aria-label="Show ${m.name}'s bio and expertise">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="team-bio-panel mt-2">
+        <div>
+          <div class="pt-4 flex flex-wrap justify-center gap-1.5 mb-3">
+            ${tags.map(t => `<span class="text-[11px] font-medium text-navy/60 bg-paper border hairline px-2.5 py-1 rounded-full">${t}</span>`).join('')}
+          </div>
+          <p class="text-[14px] text-navy/70 leading-relaxed">${m.bio}</p>
+        </div>
+      </div>
     </article>`;
   }).join('');
+  grid.querySelectorAll('[data-team-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.classList.toggle('is-open', !open);
+      btn.closest('article').querySelector('.team-bio-panel').classList.toggle('is-open', !open);
+    });
+  });
 });
 </script>
 </body>
