@@ -55,12 +55,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .nav-link { position:relative; }
 .nav-link::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#1ACEDF; border-radius:2px; transform: scaleX(0); transform-origin:left; transition: transform .25s ease-out; }
 .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
-.nav-link.active { color:#073763; font-weight:700; }
+.nav-link.active { color:#F6F9FB; font-weight:700; }
 
 /* hamburger: plain-CSS fallback so the icon renders even if compiled CSS is slow to load */
 #burgerBtn { width:40px; height:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; position:relative; z-index:50; }
 @media (min-width:1024px){ #burgerBtn { display:none; } }
-.burger-line { display:block; width:24px; height:2px; background:#073763; transition: transform .3s ease-out, opacity .3s ease-out; transform-origin: center; }
+.burger-line { display:block; width:24px; height:2px; background:#F6F9FB; transition: transform .3s ease-out, opacity .3s ease-out; transform-origin: center; }
 .burger.open .l1 { transform: translateY(7px) rotate(45deg); }
 .burger.open .l2 { opacity: 0; }
 .burger.open .l3 { transform: translateY(-7px) rotate(-45deg); }
