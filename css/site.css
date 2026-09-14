@@ -14,7 +14,7 @@ body::after {
   background-repeat: no-repeat;
   background-position: center;
   background-size: min(58vw, 560px);
-  opacity: 0.045;
+  opacity: 0.09;
   pointer-events: none;
 }
 ::selection { background:#1ACEDF; color:#073763; }
