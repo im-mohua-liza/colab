@@ -144,6 +144,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .team-arrow-btn, .team-arrow-btn svg, .team-bio-panel { transition:none; }
 }
 
+/* FAQ accordion — same expand mechanic as .team-bio-panel, styled as a card list */
+.faq-item { transition: border-color .25s ease-out, box-shadow .25s ease-out; }
+.faq-item.is-open { border-color: rgba(26,206,223,.5); box-shadow: 0 16px 32px -20px rgba(7,55,99,.25); }
+.faq-trigger { cursor:pointer; }
+.faq-chevron { transition: transform .3s ease-out; color:#0A4A7E; }
+.faq-item.is-open .faq-chevron { transform: rotate(180deg); color:#12A7B6; }
+.faq-panel { display:grid; grid-template-rows:0fr; transition: grid-template-rows .35s ease-out; }
+.faq-item.is-open .faq-panel { grid-template-rows:1fr; }
+.faq-panel > div { overflow:hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .faq-item, .faq-chevron, .faq-panel { transition:none; }
+}
+
 .card-lift { transition: transform .35s cubic-bezier(.16,.8,.28,1), box-shadow .35s ease-out, border-color .35s ease-out; box-shadow: 0 1px 2px rgba(7,55,99,.04); }
 .card-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -20px rgba(7,55,99,.28); border-color: rgba(7,55,99,.18); }
 
