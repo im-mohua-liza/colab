@@ -318,7 +318,8 @@ collabForm.addEventListener('submit', async (e) => {
 (function(){ var q = new URLSearchParams(location.search).get('session'); if(!q) return;
   fetch('/colab/content/sessions.json').then(function(r){ return r.json(); }).then(function(list){
     var s = (list||[]).filter(function(x){ return x.slug === q; })[0]; var box = document.getElementById('collabMessage');
-    if(!box) return; box.value = 'Register me for: ' + (s ? s.title + ' (' + s.date_text + ')' : q); box.focus(); }).catch(function(){}); })();
+    if(!box) return; var paid = new URLSearchParams(location.search).get('seat') === 'paid' && s && s.price > 0;
+    box.value = 'Register me for: ' + (s ? s.title + ' (' + s.date_text + ')' : q) + (paid ? '. Seat: ' + s.price_text + '. Please send me the payment link.' : ''); box.focus(); }).catch(function(){}); })();
 </script>
 <script src="/colab/js/site.js" defer></script>
 </body>
