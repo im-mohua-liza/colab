@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /content/
+
+Sitemap: https://im-mohua-liza.github.io/colab/sitemap.xml
