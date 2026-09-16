@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQs — CoLab Global Consulting</title>
-<meta name="description" content="Answers to common questions about working with CoLab Global Consulting.">
+<title>Page not found — CoLab Global Consulting</title>
+<meta name="description" content="That page is not here any more. Find CoLab research, sessions and projects from this page.">
 <link rel="canonical" href="https://im-mohua-liza.github.io/colab/faq/">
 
 <meta property="og:type" content="website">
@@ -30,6 +30,7 @@
 <link rel="icon" type="image/png" href="/colab/logo.png">
 <link rel="stylesheet" href="/colab/css/tailwind.css">
 <link rel="stylesheet" href="/colab/css/site.css">
+<meta name="robots" content="noindex">
 </head>
 <body class="font-sans antialiased">
 
@@ -52,7 +53,7 @@
       <a href="/colab/ecosystem/" class="nav-link">Ecosystem</a>
       <a href="/colab/projects/" class="nav-link">Projects</a>
       <a href="/colab/sessions/" class="nav-link">Sessions</a>
-      <a href="/colab/faq/" class="nav-link active" aria-current="page">FAQs</a>
+      <a href="/colab/faq/" class="nav-link">FAQs</a>
       <a href="/colab/contact/" class="nav-link">Contact</a>
     </nav>
 
@@ -76,42 +77,36 @@
     <a href="/colab/ecosystem/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Ecosystem</a>
     <a href="/colab/projects/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Projects</a>
     <a href="/colab/sessions/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Sessions</a>
-    <a href="/colab/faq/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile aria-current="page">FAQs</a>
+    <a href="/colab/faq/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>FAQs</a>
     <a href="/colab/contact/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Contact</a>
     <a href="/colab/contact/" class="btn-primary text-center mt-6 font-semibold px-5 py-3.5 rounded-full text-base" data-nav-mobile>Let's Collaborate</a>
   </div>
 </div>
 
 <main id="main">
-
-<!-- FAQ HERO -->
-<section class="relative pt-40 pb-16 lg:pt-48 lg:pb-20 bg-navy overflow-hidden">
-  <svg class="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="none" aria-hidden="true">
-    <line x1="8%" y1="25%" x2="32%" y2="60%" stroke="#F6F9FB" stroke-width="1"/>
-    <line x1="32%" y1="60%" x2="62%" y2="20%" stroke="#F6F9FB" stroke-width="1"/>
-    <line x1="62%" y1="20%" x2="92%" y2="55%" stroke="#F6F9FB" stroke-width="1"/>
-    <circle cx="8%" cy="25%" r="4" fill="#F6F9FB"/>
-    <circle cx="32%" cy="60%" r="6" fill="#1ACEDF"/>
-    <circle cx="62%" cy="20%" r="4" fill="#FFC857"/>
-    <circle cx="92%" cy="55%" r="5" fill="#F6F9FB"/>
-  </svg>
-  <div class="container-x relative z-10 text-center max-w-2xl mx-auto">
-    <p class="reveal tag text-sky mb-4">Support</p>
-    <h1 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold tracking-tight leading-tight">Frequently Asked Questions</h1>
-    <p class="reveal reveal-delay-2 mt-6 text-white/85 text-lg leading-relaxed">Answers to common questions about working with CoLab. Can't find what you're looking for? <a href="/colab/contact/" class="text-sky underline underline-offset-2 hover:text-white transition">Get in touch</a>.</p>
+<section class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+  <div class="container-x relative z-10">
+    <p class="tag text-sky-600 mb-4">Page not found</p>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight max-w-2xl">That page is not here any more</h1>
+    <p class="mt-4 text-navy/65 max-w-xl" id="nfHint">The link you followed may be from our old website. Here is where things live now.</p>
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/colab/" class="btn-primary px-6 py-3 rounded-full font-semibold text-[15px]">Home</a>
+      <a href="/colab/sessions/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-[15px] text-navy">Sessions and workshops</a>
+      <a href="/colab/research/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-[15px] text-navy">Research and insights</a>
+      <a href="/colab/projects/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-[15px] text-navy">Projects</a>
+      <a href="/colab/contact/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-[15px] text-navy">Contact</a>
+    </div>
   </div>
 </section>
-
-<!-- FAQ ACCORDION -->
-<section class="py-20 lg:py-28 bg-paper">
-  <div class="container-x max-w-3xl mx-auto">
-    <div id="faqList" class="space-y-4"></div>
-  </div>
-</section>
-
 </main>
+<script>
+// Old workshop and research pages that were never migrated: send the visitor to the nearest section.
+(function(){ var p = location.pathname.toLowerCase(); var to = null;
+  if (/logframe|descriptive-statistics|participatory|situation-analysis|dashboard|action-learning|workshop|event/.test(p)) to = '/colab/sessions/';
+  else if (/research|reintegration|leadership|evidence|blog|resource/.test(p)) to = '/colab/research/';
+  if (to) { document.getElementById('nfHint').textContent = 'Taking you to the nearest page on the new site.'; setTimeout(function(){ location.replace(to); }, 1200); } })();
+</script>
 
-<!-- FOOTER -->
 <footer id="footer" class="relative bg-navy text-paper pt-24 lg:pt-28 pb-12 overflow-hidden">
   <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-sky via-gold to-sky"></div>
   <svg class="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none" preserveAspectRatio="none" aria-hidden="true">
@@ -205,42 +200,5 @@
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy text-paper text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
 
 <script src="/colab/js/site.js" defer></script>
-
-<script>
-fetch('/colab/content/faqs.json').then(r => r.json()).then(list => {
-  const wrap = document.getElementById('faqList');
-  if (!wrap || !list.length) return;
-  wrap.innerHTML = list.map((f, i) => {
-    const delay = i ? ` reveal-delay-${Math.min(i, 4)}` : '';
-    return `<div class="faq-item reveal in${delay} bg-white rounded-2xl border hairline overflow-hidden">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5" data-faq-toggle aria-expanded="false">
-        <span class="font-semibold text-navy text-[15px] sm:text-base pr-4">${f.q}</span>
-        <svg class="faq-chevron shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-panel">
-        <div>
-          <p class="px-6 pb-5 text-navy/70 leading-relaxed text-[15px]">${f.a}</p>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-
-  const items = wrap.querySelectorAll('.faq-item');
-  items.forEach(item => {
-    const trigger = item.querySelector('[data-faq-toggle]');
-    trigger.addEventListener('click', () => {
-      const open = item.classList.contains('is-open');
-      items.forEach(other => {
-        other.classList.remove('is-open');
-        other.querySelector('[data-faq-toggle]').setAttribute('aria-expanded', 'false');
-      });
-      if (!open) {
-        item.classList.add('is-open');
-        trigger.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-});
-</script>
 </body>
 </html>
