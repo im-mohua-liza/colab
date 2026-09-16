@@ -14,7 +14,7 @@ body::after {
   background-repeat: no-repeat;
   background-position: center;
   background-size: min(58vw, 560px);
-  opacity: 0.09;
+  opacity: 0.04;   /* was 0.09; lowered 16 Sep 2026 (issue #4): text stays readable on dense pages */
   pointer-events: none;
 }
 ::selection { background:#1ACEDF; color:#073763; }

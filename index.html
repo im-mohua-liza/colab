@@ -451,6 +451,7 @@
           <li><a href="/colab/design/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Design</a></li>
           <li><a href="/colab/ecosystem/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Ecosystem Engagement</a></li>
           <li><a href="/colab/projects/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Projects</a></li>
+          <li><a href="/colab/sessions/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Upcoming Sessions</a></li>
           <li><a href="/colab/faq/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>FAQs</a></li>
           <li><a href="/colab/contact/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Contact</a></li>
         </ul>
@@ -572,27 +573,25 @@ fetch('/colab/content/testimonials.json').then(r => r.json()).then(list => {
   document.getElementById('storyPrev').addEventListener('click', () => showStory(current - 1));
   document.getElementById('storyNext').addEventListener('click', () => showStory(current + 1));
 });
-fetch('/colab/content/events.json').then(r => r.json()).then(list => {
+fetch('/colab/content/sessions.json').then(r => r.json()).then(list => {
+  // Upcoming Events strip = the Sessions page's data (content/sessions.json), written by the
+  // CoLab OS from the sessions calendar. One source, so the strip and the page never disagree.
   const grid = document.getElementById('eventsGrid');
   if (!grid) return;
-  const todayStart = new Date(new Date().toDateString());
-  const upcoming = list
-    .filter(e => new Date(e.date) >= todayStart)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+  const upcoming = list.filter(s => s.upcoming).slice(0, 3);
   if (!upcoming.length) {
     document.getElementById('upcomingEventsSection').style.display = 'none';
     return;
   }
-  grid.innerHTML = upcoming.map((e, i) => {
+  grid.innerHTML = upcoming.map((s, i) => {
     const delay = i ? ` reveal-delay-${Math.min(i, 4)}` : '';
-    const dateStr = new Date(e.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
     return `<article class="reveal in${delay} card-lift bg-paper rounded-2xl border hairline p-7 flex flex-col">
       <div class="flex items-center justify-between mb-5 gap-3">
-        <span class="tag text-sky-600 bg-sky/10 px-2.5 py-1 rounded-full">${e.category}</span>
-        <span class="text-sm font-semibold text-navy/50 whitespace-nowrap">${dateStr}</span>
+        <span class="tag text-sky-600 bg-sky/10 px-2.5 py-1 rounded-full">${s.mode} · ${s.price_text}</span>
+        <span class="text-sm font-semibold text-navy/50 whitespace-nowrap">${s.date_text}</span>
       </div>
-      <h3 class="text-lg font-bold text-navy mb-6 flex-1">${e.title}</h3>
-      <a href="${e.link}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group w-fit">Read More <span class="transition-transform group-hover:translate-x-1">→</span></a>
+      <h3 class="text-lg font-bold text-navy mb-6 flex-1">${s.title}</h3>
+      <a href="/colab/sessions/#${s.slug}" class="inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group w-fit">Details and registration <span class="transition-transform group-hover:translate-x-1">→</span></a>
     </article>`;
   }).join('');
 });
