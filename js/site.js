@@ -42,7 +42,7 @@ if (navEl) {
 }
 
 /* ---------- Scroll reveal (also covers .img-reveal image entrances) ---------- */
-const revealEls = document.querySelectorAll('.reveal, .img-reveal');
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .img-reveal');
 if (revealEls.length) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); revealObserver.unobserve(entry.target); } });
