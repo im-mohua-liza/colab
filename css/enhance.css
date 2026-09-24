@@ -7,10 +7,9 @@
 @keyframes dashFlow { to { stroke-dashoffset: -200; } }
 @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes shimmer { 0% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
-@keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.12); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .float-a, .float-b, .glow-dot, .dash-flow, .grad-anim, .kenburns { animation: none !important; }
+  .float-a, .float-b, .glow-dot, .dash-flow, .grad-anim { animation: none !important; }
 }
 
 /* floating decorative elements */
@@ -40,9 +39,6 @@
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(246,249,251,.14);
 }
-
-/* slow background zoom for photo bands (journal section header) */
-.kenburns { animation: kenburns 18s ease-out infinite alternate; }
 
 /* soft radial mesh background used behind hero visuals */
 .mesh-bg {

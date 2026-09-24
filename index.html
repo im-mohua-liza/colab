@@ -43,19 +43,41 @@
 <header id="nav" class="fixed top-0 inset-x-0 z-40 bg-navy">
   <div class="container-x flex items-center justify-between py-5">
     <a href="/colab/" class="flex items-center gap-3 group shrink-0">
-      <img src="/colab/logo.png" alt="CoLab" width="133" height="132" class="h-12 w-auto">
+      <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" class="h-12 w-auto">
       <span class="hidden md:block w-px h-8 bg-paper/20" aria-hidden="true"></span>
       <span class="hidden md:block text-xs italic text-paper/65 leading-tight max-w-[100px]">From Evidence to Effectiveness</span>
     </a>
 
     <nav class="hidden lg:flex items-center gap-9 text-[14.5px] font-semibold text-paper/75" id="desktopNav">
       <a href="/colab/" class="nav-link active" aria-current="page">Home</a>
-      <a href="/colab/about/" class="nav-link">About</a>
-      <a href="/colab/research/" class="nav-link">Research</a>
-      <a href="/colab/design/" class="nav-link">Design</a>
-      <a href="/colab/ecosystem/" class="nav-link">Ecosystem</a>
+      <div class="nav-dd">
+        <a href="/colab/about/" class="nav-link" aria-haspopup="true">About<svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dd-menu">
+          <span class="dd-glow" aria-hidden="true"></span>
+          <a href="/colab/about/" class="dd-card" style="--i:0"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg></span><span class="dd-text"><span class="dd-title">About Us</span><span class="dd-desc">An independent lab founded in 2019, turning evidence into scalable programmes.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/about/#team" class="dd-card" style="--i:1"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3.5 19c.6-3.2 2.8-5.2 5.5-5.2s4.9 2 5.5 5.2M15 14.2c2.3.1 4.2 1.8 4.8 4.8"/></svg></span><span class="dd-text"><span class="dd-title">Team</span><span class="dd-desc">Researchers, designers and builders, led from Bangalore.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/ecosystem/" class="dd-card" style="--i:2"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.6"/><circle cx="18" cy="8" r="2.6"/><circle cx="12" cy="18" r="2.6"/><path d="M9.5 10.5 11.5 16M16 9.5 13.5 16"/></svg></span><span class="dd-text"><span class="dd-title">Social Impact</span><span class="dd-desc">Strong programs need strong ecosystems.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <a href="/colab/services/" class="nav-link" aria-haspopup="true">Services<svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dd-menu">
+          <span class="dd-glow" aria-hidden="true"></span>
+          <a href="/colab/services/#impact-strategy" class="dd-card" style="--i:0"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4Z"/><path d="m14 7 3 3"/></svg></span><span class="dd-text"><span class="dd-title">Impact Strategy</span><span class="dd-desc">Program blueprints, toolkits and SOPs.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/services/#impact-monitoring" class="dd-card" style="--i:1"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-7"/></svg></span><span class="dd-text"><span class="dd-title">Impact Monitoring</span><span class="dd-desc">Measuring starting points and progress.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/services/#impact-measurement" class="dd-card" style="--i:2"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="dd-text"><span class="dd-title">Impact Measurement</span><span class="dd-desc">Independent evaluations and evidence syntheses.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/services/#capacity-building" class="dd-card" style="--i:3"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 0 2.5-2.5v-13Z"/></svg></span><span class="dd-text"><span class="dd-title">Capacity Building</span><span class="dd-desc">Hands-on, immersive workshops and courses.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <a href="/colab/research/" class="nav-link" aria-haspopup="true">Research<svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dd-menu">
+          <span class="dd-glow" aria-hidden="true"></span>
+          <a href="/colab/journal/" class="dd-card" style="--i:0"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg></span><span class="dd-text"><span class="dd-title">Blog</span><span class="dd-desc">Research notes, field stories and perspectives.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/sessions/" class="dd-card" style="--i:1"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span class="dd-text"><span class="dd-title">Events</span><span class="dd-desc">Short, practical sessions and workshops.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
       <a href="/colab/projects/" class="nav-link">Projects</a>
-      <a href="/colab/sessions/" class="nav-link">Sessions</a>
       <a href="/colab/faq/" class="nav-link">FAQs</a>
       <a href="/colab/contact/" class="nav-link">Contact</a>
     </nav>
@@ -75,11 +97,24 @@
   <div class="container-x flex-1 flex flex-col justify-center gap-1 py-24">
     <a href="/colab/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile aria-current="page">Home</a>
     <a href="/colab/about/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>About</a>
+    <div class="mobile-sub">
+      <a href="/colab/about/" data-nav-mobile>About Us</a>
+      <a href="/colab/about/#team" data-nav-mobile>Team</a>
+      <a href="/colab/ecosystem/" data-nav-mobile>Social Impact</a>
+    </div>
+    <a href="/colab/services/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Services</a>
+    <div class="mobile-sub">
+      <a href="/colab/services/#impact-strategy" data-nav-mobile>Impact Strategy</a>
+      <a href="/colab/services/#impact-monitoring" data-nav-mobile>Impact Monitoring</a>
+      <a href="/colab/services/#impact-measurement" data-nav-mobile>Impact Measurement</a>
+      <a href="/colab/services/#capacity-building" data-nav-mobile>Capacity Building</a>
+    </div>
     <a href="/colab/research/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Research</a>
-    <a href="/colab/design/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Design</a>
-    <a href="/colab/ecosystem/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Ecosystem</a>
+    <div class="mobile-sub">
+      <a href="/colab/journal/" data-nav-mobile>Blog</a>
+      <a href="/colab/sessions/" data-nav-mobile>Events</a>
+    </div>
     <a href="/colab/projects/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Projects</a>
-    <a href="/colab/sessions/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Sessions</a>
     <a href="/colab/faq/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>FAQs</a>
     <a href="/colab/contact/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Contact</a>
     <a href="/colab/contact/" class="btn-primary text-center mt-6 font-semibold px-5 py-3.5 rounded-full text-base" data-nav-mobile>Let's Collaborate</a>
@@ -89,23 +124,23 @@
 <main id="main">
 
 <!-- HERO -->
-<section class="relative pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden">
-  <div class="blob w-[420px] h-[420px] bg-sky/25 -top-32 -right-24" aria-hidden="true"></div>
-  <div class="blob w-[380px] h-[380px] bg-gold/20 bottom-0 -left-32" aria-hidden="true"></div>
+<section class="photo-hero pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden">
+  <div class="photo-hero-bg" aria-hidden="true"><img src="/colab/images/student-portrait.webp" alt="" decoding="async"></div>
+  <div class="photo-hero-tint" aria-hidden="true"></div>
   <div class="container-x grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center relative z-10">
-    <div class="min-w-0">
-      <p class="reveal tag text-navy/70 mb-6">
+    <div class="min-w-0 hero-glass rounded-[2rem] p-7 sm:p-10">
+      <p class="reveal tag text-sky mb-6">
         Evidence &nbsp;→&nbsp; Design &nbsp;→&nbsp; Collaboration &nbsp;→&nbsp; Impact
       </p>
-      <h1 class="reveal reveal-delay-1 text-[2.5rem] leading-[1.1] sm:text-6xl lg:text-[4.2rem] lg:leading-[1.05] font-extrabold tracking-tight text-navy">
+      <h1 class="reveal reveal-delay-1 text-[2.5rem] leading-[1.1] sm:text-6xl lg:text-[4.2rem] lg:leading-[1.05] font-extrabold tracking-tight text-paper">
         Designing for<br><span class="underline-sky">Education Equity</span>
       </h1>
-      <p class="reveal reveal-delay-2 mt-7 text-lg text-navy/70 max-w-lg leading-relaxed">
+      <p class="reveal reveal-delay-2 mt-7 text-lg text-paper/85 max-w-lg leading-relaxed">
         Building evidence, designing solutions and collaborating to create meaningful impact in education.
       </p>
       <div class="reveal reveal-delay-3 mt-10 flex flex-wrap items-center gap-4">
         <a href="/colab/projects/" class="btn-primary px-7 py-3.5 rounded-full font-semibold text-[15px]">Explore Our Work</a>
-        <a href="/colab/contact/" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-[15px] text-navy">Collaborate With Us</a>
+        <a href="/colab/contact/" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-[15px] text-paper">Collaborate With Us</a>
       </div>
     </div>
 
@@ -121,95 +156,6 @@
         <p class="text-2xl font-extrabold text-navy" id="heroStatValue">10+</p>
         <p class="text-xs text-navy/70 mt-0.5" id="heroStatNote">Research outputs shaping solutions across the ecosystem</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- COLAB AT A GLANCE -->
-<section class="py-24 lg:py-32 bg-paper border-y hairline overflow-hidden">
-  <div class="container-x">
-    <div class="max-w-2xl mx-auto text-center reveal">
-      <p class="tag text-sky-600 mb-4">At a Glance</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">CoLab at a Glance</h2>
-    </div>
-
-    <div class="mt-16 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 items-stretch">
-      <div class="reveal reveal-delay-1 bg-white rounded-3xl border hairline shadow-lg p-8 sm:p-10 flex flex-col">
-        <div>
-          <p class="tag text-sky-600 mb-3">Who We Are</p>
-          <p class="text-navy/70 leading-relaxed">A research, design and innovation lab founded in 2019, working at the intersection of evidence, design and collaboration to support CSOs, NGOs and funders across the Global South.</p>
-        </div>
-        <div class="mt-8 pt-8 border-t hairline">
-          <p class="tag text-gold-600 mb-3">What We Do</p>
-          <p class="text-navy/70 leading-relaxed">We research real challenges, design evidence-informed solutions, and collaborate with educators, institutions and researchers to turn what works into shared, scalable public goods.</p>
-        </div>
-        <div class="mt-8 pt-8 border-t hairline">
-          <p class="tag text-cardinal mb-4">Sectors We Work In</p>
-          <div class="flex flex-wrap gap-2.5">
-            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-navy" aria-hidden="true"></span>Education</span>
-            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-cardinal" aria-hidden="true"></span>Women's Empowerment</span>
-            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-gold" aria-hidden="true"></span>Livelihoods</span>
-            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-sage" aria-hidden="true"></span>Environmental Sustainability</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal reveal-delay-2 relative overflow-hidden bg-navy text-paper rounded-3xl p-8 sm:p-10 flex flex-col justify-center">
-        <div class="mesh-bg-dark" aria-hidden="true"></div>
-        <div class="relative z-10">
-          <p class="tag text-sky mb-8">How We Create Impact</p>
-          <div class="grid grid-cols-2 gap-x-6 gap-y-9">
-            <div class="min-w-0">
-              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="10" data-suffix="+">0</span></p>
-              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Research Outputs</p>
-            </div>
-            <div class="min-w-0">
-              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="10">0</span></p>
-              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Evidence-Informed Solution Packages</p>
-            </div>
-            <div class="min-w-0">
-              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="8">0</span></p>
-              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Courses &amp; Workshops</p>
-            </div>
-            <div class="min-w-0">
-              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="15" data-suffix="+">0</span></p>
-              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Education Projects &amp; Collaborations</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="border-y hairline bg-navy text-paper">
-  <div class="container-x py-14 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-8 lg:gap-10">
-    <div class="reveal min-w-0">
-      <p class="text-xl sm:text-4xl lg:text-5xl font-extrabold break-words"><span class="counter-num" data-count="10" data-suffix="+">0</span></p>
-      <p class="text-xs sm:text-sm text-paper/60 mt-2 tracking-wide break-words">Research Outputs</p>
-    </div>
-    <div class="reveal reveal-delay-1 min-w-0">
-      <p class="text-xl sm:text-4xl lg:text-5xl font-extrabold break-words"><span class="counter-num" data-count="10">0</span></p>
-      <p class="text-xs sm:text-sm text-paper/60 mt-2 tracking-wide break-words">Evidence-Informed Solution Packages</p>
-    </div>
-    <div class="reveal reveal-delay-2 min-w-0">
-      <p class="text-xl sm:text-4xl lg:text-5xl font-extrabold break-words"><span class="counter-num" data-count="8">0</span></p>
-      <p class="text-xs sm:text-sm text-paper/60 mt-2 tracking-wide break-words">Courses &amp; Workshops</p>
-    </div>
-    <div class="reveal reveal-delay-3 min-w-0">
-      <p class="text-xl sm:text-4xl lg:text-5xl font-extrabold break-words"><span class="counter-num" data-count="15" data-suffix="+">0</span></p>
-      <p class="text-xs sm:text-sm text-paper/60 mt-2 tracking-wide break-words">Education Projects &amp; Collaborations</p>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<section class="bg-navy py-6 border-y border-paper/10">
-  <div class="text-marquee" style="--mq-speed:26s">
-    <div class="text-marquee-track">
-      <span class="text-marquee-item text-2xl sm:text-3xl font-extrabold text-paper/90 tracking-tight">Evidence <span class="text-gold mx-2">•</span> Design <span class="text-sky mx-2">•</span> Collaboration <span class="text-gold mx-2">•</span> Impact <span class="text-sky mx-2">•</span> Global South <span class="text-gold mx-2">•</span> Since 2019 <span class="text-sky mx-2">•</span></span>
-      <span class="text-marquee-item text-2xl sm:text-3xl font-extrabold text-paper/90 tracking-tight" aria-hidden="true">Evidence <span class="text-gold mx-2">•</span> Design <span class="text-sky mx-2">•</span> Collaboration <span class="text-gold mx-2">•</span> Impact <span class="text-sky mx-2">•</span> Global South <span class="text-gold mx-2">•</span> Since 2019 <span class="text-sky mx-2">•</span></span>
     </div>
   </div>
 </section>
@@ -256,81 +202,131 @@
   </div>
 </section>
 
-<!-- WHO / WHAT / WHY -->
-<section class="py-24 lg:py-32 bg-white border-y hairline">
+<!-- EXPLORE COLAB: one tabbed hub instead of stacked sections. Only the selected panel shows;
+     tabs deep-link as /colab/#overview, #work, #why, #stories, #research, #blog, #events, #videos, #annual-report. -->
+<section id="explore" class="scroll-mt-28 py-20 lg:py-24 bg-paper border-y hairline">
   <div class="container-x">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-      <div class="reveal">
-        <p class="tag text-sky-600 mb-4">Who we are</p>
-        <p class="text-navy/70 leading-relaxed">CoLab works at the intersection of research, evidence, design and collaboration to help improve education. Founded in 2019, we support CSOs, NGOs and funders across the Global South — working in education, women's empowerment, livelihoods and environmental sustainability.</p>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <p class="tag text-gold-600 mb-4">What we do</p>
-        <p class="text-navy/70 leading-relaxed">We research real challenges in education, design evidence-informed solutions, and collaborate with educators, institutions and researchers to turn what works into shared, scalable public goods.</p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <p class="tag text-cardinal mb-4">Why it matters</p>
-        <p class="text-navy/70 leading-relaxed">Every child deserves equal educational outcomes. Yet evidence is often out of reach, ecosystems are fragmented, and promising work struggles to scale — closing that gap is the work we do.</p>
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <p class="tag text-sky-600 mb-4">Explore CoLab</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">Everything we do, one click away</h2>
+    </div>
+
+    <div class="hub-tabs-wrap reveal reveal-delay-1">
+      <div class="hub-tabs" role="tablist" aria-label="Explore CoLab">
+        <span class="hub-ind" aria-hidden="true"></span>
+        <button type="button" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" tabindex="0" data-tab="overview">Overview</button>
+        <button type="button" role="tab" id="tab-work" aria-controls="panel-work" aria-selected="false" tabindex="-1" data-tab="work">Our Work</button>
+        <button type="button" role="tab" id="tab-why" aria-controls="panel-why" aria-selected="false" tabindex="-1" data-tab="why">Why CoLab</button>
+        <button type="button" role="tab" id="tab-stories" aria-controls="panel-stories" aria-selected="false" tabindex="-1" data-tab="stories">Stories</button>
+        <button type="button" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" tabindex="-1" data-tab="research">Research</button>
+        <button type="button" role="tab" id="tab-blog" aria-controls="panel-blog" aria-selected="false" tabindex="-1" data-tab="blog">Blog</button>
+        <button type="button" role="tab" id="tab-events" aria-controls="panel-events" aria-selected="false" tabindex="-1" data-tab="events">Events</button>
+        <button type="button" role="tab" id="tab-videos" aria-controls="panel-videos" aria-selected="false" tabindex="-1" data-tab="videos">Videos</button>
+        <button type="button" role="tab" id="tab-annual-report" aria-controls="panel-annual-report" aria-selected="false" tabindex="-1" data-tab="annual-report">Annual Report</button>
       </div>
     </div>
 
-    <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-      <a href="/colab/about/" class="reveal card-lift bg-paper rounded-xl border hairline px-5 py-6 text-center font-semibold text-navy text-sm">About <span class="block text-navy/40 mt-1">→</span></a>
-      <a href="/colab/research/" class="reveal card-lift bg-paper rounded-xl border hairline px-5 py-6 text-center font-semibold text-navy text-sm">Research <span class="block text-navy/40 mt-1">→</span></a>
-      <a href="/colab/design/" class="reveal card-lift bg-paper rounded-xl border hairline px-5 py-6 text-center font-semibold text-navy text-sm">Design <span class="block text-navy/40 mt-1">→</span></a>
-      <a href="/colab/projects/" class="reveal card-lift bg-paper rounded-xl border hairline px-5 py-6 text-center font-semibold text-navy text-sm">Projects <span class="block text-navy/40 mt-1">→</span></a>
-      <a href="/colab/contact/" class="reveal card-lift bg-paper rounded-xl border hairline px-5 py-6 text-center font-semibold text-navy text-sm">Contact <span class="block text-navy/40 mt-1">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURED WORK -->
-<section class="py-24 lg:py-32">
-  <div class="container-x">
-    <div class="flex flex-wrap items-end justify-between gap-6 reveal">
-      <div class="max-w-xl">
-        <p class="tag text-sky-600 mb-4">Featured Work</p>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">A glimpse of our projects</h2>
+    <div class="hub-stage">
+    <div class="hub-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">At a Glance</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">CoLab at a Glance</h3>
+          
+        </div>
+        
       </div>
-      <a href="/colab/projects/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">View All Projects</a>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 items-stretch">
+      <div class="bg-white rounded-3xl border hairline shadow-lg p-8 sm:p-10 flex flex-col">
+        <div>
+          <p class="tag text-sky-600 mb-3">Who We Are</p>
+          <p class="text-navy/70 leading-relaxed">A research, design and innovation lab founded in 2019, working at the intersection of evidence, design and collaboration to support CSOs, NGOs and funders across the Global South.</p>
+        </div>
+        <div class="mt-8 pt-8 border-t hairline">
+          <p class="tag text-gold-600 mb-3">What We Do</p>
+          <p class="text-navy/70 leading-relaxed">We research real challenges, design evidence-informed solutions, and collaborate with educators, institutions and researchers to turn what works into shared, scalable public goods.</p>
+        </div>
+        <div class="mt-8 pt-8 border-t hairline">
+          <p class="tag text-cardinal mb-4">Sectors We Work In</p>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-navy" aria-hidden="true"></span>Education</span>
+            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-cardinal" aria-hidden="true"></span>Women's Empowerment</span>
+            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-gold" aria-hidden="true"></span>Livelihoods</span>
+            <span class="inline-flex items-center gap-2 text-sm font-semibold text-navy bg-paper border hairline px-4 py-2 rounded-full"><span class="w-2 h-2 rounded-full bg-sage" aria-hidden="true"></span>Environmental Sustainability</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative overflow-hidden bg-navy text-paper rounded-3xl p-8 sm:p-10 flex flex-col justify-center">
+        <div class="mesh-bg-dark" aria-hidden="true"></div>
+        <div class="relative z-10">
+          <p class="tag text-sky mb-8">How We Create Impact</p>
+          <div class="grid grid-cols-2 gap-x-6 gap-y-9">
+            <div class="min-w-0">
+              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="10" data-suffix="+">0</span></p>
+              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Research Outputs</p>
+            </div>
+            <div class="min-w-0">
+              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="10">0</span></p>
+              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Evidence-Informed Solution Packages</p>
+            </div>
+            <div class="min-w-0">
+              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="8">0</span></p>
+              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Courses &amp; Workshops</p>
+            </div>
+            <div class="min-w-0">
+              <p class="text-3xl sm:text-4xl font-extrabold break-words"><span class="counter-num" data-count="15" data-suffix="+">0</span></p>
+              <p class="text-xs sm:text-sm text-paper/60 mt-2 leading-snug">Education Projects &amp; Collaborations</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="featuredGrid"></div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE COLAB -->
-<section class="py-24 lg:py-32 bg-white border-b hairline">
-  <div class="container-x">
-    <div class="max-w-2xl reveal">
-      <p class="tag text-sky-600 mb-4">Why Choose CoLab</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">Building Trust Through Innovation, Evidence and Deep Ecosystem Engagement</h2>
-      <p class="mt-4 text-navy/65">At CoLab, we build trust through innovation and evidence-based solutions. By engaging deeply with local ecosystems, we create sustainable, impactful initiatives. Our open-source, digital public goods foster transparency and shared ownership, earning us the trust of mission-driven partners worldwide.</p>
+      <p class="mt-8 max-w-3xl text-navy/70 leading-relaxed"><span class="tag text-cardinal mr-2">Why it matters</span>Every child deserves equal educational outcomes. Yet evidence is often out of reach, ecosystems are fragmented, and promising work struggles to scale — closing that gap is the work we do.</p>
     </div>
-
-    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="reveal shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
+    <div class="hub-panel" role="tabpanel" id="panel-work" aria-labelledby="tab-work" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Featured Work</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">A glimpse of our projects</h3>
+          
+        </div>
+        <a href="/colab/projects/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">View All Projects</a>
+      </div>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="featuredGrid"></div>
+    </div>
+    <div class="hub-panel" role="tabpanel" id="panel-why" aria-labelledby="tab-why" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Why Choose CoLab</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">Building Trust Through Innovation, Evidence and Deep Ecosystem Engagement</h3>
+          <p class="mt-3 text-navy/65 leading-relaxed">At CoLab, we build trust through innovation and evidence-based solutions. By engaging deeply with local ecosystems, we create sustainable, impactful initiatives. Our open-source, digital public goods foster transparency and shared ownership, earning us the trust of mission-driven partners worldwide.</p>
+        </div>
+        
+      </div>
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
         <span class="icon-badge bg-navy mb-6">
           <svg width="26" height="26" viewBox="0 0 40 40"><path d="M20 8a9 9 0 0 0-5 16.5c1 .8 1.6 1.9 1.6 3.1v.4h6.8v-.4c0-1.2.6-2.3 1.6-3.1A9 9 0 0 0 20 8Z" fill="none" stroke="#F6F9FB" stroke-width="2.2" stroke-linejoin="round"/><path d="M17 32h6M18 35.5h4" stroke="#F6F9FB" stroke-width="2.2" stroke-linecap="round"/></svg>
         </span>
         <h3 class="text-lg font-bold text-navy mb-2">Innovation &amp; Evidence-driven Solutions</h3>
         <p class="text-[14px] text-navy/65 leading-relaxed">Creating impactful, sustainable change through proven methods.</p>
       </div>
-      <div class="reveal reveal-delay-1 shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
+      <div class="shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
         <span class="icon-badge bg-gold mb-6">
           <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="12" cy="12" r="4" fill="none" stroke="#073763" stroke-width="2.2"/><circle cx="28" cy="12" r="4" fill="none" stroke="#073763" stroke-width="2.2"/><circle cx="20" cy="28" r="4" fill="none" stroke="#073763" stroke-width="2.2"/><path d="M15 14.5 17.5 24.5M25 14.5 22.5 24.5M16 12h8" stroke="#073763" stroke-width="2" stroke-linecap="round"/></svg>
         </span>
         <h3 class="text-lg font-bold text-navy mb-2">Deep Ecosystem Engagement</h3>
         <p class="text-[14px] text-navy/65 leading-relaxed">Actively collaborating with local communities to ensure success.</p>
       </div>
-      <div class="reveal reveal-delay-2 shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
+      <div class="shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
         <span class="icon-badge bg-sky-600 mb-6">
           <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="20" cy="20" r="10" fill="none" stroke="#F6F9FB" stroke-width="2.2"/><ellipse cx="20" cy="20" rx="10" ry="4" fill="none" stroke="#F6F9FB" stroke-width="1.6"/><path d="M20 10v20" stroke="#F6F9FB" stroke-width="1.6"/></svg>
         </span>
         <h3 class="text-lg font-bold text-navy mb-2">Open-source Digital Public Goods</h3>
         <p class="text-[14px] text-navy/65 leading-relaxed">Promoting transparency and shared ownership for long-term impact.</p>
       </div>
-      <div class="reveal reveal-delay-3 shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
+      <div class="shimmer-card card-lift bg-paper rounded-2xl border hairline p-8 flex flex-col">
         <span class="icon-badge bg-sage mb-6">
           <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="20" cy="20" r="10" fill="none" stroke="#F6F9FB" stroke-width="2"/><circle cx="20" cy="20" r="5.5" fill="none" stroke="#F6F9FB" stroke-width="2"/><circle cx="20" cy="20" r="1.5" fill="#F6F9FB"/></svg>
         </span>
@@ -338,19 +334,19 @@
         <p class="text-[14px] text-navy/65 leading-relaxed">Trusted by global organisations committed to transformative change.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- SHARED STORIES / TESTIMONIALS -->
-<section class="relative py-24 lg:py-32 bg-navy text-paper overflow-hidden">
-  <div class="mesh-bg-dark" aria-hidden="true"></div>
-  <div class="container-x relative z-10">
-    <div class="max-w-2xl mx-auto reveal text-center">
-      <p class="tag text-sky mb-4">Testimonials</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Shared Stories of Success and Change</h2>
     </div>
-
-    <div class="mt-14 reveal reveal-delay-1 max-w-2xl mx-auto">
+    <div class="hub-panel" role="tabpanel" id="panel-stories" aria-labelledby="tab-stories" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Testimonials</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">Shared Stories of Success and Change</h3>
+          
+        </div>
+        
+      </div>
+      <div class="hub-stories mt-8 rounded-3xl bg-navy text-paper p-8 sm:p-12 relative overflow-hidden">
+        <div class="mesh-bg-dark" aria-hidden="true"></div>
+        <div class="relative z-10"><div class="max-w-2xl mx-auto">
       <div id="storyTrack" class="min-h-[280px] sm:min-h-[240px]"></div>
       <div class="flex items-center justify-center gap-5 mt-10">
         <button type="button" id="storyPrev" class="story-nav-btn" aria-label="Previous story">
@@ -362,39 +358,73 @@
         </button>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- RESOURCES & INSIGHTS -->
-<section class="py-24 lg:py-32 bg-paper border-b hairline">
-  <div class="container-x">
-    <div class="max-w-2xl reveal">
-      <p class="tag text-sky-600 mb-4">Resources &amp; Insights</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">From Research to Thought Leadership</h2>
-      <p class="mt-4 text-navy/65">Research outputs, blog perspectives and events from across CoLab's work.</p>
+        </div>
+      </div>
     </div>
-
-    <div class="mt-10 reveal reveal-delay-1 flex flex-wrap gap-3" id="resourceFilterBar">
-      <button class="filter-btn active px-4 py-2 rounded-full text-sm font-semibold border hairline" data-filter="All">All</button>
-      <button class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border hairline" data-filter="Research">Research</button>
-      <button class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border hairline" data-filter="Blog">Blog</button>
-      <button class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border hairline" data-filter="Event">Events</button>
-      <button class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border hairline" data-filter="Thought Leadership">Thought Leadership</button>
+    <div class="hub-panel" role="tabpanel" id="panel-research" aria-labelledby="tab-research" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Research</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">From Research to Thought Leadership</h3>
+          <p class="mt-3 text-navy/65 leading-relaxed">Research outputs and thought leadership from across CoLab's work.</p>
+        </div>
+        <a href="/colab/research/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">All Research <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="researchGrid"></div>
     </div>
-
-    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="resourceGrid"></div>
-  </div>
-</section>
-
-<!-- UPCOMING EVENTS -->
-<section class="py-24 lg:py-32 bg-white border-b hairline" id="upcomingEventsSection">
-  <div class="container-x">
-    <div class="max-w-2xl reveal">
-      <p class="tag text-sky-600 mb-4">Upcoming Events</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-navy font-extrabold tracking-tight">Stay Informed</h2>
-      <p class="mt-4 text-navy/65">Free workshops and learning sessions from CoLab — open to the wider education ecosystem.</p>
+    <div class="hub-panel" role="tabpanel" id="panel-blog" aria-labelledby="tab-blog" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Blog</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">From the CoLab journal</h3>
+          
+        </div>
+        <a href="/colab/journal/" class="btn-primary px-6 py-3 rounded-full font-semibold text-sm whitespace-nowrap">Read the Journal <span aria-hidden="true">→</span></a>
+      </div>
+      <div id="journalLatest" data-count="6" class="mt-8 flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory no-scrollbar"></div>
     </div>
-    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="eventsGrid"></div>
+    <div class="hub-panel" role="tabpanel" id="panel-events" aria-labelledby="tab-events" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Events</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">Stay Informed</h3>
+          <p class="mt-3 text-navy/65 leading-relaxed">Free workshops and learning sessions from CoLab — open to the wider education ecosystem.</p>
+        </div>
+        <a href="/colab/sessions/" class="btn-ghost px-6 py-3 rounded-full font-semibold text-sm text-navy whitespace-nowrap">All Sessions <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="eventsGrid"></div>
+    </div>
+    <div class="hub-panel" role="tabpanel" id="panel-videos" aria-labelledby="tab-videos" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Videos</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">Videos</h3>
+          
+        </div>
+        
+      </div>
+      <div class="hub-soon">
+        <span class="icon-badge bg-navy w-14 h-14 rounded-2xl mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F6F9FB" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+        <p class="text-lg font-bold text-navy">CoLab's videos have not been published yet.</p>
+        <p class="mt-2 text-navy/60">Webinars and workshop highlights will appear here. Until then, see <a href="/colab/sessions/" class="text-sky-600 font-semibold underline underline-offset-2">upcoming sessions</a>.</p>
+      </div>
+    </div>
+    <div class="hub-panel" role="tabpanel" id="panel-annual-report" aria-labelledby="tab-annual-report" hidden>
+      <div class="hub-panel-head">
+        <div class="max-w-2xl">
+          <p class="tag text-sky-600 mb-3">Annual Report</p>
+          <h3 class="text-2xl sm:text-3xl text-navy font-extrabold tracking-tight">Annual Report</h3>
+          
+        </div>
+        
+      </div>
+      <div class="hub-soon">
+        <span class="icon-badge bg-navy w-14 h-14 rounded-2xl mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F6F9FB" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+        <p class="text-lg font-bold text-navy">CoLab's annual report has not been published yet.</p>
+        <p class="mt-2 text-navy/60">It will be available here once released. For earlier work, see <a href="/colab/research/" class="text-sky-600 font-semibold underline underline-offset-2">our research</a>.</p>
+      </div>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -442,7 +472,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-10 gap-y-14 lg:gap-x-12 pb-16">
       <div class="lg:col-span-1 min-w-0">
         <div class="flex items-center mb-6">
-          <img src="/colab/logo.png" alt="CoLab" width="133" height="132" loading="lazy" class="h-14 w-auto">
+          <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" loading="lazy" class="h-14 w-auto">
         </div>
         <p class="text-sm text-paper/55 leading-relaxed">A research, design and innovation lab for sustainable development. Founded 2019.</p>
         <p class="text-sm italic text-sky mt-4">"From Evidence to Effectiveness"</p>
@@ -452,7 +482,9 @@
         <h3 class="tag text-sky mb-6 pb-3 border-b border-paper/15">Quick Links</h3>
         <ul class="space-y-3.5 text-sm text-paper/65">
           <li><a href="/colab/about/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>About</a></li>
+          <li><a href="/colab/services/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Services</a></li>
           <li><a href="/colab/research/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Research</a></li>
+          <li><a href="/colab/journal/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Journal</a></li>
           <li><a href="/colab/design/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Design</a></li>
           <li><a href="/colab/ecosystem/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Ecosystem Engagement</a></li>
           <li><a href="/colab/projects/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Projects</a></li>
@@ -510,7 +542,7 @@
     <div class="border-t border-paper/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper/45 text-center sm:text-left">
       <p>© 2026 CoLab Global Consulting. All rights reserved.</p>
       <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
-        <a href="#" class="hover:text-sky transition" data-soon>Privacy Policy</a>
+        <a href="/colab/privacy-policy/" class="hover:text-sky transition">Privacy Policy</a>
         <span>CoLab Global Consulting</span>
         <a href="#" class="hover:text-sky transition inline-flex items-center gap-1.5">Back to top <span aria-hidden="true">↑</span></a>
       </div>
@@ -520,7 +552,9 @@
 
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy text-paper text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
 
+<script src="/colab/js/journal.js"></script>
 <script src="/colab/js/site.js" defer></script>
+<script src="/colab/js/motion.js" defer></script>
 
 <script>
 fetch('/colab/content/stats.json').then(r => r.json()).then(s => {
@@ -578,82 +612,111 @@ fetch('/colab/content/testimonials.json').then(r => r.json()).then(list => {
   document.getElementById('storyPrev').addEventListener('click', () => showStory(current - 1));
   document.getElementById('storyNext').addEventListener('click', () => showStory(current + 1));
 });
-fetch('/colab/content/sessions.json').then(r => r.json()).then(list => {
-  // Upcoming Events strip = the Sessions page's data (content/sessions.json), written by the
-  // CoLab OS from the sessions calendar. One source, so the strip and the page never disagree.
-  const grid = document.getElementById('eventsGrid');
+// Research panel: research outputs and thought leadership (content/resources.json).
+fetch('/colab/content/resources.json').then(r => r.json()).then(resources => {
+  const grid = document.getElementById('researchGrid');
   if (!grid) return;
-  const upcoming = list.filter(s => s.upcoming).slice(0, 3);
-  if (!upcoming.length) {
-    document.getElementById('upcomingEventsSection').style.display = 'none';
-    return;
-  }
-  grid.innerHTML = upcoming.map((s, i) => {
-    const delay = i ? ` reveal-delay-${Math.min(i, 4)}` : '';
-    return `<article class="reveal in${delay} card-lift bg-paper rounded-2xl border hairline p-7 flex flex-col">
-      <div class="flex items-center justify-between mb-5 gap-3">
-        <span class="tag text-sky-600 bg-sky/10 px-2.5 py-1 rounded-full">${s.mode} · ${s.price_text}</span>
-        <span class="text-sm font-semibold text-navy/50 whitespace-nowrap">${s.date_text}</span>
+  const typeColor = { 'Research': ['text-navy', 'bg-navy/10'], 'Thought Leadership': ['text-cardinal', 'bg-cardinal/10'] };
+  const items = resources.filter(r => typeColor[r.type]);
+  grid.innerHTML = items.map(it => {
+    const [tx, bg] = typeColor[it.type];
+    const isPdf = (it.link || '').endsWith('.pdf');
+    const cta = it.link
+      ? (isPdf
+        ? `<a href="${it.link}" download class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Download PDF <span>↓</span></a>`
+        : `<a href="${it.link}" target="_blank" rel="noopener" class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Read More <span>→</span></a>`)
+      : `<span class="mt-5 text-sm font-semibold text-navy/35 inline-flex items-center gap-2">Coming soon</span>`;
+    return `<article class="card-lift bg-white rounded-2xl border hairline p-7 flex flex-col">
+      <div class="flex items-center justify-between gap-3 mb-4">
+        <span class="tag ${tx} ${bg} px-2.5 py-1 rounded-full">${it.type}</span>
+        ${it.date ? `<span class="text-xs text-navy/50 whitespace-nowrap">${it.date}</span>` : ''}
       </div>
-      <h3 class="text-lg font-bold text-navy mb-6 flex-1">${s.title}</h3>
-      <a href="/colab/sessions/#${s.slug}" class="inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group w-fit">Details and registration <span class="transition-transform group-hover:translate-x-1">→</span></a>
+      <p class="tag text-navy/40 mb-2">${it.category}</p>
+      <h3 class="text-lg font-bold leading-snug text-navy mb-2">${it.title}</h3>
+      ${it.desc ? `<p class="text-[14px] text-navy/65 leading-relaxed flex-1">${it.desc}</p>` : '<div class="flex-1"></div>'}
+      ${cta}
     </article>`;
   }).join('');
 });
+
+// Events panel: upcoming sessions from the CoLab OS calendar (content/sessions.json) first,
+// then CoLab events (content/events.json), upcoming before past.
 Promise.all([
-  fetch('/colab/content/resources.json').then(r => r.json()),
-  fetch('/colab/content/events.json').then(r => r.json())
-]).then(([resources, events]) => {
-  const grid = document.getElementById('resourceGrid');
-  const bar = document.getElementById('resourceFilterBar');
-  if (!grid || !bar) return;
-
-  const todayStart = new Date(new Date().toDateString());
-  const eventItems = events.map(e => ({
-    type: 'Event', category: new Date(e.date) >= todayStart ? 'Upcoming' : 'Past Event', title: e.title, desc: '',
-    date: new Date(e.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
-    link: e.link
-  }));
-  const items = resources.map(r => ({ ...r, isPdf: (r.link || '').endsWith('.pdf') })).concat(eventItems);
-
-  const typeColor = {
-    'Research': ['text-navy', 'bg-navy/10'],
-    'Blog': ['text-sky-600', 'bg-sky/10'],
-    'Event': ['text-gold-600', 'bg-gold/15'],
-    'Thought Leadership': ['text-cardinal', 'bg-cardinal/10']
-  };
-
-  function renderResources(filter) {
-    const list = items.filter(it => filter === 'All' || it.type === filter);
-    grid.innerHTML = list.map((it, i) => {
-      const delay = i % 3 ? ` reveal-delay-${i % 3}` : '';
-      const [tx, bg] = typeColor[it.type] || typeColor['Blog'];
-      const cta = it.link
-        ? (it.isPdf
-          ? `<a href="${it.link}" download class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Download PDF <span>↓</span></a>`
-          : `<a href="${it.link}" target="_blank" rel="noopener" class="mt-5 text-sm font-semibold text-navy inline-flex items-center gap-2">Read More <span>→</span></a>`)
-        : `<span class="mt-5 text-sm font-semibold text-navy/35 inline-flex items-center gap-2">Coming soon</span>`;
-      return `<article class="reveal in${delay} card-lift bg-white rounded-2xl border hairline p-7 flex flex-col">
-        <div class="flex items-center justify-between gap-3 mb-4">
-          <span class="tag ${tx} ${bg} px-2.5 py-1 rounded-full">${it.type}</span>
-          ${it.date ? `<span class="text-xs text-navy/50 whitespace-nowrap">${it.date}</span>` : ''}
-        </div>
-        <p class="tag text-navy/40 mb-2">${it.category}</p>
-        <h3 class="text-lg font-bold leading-snug text-navy mb-2">${it.title}</h3>
-        ${it.desc ? `<p class="text-[14px] text-navy/65 leading-relaxed flex-1">${it.desc}</p>` : '<div class="flex-1"></div>'}
-        ${cta}
-      </article>`;
-    }).join('');
-  }
-  renderResources('All');
-  bar.addEventListener('click', (e) => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderResources(btn.dataset.filter);
-  });
+  fetch('/colab/content/sessions.json').then(r => r.json()).catch(() => []),
+  fetch('/colab/content/events.json').then(r => r.json()).catch(() => [])
+]).then(([sessions, events]) => {
+  const grid = document.getElementById('eventsGrid');
+  if (!grid) return;
+  const today = new Date(new Date().toDateString());
+  const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  const cards = sessions.filter(s => s.upcoming).map(s => ({
+    badge: `${s.mode} · ${s.price_text}`, when: s.date_text, title: s.title, link: `/colab/sessions/#${s.slug}`, cta: 'Details and registration', upcoming: true
+  })).concat(events.map(e => ({
+    badge: new Date(e.date) >= today ? 'Upcoming' : 'Past Event', when: fmt(e.date), title: e.title, link: e.link, cta: 'View event', upcoming: new Date(e.date) >= today, date: new Date(e.date)
+  })).sort((a, b) => (b.upcoming - a.upcoming) || (a.upcoming ? a.date - b.date : b.date - a.date)));
+  grid.innerHTML = cards.length ? cards.map(c => `<article class="card-lift bg-white rounded-2xl border hairline p-7 flex flex-col">
+      <div class="flex items-center justify-between mb-5 gap-3">
+        <span class="tag ${c.upcoming ? 'text-sky-600 bg-sky/10' : 'text-navy/50 bg-navy/5'} px-2.5 py-1 rounded-full">${c.badge}</span>
+        <span class="text-sm font-semibold text-navy/50 whitespace-nowrap">${c.when}</span>
+      </div>
+      <h3 class="text-lg font-bold text-navy mb-6 flex-1">${c.title}</h3>
+      ${c.link ? `<a href="${c.link}"${/^https?:/.test(c.link) ? ' target="_blank" rel="noopener"' : ''} class="inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group w-fit">${c.cta} <span class="transition-transform group-hover:translate-x-1">→</span></a>` : ''}
+    </article>`).join('')
+    : '<p class="text-navy/60">No events scheduled right now. See <a href="/colab/sessions/" class="text-sky-600 font-semibold underline underline-offset-2">sessions</a>.</p>';
 });
+
+// Explore CoLab hub: one panel at a time, a pill slides to the selected tab, panels animate in,
+// and the URL hash (#blog, #events, ...) opens the matching tab and can be shared.
+(() => {
+  const tablist = document.querySelector('.hub-tabs');
+  if (!tablist) return;
+  const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+  const ind = tablist.querySelector('.hub-ind');
+  const section = document.getElementById('explore');
+  const placeInd = (tab, instant) => {
+    if (instant) ind.style.transition = 'none';
+    ind.style.setProperty('--x', tab.offsetLeft + 'px');
+    ind.style.setProperty('--w', tab.offsetWidth + 'px');
+    if (instant) { ind.getBoundingClientRect(); ind.style.transition = ''; }
+  };
+  const select = (id, { focus = false, scroll = false, instant = false } = {}) => {
+    const tab = tabs.find(t => t.dataset.tab === id);
+    if (!tab) return false;
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (on) { panel.hidden = false; panel.classList.remove('hub-enter'); void panel.offsetWidth; panel.classList.add('hub-enter'); }
+      else panel.hidden = true;
+    });
+    placeInd(tab, instant);
+    tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: instant ? 'auto' : 'smooth' });
+    if (focus) tab.focus();
+    if (scroll) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return true;
+  };
+  tabs.forEach(t => t.addEventListener('click', () => {
+    select(t.dataset.tab);
+    history.replaceState(null, '', '#' + t.dataset.tab);
+  }));
+  tablist.addEventListener('keydown', (e) => {
+    const i = tabs.indexOf(document.activeElement);
+    if (i < 0) return;
+    const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    const t = tabs[(next + tabs.length) % tabs.length];
+    select(t.dataset.tab, { focus: true });
+    history.replaceState(null, '', '#' + t.dataset.tab);
+  });
+  const fromHash = (scroll) => { const id = location.hash.slice(1); if (id && select(id, { scroll, instant: true })) return; };
+  window.addEventListener('hashchange', () => fromHash(true));
+  window.addEventListener('resize', () => placeInd(tabs.find(t => t.getAttribute('aria-selected') === 'true'), true));
+  placeInd(tabs[0], true);
+  if (location.hash.length > 1) { fromHash(false); window.addEventListener("load", () => section.scrollIntoView({ block: "start" })); }
+  if (document.fonts) document.fonts.ready.then(() => placeInd(tabs.find(t => t.getAttribute('aria-selected') === 'true'), true));
+})();
 </script>
 </body>
 </html>

@@ -52,19 +52,41 @@
 <header id="nav" class="fixed top-0 inset-x-0 z-40 bg-navy">
   <div class="container-x flex items-center justify-between py-5">
     <a href="/colab/" class="flex items-center gap-3 group shrink-0">
-      <img src="/colab/logo.png" alt="CoLab" width="133" height="132" class="h-12 w-auto">
+      <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" class="h-12 w-auto">
       <span class="hidden md:block w-px h-8 bg-paper/20" aria-hidden="true"></span>
       <span class="hidden md:block text-xs italic text-paper/65 leading-tight max-w-[100px]">From Evidence to Effectiveness</span>
     </a>
 
     <nav class="hidden lg:flex items-center gap-9 text-[14.5px] font-semibold text-paper/75" id="desktopNav">
       <a href="/colab/" class="nav-link">Home</a>
-      <a href="/colab/about/" class="nav-link active" aria-current="page">About</a>
-      <a href="/colab/research/" class="nav-link">Research</a>
-      <a href="/colab/design/" class="nav-link">Design</a>
-      <a href="/colab/ecosystem/" class="nav-link">Ecosystem</a>
+      <div class="nav-dd">
+        <a href="/colab/about/" class="nav-link active" aria-current="page" aria-haspopup="true">About<svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dd-menu">
+          <span class="dd-glow" aria-hidden="true"></span>
+          <a href="/colab/about/" class="dd-card" style="--i:0"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg></span><span class="dd-text"><span class="dd-title">About Us</span><span class="dd-desc">An independent lab founded in 2019, turning evidence into scalable programmes.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/about/#team" class="dd-card" style="--i:1"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3.5 19c.6-3.2 2.8-5.2 5.5-5.2s4.9 2 5.5 5.2M15 14.2c2.3.1 4.2 1.8 4.8 4.8"/></svg></span><span class="dd-text"><span class="dd-title">Team</span><span class="dd-desc">Researchers, designers and builders, led from Bangalore.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/ecosystem/" class="dd-card" style="--i:2"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.6"/><circle cx="18" cy="8" r="2.6"/><circle cx="12" cy="18" r="2.6"/><path d="M9.5 10.5 11.5 16M16 9.5 13.5 16"/></svg></span><span class="dd-text"><span class="dd-title">Social Impact</span><span class="dd-desc">Strong programs need strong ecosystems.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <a href="/colab/services/" class="nav-link" aria-haspopup="true">Services<svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dd-menu">
+          <span class="dd-glow" aria-hidden="true"></span>
+          <a href="/colab/services/#impact-strategy" class="dd-card" style="--i:0"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4Z"/><path d="m14 7 3 3"/></svg></span><span class="dd-text"><span class="dd-title">Impact Strategy</span><span class="dd-desc">Program blueprints, toolkits and SOPs.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/services/#impact-monitoring" class="dd-card" style="--i:1"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-7"/></svg></span><span class="dd-text"><span class="dd-title">Impact Monitoring</span><span class="dd-desc">Measuring starting points and progress.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/services/#impact-measurement" class="dd-card" style="--i:2"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="dd-text"><span class="dd-title">Impact Measurement</span><span class="dd-desc">Independent evaluations and evidence syntheses.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/services/#capacity-building" class="dd-card" style="--i:3"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 0 2.5-2.5v-13Z"/></svg></span><span class="dd-text"><span class="dd-title">Capacity Building</span><span class="dd-desc">Hands-on, immersive workshops and courses.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <a href="/colab/research/" class="nav-link" aria-haspopup="true">Research<svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dd-menu">
+          <span class="dd-glow" aria-hidden="true"></span>
+          <a href="/colab/journal/" class="dd-card" style="--i:0"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg></span><span class="dd-text"><span class="dd-title">Blog</span><span class="dd-desc">Research notes, field stories and perspectives.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/colab/sessions/" class="dd-card" style="--i:1"><span class="dd-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span class="dd-text"><span class="dd-title">Events</span><span class="dd-desc">Short, practical sessions and workshops.</span></span><svg class="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
       <a href="/colab/projects/" class="nav-link">Projects</a>
-      <a href="/colab/sessions/" class="nav-link">Sessions</a>
       <a href="/colab/faq/" class="nav-link">FAQs</a>
       <a href="/colab/contact/" class="nav-link">Contact</a>
     </nav>
@@ -84,11 +106,24 @@
   <div class="container-x flex-1 flex flex-col justify-center gap-1 py-24">
     <a href="/colab/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Home</a>
     <a href="/colab/about/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile aria-current="page">About</a>
+    <div class="mobile-sub">
+      <a href="/colab/about/" data-nav-mobile>About Us</a>
+      <a href="/colab/about/#team" data-nav-mobile>Team</a>
+      <a href="/colab/ecosystem/" data-nav-mobile>Social Impact</a>
+    </div>
+    <a href="/colab/services/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Services</a>
+    <div class="mobile-sub">
+      <a href="/colab/services/#impact-strategy" data-nav-mobile>Impact Strategy</a>
+      <a href="/colab/services/#impact-monitoring" data-nav-mobile>Impact Monitoring</a>
+      <a href="/colab/services/#impact-measurement" data-nav-mobile>Impact Measurement</a>
+      <a href="/colab/services/#capacity-building" data-nav-mobile>Capacity Building</a>
+    </div>
     <a href="/colab/research/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Research</a>
-    <a href="/colab/design/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Design</a>
-    <a href="/colab/ecosystem/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Ecosystem</a>
+    <div class="mobile-sub">
+      <a href="/colab/journal/" data-nav-mobile>Blog</a>
+      <a href="/colab/sessions/" data-nav-mobile>Events</a>
+    </div>
     <a href="/colab/projects/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Projects</a>
-    <a href="/colab/sessions/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Sessions</a>
     <a href="/colab/faq/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>FAQs</a>
     <a href="/colab/contact/" class="py-3.5 text-2xl font-bold text-navy border-b hairline" data-nav-mobile>Contact</a>
     <a href="/colab/contact/" class="btn-primary text-center mt-6 font-semibold px-5 py-3.5 rounded-full text-base" data-nav-mobile>Let's Collaborate</a>
@@ -97,18 +132,22 @@
 
 <main id="main">
 
-<!-- HERO -->
-<section class="relative pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden bg-white">
-  <div class="mesh-bg" aria-hidden="true"></div>
-  <div class="blob float-a w-[300px] h-[300px] bg-sky/20 top-24 -right-20" aria-hidden="true"></div>
-  <div class="blob float-b w-[260px] h-[260px] bg-gold/20 bottom-0 -left-16" aria-hidden="true"></div>
+<!-- HERO: the CoLab team photo crossfades between three framings behind a light frosted card.
+     Add more team photos as extra .hero-motion-slide divs when CoLab has them. -->
+<section class="photo-hero photo-hero-light pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+  <div class="photo-hero-bg hero-motion team-motion" role="img" aria-label="The CoLab team together outdoors">
+    <div class="hero-motion-slide" style="background-image:url(/colab/images/team/colab-team.webp)"></div>
+    <div class="hero-motion-slide team-slide-left" style="background-image:url(/colab/images/team/colab-team.webp)"></div>
+    <div class="hero-motion-slide team-slide-right" style="background-image:url(/colab/images/team/colab-team.webp)"></div>
+  </div>
+  <div class="photo-hero-tint" aria-hidden="true"></div>
 
-  <div class="container-x relative z-10 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center">
-    <div class="reveal-left min-w-0">
+  <div class="container-x relative z-10">
+    <div class="reveal max-w-3xl mx-auto text-center hero-glass-light rounded-[2rem] p-7 sm:p-10">
       <p class="tag text-sky-600 mb-5">About CoLab</p>
       <h1 class="text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] text-navy font-extrabold tracking-tight">Building a More <span class="underline-sky">Equitable</span> Education Ecosystem</h1>
-      <p class="mt-7 text-lg text-navy/70 max-w-lg leading-relaxed">CoLab works at the intersection of research, evidence, design and collaboration to help improve education — an independent lab founded in 2019, turning evidence into high-impact, scalable programmes across the Global South.</p>
-      <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg">
+      <p class="mt-6 text-lg text-navy/70 max-w-2xl mx-auto leading-relaxed">CoLab works at the intersection of research, evidence, design and collaboration to help improve education — an independent lab founded in 2019, turning evidence into high-impact, scalable programmes across the Global South.</p>
+<div class="mt-10 grid grid-cols-3 gap-4 max-w-lg mx-auto">
         <div class="stat-pill bg-paper border hairline">
           <p class="text-2xl font-extrabold text-navy">10+</p>
           <p class="text-[11px] text-navy/60 mt-1 leading-snug">Research Outputs</p>
@@ -121,22 +160,6 @@
           <p class="text-2xl font-extrabold text-navy">15+</p>
           <p class="text-[11px] text-navy/60 mt-1 leading-snug">Collaborations</p>
         </div>
-      </div>
-    </div>
-
-    <div class="relative reveal-right reveal-delay-1 min-w-0">
-      <div class="ring-frame max-w-sm mx-auto">
-        <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative">
-          <img id="heroPhotoFallback" src="/colab/images/mentoring-art.webp" alt="A CoLab mentor working closely with children in the community" class="img-reveal parallax-img w-full h-full object-cover">
-          <div id="heroR3F" class="absolute inset-0" style="display:none" aria-hidden="true"></div>
-        </div>
-      </div>
-      <div class="glass-card float-b absolute -bottom-6 -left-4 sm:-left-8 rounded-2xl px-6 py-5 max-w-[230px]" aria-hidden="true">
-        <p class="italic text-sm text-navy/80 leading-snug">"To empower the ecosystem in designing high-impact, innovative and scalable solutions for sustainable development."</p>
-      </div>
-      <div class="absolute -top-5 -right-3 sm:-right-6 glass-card rounded-full w-20 h-20 flex flex-col items-center justify-center float-a" aria-hidden="true">
-        <span class="w-2.5 h-2.5 rounded-full bg-sky-600 glow-dot"></span>
-        <p class="text-[10px] font-bold text-navy mt-1.5 text-center leading-tight">Global<br>South</p>
       </div>
     </div>
   </div>
@@ -225,8 +248,8 @@
   </div>
 </section>
 
-<!-- WHY THIS WORK MATTERS -->
-<section class="py-24 lg:py-32 bg-white border-b hairline">
+<!-- OUR PEOPLE (menu: About > Team) -->
+<section id="team" class="scroll-mt-28 py-24 lg:py-32 bg-white border-b hairline">
   <div class="container-x">
     <div class="max-w-2xl">
       <p class="tag text-sky-600 mb-4">Our People</p>
@@ -521,7 +544,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-10 gap-y-14 lg:gap-x-12 pb-16">
       <div class="lg:col-span-1 min-w-0">
         <div class="flex items-center mb-6">
-          <img src="/colab/logo.png" alt="CoLab" width="133" height="132" loading="lazy" class="h-14 w-auto">
+          <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" loading="lazy" class="h-14 w-auto">
         </div>
         <p class="text-sm text-paper/55 leading-relaxed">A research, design and innovation lab for sustainable development. Founded 2019.</p>
         <p class="text-sm italic text-sky mt-4">"From Evidence to Effectiveness"</p>
@@ -531,7 +554,9 @@
         <h3 class="tag text-sky mb-6 pb-3 border-b border-paper/15">Quick Links</h3>
         <ul class="space-y-3.5 text-sm text-paper/65">
           <li><a href="/colab/about/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>About</a></li>
+          <li><a href="/colab/services/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Services</a></li>
           <li><a href="/colab/research/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Research</a></li>
+          <li><a href="/colab/journal/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Journal</a></li>
           <li><a href="/colab/design/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Design</a></li>
           <li><a href="/colab/ecosystem/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Ecosystem Engagement</a></li>
           <li><a href="/colab/projects/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Projects</a></li>
@@ -589,7 +614,7 @@
     <div class="border-t border-paper/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper/45 text-center sm:text-left">
       <p>© 2026 CoLab Global Consulting. All rights reserved.</p>
       <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
-        <a href="#" class="hover:text-sky transition" data-soon>Privacy Policy</a>
+        <a href="/colab/privacy-policy/" class="hover:text-sky transition">Privacy Policy</a>
         <span>CoLab Global Consulting</span>
         <a href="#" class="hover:text-sky transition inline-flex items-center gap-1.5">Back to top <span aria-hidden="true">↑</span></a>
       </div>
@@ -600,6 +625,7 @@
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy text-paper text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
 
 <script src="/colab/js/site.js" defer></script>
+<script src="/colab/js/motion.js" defer></script>
 
 <!-- Hero photo: 3D tilt card (react-three-fiber), falls back to the plain photo
      on any failure — reduced-motion preference, no WebGL, or a blocked/slow CDN. -->
