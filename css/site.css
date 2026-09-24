@@ -441,3 +441,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .policy-copy li { margin-top: .3em; }
 .policy-copy li::marker { color: #12A7B6; }
 .policy-copy a { color: #12A7B6; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.policy-note { margin: 0 0 2em; padding: .9rem 1.1rem; border-radius: .9rem; background: #FFF6DD; border: 1px solid rgba(232,169,58,.45); color: #073763; font-size: 14px; }
+.policy-todo { background: #FFE9A8; color: #073763; padding: .05em .35em; border-radius: .3em; font-weight: 600; }
