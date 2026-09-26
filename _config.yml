@@ -1,0 +1,11 @@
+# GitHub Pages (Jekyll) build settings.
+# Keep internal notes and build files in the repo but off the public website.
+exclude:
+  - CLAUDE.md
+  - HANDOFF-FOR-LIZA.md
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - src/
+  - node_modules/
+  - lighthouse-report/
