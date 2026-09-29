@@ -140,6 +140,19 @@ if (blogCategoriesEl) {
 const journalLatestEl = document.getElementById('journalLatest');
 if (journalLatestEl) journalLatestEl.innerHTML = blogPosts.slice(0, Number(journalLatestEl.dataset.count) || 3).map(renderBlogCard).join('');
 
+// Related-reading strip on individual article pages: same-category posts first,
+// backfilled with other posts (in list order) if the category is small.
+const relatedPostsEl = document.getElementById('relatedPosts');
+if (relatedPostsEl) {
+  const current = blogPosts.find(b => b.href === location.pathname);
+  if (current) {
+    const sameCategory = blogPosts.filter(b => b !== current && b.cat === current.cat);
+    const others = blogPosts.filter(b => b !== current && b.cat !== current.cat);
+    const related = sameCategory.concat(others).slice(0, 3);
+    relatedPostsEl.innerHTML = related.map(renderBlogCard).join('');
+  }
+}
+
 // Journal hero video: falls back to the static poster frame on reduced motion,
 // or if the video fails to load or play for any reason.
 (() => {
