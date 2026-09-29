@@ -32,18 +32,6 @@
 <link rel="stylesheet" href="/colab/css/tailwind.css">
 <link rel="stylesheet" href="/colab/css/site.css">
 <link rel="stylesheet" href="/colab/css/enhance.css">
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
-    "react-dom": "https://esm.sh/react-dom@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "three": "https://esm.sh/three@0.169.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.17.10?external=react,react-dom,three"
-  }
-}
-</script>
 </head>
 <body class="font-sans antialiased">
 
@@ -573,7 +561,7 @@
           <li><a href="/colab/research/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Research &amp; Reports</a></li>
           <li><a href="#" class="hover:text-sky transition inline-flex items-center gap-1.5 group" data-soon><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Publications</a></li>
           <li><a href="#" class="hover:text-sky transition inline-flex items-center gap-1.5 group" data-soon><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>CoLabCast</a></li>
-          <li><a href="#" class="hover:text-sky transition inline-flex items-center gap-1.5 group" data-soon><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Careers</a></li>
+          <li><a href="/colab/careers/" class="hover:text-sky transition inline-flex items-center gap-1.5 group"><span class="w-1 h-1 rounded-full bg-sky/50 group-hover:bg-sky transition"></span>Careers</a></li>
         </ul>
       </div>
 
@@ -628,116 +616,6 @@
 
 <script src="/colab/js/site.js" defer></script>
 <script src="/colab/js/motion.js" defer></script>
-
-<!-- Hero photo: 3D tilt card (react-three-fiber), falls back to the plain photo
-     on any failure — reduced-motion preference, no WebGL, or a blocked/slow CDN. -->
-<script type="module">
-(async () => {
-  try {
-    const mount = document.getElementById('heroR3F');
-    const fallback = document.getElementById('heroPhotoFallback');
-    if (!mount || !fallback) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const canvasProbe = document.createElement('canvas');
-    if (!canvasProbe.getContext('webgl') && !canvasProbe.getContext('experimental-webgl')) return;
-
-    const React = await import('react');
-    const { createRoot } = await import('react-dom/client');
-    const THREE = await import('three');
-    const { Canvas, useFrame } = await import('@react-three/fiber');
-    const h = React.createElement;
-
-    function TiltCard() {
-      const meshRef = React.useRef(null);
-      const pointer = React.useRef({ x: 0, y: 0 });
-      const [texture, setTexture] = React.useState(null);
-
-      const materials = React.useMemo(() => {
-        const edge = new THREE.MeshStandardMaterial({ color: '#F6F9FB', roughness: 0.9 });
-        const front = new THREE.MeshStandardMaterial({ color: '#EAEDE3', roughness: 0.85 });
-        return [edge, edge.clone(), edge.clone(), edge.clone(), front, edge.clone()];
-      }, []);
-
-      React.useEffect(() => {
-        const loader = new THREE.TextureLoader();
-        loader.load(
-          '/colab/images/mentoring-art.webp',
-          (tex) => {
-            tex.colorSpace = THREE.SRGBColorSpace;
-            tex.anisotropy = 4;
-            materials[4].map = tex;
-            materials[4].color.set('#ffffff');
-            materials[4].needsUpdate = true;
-            setTexture(tex);
-          },
-          undefined,
-          () => { /* texture failed — box still renders with a plain fill */ }
-        );
-      }, [materials]);
-
-      React.useEffect(() => {
-        const el = mount;
-        const onMove = (e) => {
-          const r = el.getBoundingClientRect();
-          pointer.current = {
-            x: ((e.clientX - r.left) / r.width) * 2 - 1,
-            y: ((e.clientY - r.top) / r.height) * 2 - 1,
-          };
-        };
-        const onLeave = () => { pointer.current = { x: 0, y: 0 }; };
-        el.addEventListener('pointermove', onMove);
-        el.addEventListener('pointerleave', onLeave);
-        return () => {
-          el.removeEventListener('pointermove', onMove);
-          el.removeEventListener('pointerleave', onLeave);
-        };
-      }, []);
-
-      useFrame((state) => {
-        const mesh = meshRef.current;
-        if (!mesh) return;
-        const t = state.clock.elapsedTime;
-        const idleY = Math.sin(t * 0.45) * 0.03;
-        const idleX = Math.cos(t * 0.35) * 0.025;
-        const targetRotY = pointer.current.x * 0.26 + idleY;
-        const targetRotX = -pointer.current.y * 0.2 + idleX;
-        mesh.rotation.y += (targetRotY - mesh.rotation.y) * 0.07;
-        mesh.rotation.x += (targetRotX - mesh.rotation.x) * 0.07;
-      });
-
-      return h(
-        'mesh',
-        { ref: meshRef, material: materials },
-        h('boxGeometry', { args: [1, 1.25, 0.05] })
-      );
-    }
-
-    function Scene() {
-      return h(
-        React.Fragment,
-        null,
-        h('ambientLight', { intensity: 1.0 }),
-        h('directionalLight', { position: [2, 2, 3], intensity: 0.55 }),
-        h(TiltCard)
-      );
-    }
-
-    const root = createRoot(mount);
-    root.render(
-      h(
-        Canvas,
-        { camera: { position: [0, 0, 1.85], fov: 45 }, dpr: [1, 2], gl: { alpha: true, antialias: true } },
-        h(Scene)
-      )
-    );
-
-    mount.style.display = 'block';
-    fallback.style.display = 'none';
-  } catch (err) {
-    console.warn('Hero 3D tilt card failed to load, showing the static photo instead:', err);
-  }
-})();
-</script>
 
 <script>
 fetch('/colab/content/team.json').then(r => r.json()).then(list => {
