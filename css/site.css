@@ -538,3 +538,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hub-panel { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
   .hub-panel-head { margin-bottom: 1.25rem; }
 }
+/* 4. Shorter footer: less spacing; on phones the Quick Links and Resources lists run in
+      two columns instead of one long list. */
+@media (max-width: 1023px) {
+  #footer { padding-top: 3.5rem; }
+  #footer .container-x > .grid { row-gap: 2.25rem; padding-bottom: 2.5rem; }
+  #footer h3.tag { margin-bottom: 1rem; }
+}
+@media (max-width: 639px) {
+  #footer h3 + ul.text-paper\/65 { columns: 2; column-gap: 1.5rem; }
+  #footer h3 + ul.text-paper\/65 > li { margin: 0 0 .8rem !important; break-inside: avoid; }
+}
