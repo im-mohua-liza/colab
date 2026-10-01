@@ -318,7 +318,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* Mobile menu: sub-links sit indented under their section; the list starts at the top so it can scroll. */
-#mobileMenu > .container-x { justify-content: flex-start; }
+#mobileMenu > .container-x { justify-content: flex-start; width: 100%; }
+/* Open menu sits under the top bar (z 40) so the X close button stays visible and tappable. */
+#mobileMenu { z-index: 39; }
 .mobile-sub { display: flex; flex-direction: column; padding: .35rem 0 .75rem 1rem; border-bottom: 1px solid rgba(7,55,99,.08); }
 .mobile-sub a { padding: .45rem 0; font-size: 1.05rem; font-weight: 600; color: rgba(7,55,99,.7); }
 
@@ -601,4 +603,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .stat-pill p.text-\[11px\] { font-size: 9.5px; }
   /* hero link chips (e.g. Services) fit two per row */
   .photo-hero a.glass-card-dark.rounded-full { padding: .5rem .85rem; font-size: 13px; }
+}
+/* 9. Shorter long pages and comfortable tap areas on phones (under 640px). */
+@media (max-width: 639px) {
+  /* Projects: each card a compact row (photo left, text right) instead of a tall tile */
+  #projectGrid { gap: .85rem; }
+  #projectGrid > article { flex-direction: row; }
+  #projectGrid > article > div.h-40 { width: 108px; height: auto; min-height: 100%; flex: none; }
+  #projectGrid > article > div.p-7 { padding: .9rem 1rem; }
+  #projectGrid > article > div.p-7 > div.mb-5 { margin-bottom: .45rem; }
+  #projectGrid > article h3 { font-size: 1.05rem; margin-bottom: .2rem; }
+  #projectGrid > article p { font-size: 13.5px; }
+  #projectGrid > article > div.p-7 > span:last-child { margin-top: .45rem; font-size: 13px; }
+  /* About team: two people per row; an opened bio spans the full width */
+  #teamGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: .75rem; row-gap: 2.25rem; }
+  #teamGrid img { width: 6rem; height: 6rem; }
+  #teamGrid h3 { margin-top: 1rem; font-size: 1rem; }
+  #teamGrid > article:has(.team-bio-panel.is-open) { grid-column: 1 / -1; }
+  #footer h3 + ul.text-paper\/65 > li { margin-bottom: .1rem !important; }
+}
+/* Touch screens (phones and tablets): tap areas of at least ~36-40px for footer links,
+   card "Read More" links and the journal back link. */
+@media (max-width: 1023px) {
+  #footer ul li > a { display: inline-flex; align-items: center; min-height: 36px; }
+  #footer .container-x > div:last-child a { display: inline-block; padding: .55rem .25rem; }
+  a.mt-4.text-sm.font-semibold.inline-flex { min-height: 40px; margin-top: .5rem; }
+  p > a.hover\:text-sky[href="/colab/journal/"] { display: inline-block; padding: .6rem 0; }
 }
