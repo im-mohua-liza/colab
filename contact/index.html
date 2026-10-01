@@ -132,7 +132,7 @@
     <video id="contactHeroVideo" poster="/colab/images/video/contact-hero-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="none">
       <source src="/colab/images/video/contact-hero.mp4" type="video/mp4">
     </video>
-    <img id="contactHeroPoster" src="/colab/images/video/contact-hero-poster.jpg" alt="" style="display:none">
+    <img id="contactHeroPoster" src="/colab/images/video/contact-hero-poster.jpg" alt="" decoding="async" fetchpriority="high">
   </div>
   <div class="photo-hero-tint" aria-hidden="true"></div>
   <div class="container-x relative z-10">
@@ -144,20 +144,6 @@
   </div>
 </section>
 
-<script>
-// Contact hero video: falls back to its still frame on reduced motion, or if the video cannot play.
-(() => {
-  const video = document.getElementById("contactHeroVideo");
-  const poster = document.getElementById("contactHeroPoster");
-  if (!video || !poster) return;
-  const showPoster = () => { video.pause(); video.style.display = "none"; poster.style.display = "block"; };
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { showPoster(); return; }
-  video.addEventListener("error", showPoster);
-  const source = video.querySelector("source");
-  if (source) source.addEventListener("error", showPoster);   // a failed file fires on <source>, not <video>
-  video.play().catch(showPoster);
-})();
-</script>
 
 <!-- CONTACT FORM -->
 <section id="contact-form" class="py-20 lg:py-28 bg-paper">

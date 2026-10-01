@@ -41,6 +41,24 @@ if (burgerBtn && mobileMenu) {
   mobileMenu.classList.add('has-folds');
 }
 
+/* ---------- Hero background videos: poster-first, video only once it really plays ----------
+   The poster image (a frame of the video, same size) is always shown underneath. The video
+   sits on top, invisible, and fades in only when it is actually playing. If a browser blocks
+   autoplay (Low Power Mode, data saver, reduced motion) or the file fails, the video simply
+   never appears and the poster stays: the hero is never black, blank or broken. */
+document.querySelectorAll('.photo-hero-bg > video').forEach((video) => {
+  const fail = () => { video.classList.remove('is-playing'); video.pause(); video.hidden = true; };
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { video.removeAttribute('autoplay'); fail(); return; }
+  video.addEventListener('playing', () => video.classList.add('is-playing'));
+  video.addEventListener('error', fail);
+  const source = video.querySelector('source');
+  if (source) source.addEventListener('error', fail);   // a failed file fires on <source>, not <video>
+  if (!video.paused && video.readyState > 2) video.classList.add('is-playing');   // autoplay beat this script
+  video.preload = 'auto';
+  const p = video.play();
+  if (p) p.catch(fail);
+});
+
 /* ---------- Interactive "How We Work" journey selector ---------- */
 const journeySteps = document.querySelectorAll('.journey-step');
 if (journeySteps.length) {
