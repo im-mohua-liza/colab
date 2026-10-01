@@ -562,3 +562,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   main > section.pb-24:not(.photo-hero) { padding-bottom: 4rem; }
   main > section.pb-16 { padding-bottom: 3rem; }
 }
+/* 7. Small fixes: hero tagline on one line, a fade showing the Explore tabs scroll
+      sideways, and smaller partner tiles so three logos show at once. */
+@media (max-width: 1023px) {
+  .hero-glass > .tag:first-child { font-size: min(10px, 2.6vw); letter-spacing: .05em; white-space: nowrap; }
+  .hub-tabs { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); }
+  .marquee-track > div { width: 132px; height: 84px; }
+  .marquee-track > div img { height: 30px; }
+}
