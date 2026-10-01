@@ -29,18 +29,22 @@ body { background:#F6F9FB; color:#0C1B2A; }
    its own background colour. Sits above content at very low opacity rather
    than behind it, since most sections use full-bleed solid backgrounds that
    would otherwise hide a body-level background entirely. */
+/* Two stacked layers in the same spot: the navy logo shows on light sections, the white
+   trunk + wordmark (no leaves, so the cyan isn't doubled) shows on navy sections. */
+body::before,
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 5;
-  background-image: url(/colab/logo.png);
+  background-image: url(/colab/images/logo-watermark.svg);   /* transparent: tree + wordmark only, no square */
   background-repeat: no-repeat;
   background-position: center;
   background-size: min(58vw, 560px);
-  opacity: 0.04;   /* was 0.09; lowered 16 Sep 2026 (issue #4): text stays readable on dense pages */
+  opacity: 0.03;   /* was 0.09, then 0.04 (16 Sep 2026, issue #4); 0.03 from 1 Oct 2026: fainter per Mohua */
   pointer-events: none;
 }
+body::before { background-image: url(/colab/images/logo-watermark-light.svg); }
 ::selection { background:#1ACEDF; color:#073763; }
 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #1ACEDF; outline-offset: 3px; border-radius: 2px; }
