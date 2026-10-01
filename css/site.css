@@ -374,10 +374,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .photo-hero-light:has(> .team-motion) { min-height: 0; display: block; background: #F6F9FB;
     padding-top: calc(88px + 65.3vw - 1.5rem); padding-bottom: 3rem; }
   .photo-hero-light > .team-motion.photo-hero-bg,
-  .photo-hero-light:has(> .team-motion) > .photo-hero-tint { inset: 88px 0 auto 0; height: 65.3vw; }
+  .photo-hero-light:has(> .team-motion) > .photo-hero-tint { inset: 88px 0 auto 0; height: auto; aspect-ratio: 994 / 649; }
   .photo-hero-light:has(> .team-motion) > .photo-hero-tint { background: linear-gradient(180deg, rgba(7,55,99,0) 55%, rgba(7,55,99,.18) 100%); }
-  .team-motion .hero-motion-slide { animation: none; transform: none; opacity: 0; background-position: center; }
+  .team-motion .hero-motion-slide { animation: none; transform: none; opacity: 0; background-size: contain; background-repeat: no-repeat; background-position: center top; }
   .team-motion .hero-motion-slide:first-child { opacity: 1; }
+
+  /* About "Why This Work Matters" cards: the landscape photos (410x253) were forced into
+     3:4 portrait boxes, cutting off about half of each, and the title/description only
+     appeared on mouse hover, so touch screens never showed them. Show each photo whole
+     at its own shape, no zoom, with the text always visible underneath. */
+  .showcase-card.aspect-\[3\/4\] { aspect-ratio: auto; background: #073763; display: flex; flex-direction: column; }
+  .showcase-card > img.object-cover { height: auto; aspect-ratio: 410 / 253; object-fit: cover; object-position: center; scale: 1 !important; transform: none !important; }
+  .showcase-card .showcase-overlay { position: static; opacity: 1; transform: none; background: none; padding: 1.1rem 1.25rem 1.35rem; }
 }
 
 /* ========== Micro-interactions: hover pops, nudges and wiggles (mouse users, motion allowed) ========== */
