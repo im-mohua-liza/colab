@@ -528,3 +528,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 400px) {
   .photo-hero h1 { font-size: 2.15rem; }
 }
+/* 2. No background logo watermark on small screens: there it sits right behind the text. */
+@media (max-width: 1023px) {
+  body::before, body::after { display: none; }
+}
