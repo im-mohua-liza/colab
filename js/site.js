@@ -12,6 +12,33 @@ if (burgerBtn && mobileMenu) {
   burgerBtn.addEventListener('click', () => toggleMenu());
   document.querySelectorAll('[data-nav-mobile]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
   window.addEventListener('resize', () => { if (window.innerWidth >= 1024) toggleMenu(false); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) { toggleMenu(false); burgerBtn.focus(); }
+  });
+
+  // Fold-open sections: About, Services and Research show their sub-pages behind a chevron so
+  // the whole menu fits on a phone screen. The section you're on starts open. The parent link
+  // still goes to its page; only the chevron folds.
+  mobileMenu.querySelectorAll('.mobile-sub').forEach((sub, i) => {
+    const parent = sub.previousElementSibling;
+    if (!parent || parent.tagName !== 'A') return;
+    const row = document.createElement('div');
+    row.className = 'mobile-parent';
+    parent.before(row);
+    row.appendChild(parent);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'mobile-sub-toggle';
+    sub.id = sub.id || 'mobileSub' + i;
+    btn.setAttribute('aria-controls', sub.id);
+    btn.setAttribute('aria-label', 'Show ' + parent.textContent.trim() + ' pages');
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    row.appendChild(btn);
+    const setOpen = (open) => { sub.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); };
+    setOpen(!!(parent.getAttribute('aria-current') || sub.querySelector('[aria-current]')));
+    btn.addEventListener('click', () => setOpen(!sub.classList.contains('is-open')));
+  });
+  mobileMenu.classList.add('has-folds');
 }
 
 /* ---------- Interactive "How We Work" journey selector ---------- */
