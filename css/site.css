@@ -549,3 +549,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   #footer h3 + ul.text-paper\/65 { columns: 2; column-gap: 1.5rem; }
   #footer h3 + ul.text-paper\/65 > li { margin: 0 0 .8rem !important; break-inside: avoid; }
 }
+/* 5. No decorative network lines/dots behind navy sections and the footer on small screens. */
+@media (max-width: 1023px) {
+  section.bg-navy > svg.absolute[aria-hidden="true"], #footer > svg.absolute[aria-hidden="true"] { display: none; }
+}
