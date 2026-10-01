@@ -448,6 +448,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .policy-note { margin: 0 0 2em; padding: .9rem 1.1rem; border-radius: .9rem; background: #FFF6DD; border: 1px solid rgba(232,169,58,.45); color: #073763; font-size: 14px; }
 .policy-todo { background: #FFE9A8; color: #073763; padding: .05em .35em; border-radius: .3em; font-weight: 600; }
 
+/* Dropdown pill: pops in with a bounce the first time (like the reference menu's pill),
+   and squashes and stretches slightly while it glides between cards. */
+@keyframes ddGlowPop { 0% { opacity: 0; scale: .7; } 60% { opacity: 1; scale: 1.06; } 100% { opacity: 1; scale: 1; } }
+@keyframes ddGlowStretch { 0% { scale: 1 1; } 35% { scale: 1.08 .9; } 70% { scale: .97 1.03; } 100% { scale: 1 1; } }
+.nav-dd-menu .dd-glow { transform-origin: center; }
+.nav-dd-menu.glow-pop .dd-glow { animation: ddGlowPop .45s cubic-bezier(.34,1.56,.64,1); }
+.nav-dd-menu.glow-move .dd-glow { animation: ddGlowStretch .5s cubic-bezier(.22,1,.36,1); }
+@media (prefers-reduced-motion: reduce) { .nav-dd-menu .dd-glow { animation: none !important; } }
+
 /* Home hero: the CoLab logo grows like a tree (js/hero-tree.js rebuilds logo-white.svg from its own paths).
    Seed -> wood grows from the base -> leaves bud as it reaches them -> the wordmark is unveiled by a
    soft left-to-right sweep (SVG mask in the JS); then leaves sway,

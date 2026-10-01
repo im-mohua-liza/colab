@@ -45,7 +45,9 @@
   document.querySelectorAll('.nav-dd-menu').forEach((menu) => {
     const glow = menu.querySelector('.dd-glow');
     if (!glow) return;
+    const replay = (cls) => { menu.classList.remove('glow-pop', 'glow-move'); void glow.offsetWidth; menu.classList.add(cls); };
     const moveTo = (card, instant) => {
+      replay(instant ? 'glow-pop' : 'glow-move');
       if (instant) glow.style.transition = 'none';
       glow.style.setProperty('--gx', card.offsetLeft + 'px');
       glow.style.setProperty('--gy', card.offsetTop + 'px');
