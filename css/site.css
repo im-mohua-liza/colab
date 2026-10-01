@@ -510,3 +510,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* Taller screens have room above the column, so the logo grows upward there. */
 @media (min-width: 640px) { .hero-logo { width: min(74%, 290px); } }
 @media (min-width: 1024px) { .hero-logo { width: min(80%, 380px); } .hero-logo-glow { top: calc(50% - 80px); } }
+
+/* ---------- Mobile and tablet declutter (below 1024px; laptop/desktop unchanged) ---------- */
+/* 1. Home hero: logo on the first screen. The logo column moves above the text card,
+      with the logo and the stat badge side by side; less padding all round. */
+@media (max-width: 1023px) {
+  .photo-hero { padding-top: 6.5rem; padding-bottom: 3rem; }
+  .photo-hero > .container-x { gap: 1.25rem; }
+  .hero-logo-col { order: -1; height: auto; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+  .hero-logo-col .hero-logo-stage { width: auto; height: auto; padding-bottom: 0; flex: none; }
+  .hero-logo-col .hero-logo { width: 130px; }
+  .hero-logo-col .hero-logo-glow { top: 50%; width: 210px; }
+  .hero-logo-col > div.absolute { position: static; max-width: 170px; padding: .7rem .9rem; }
+  .hero-logo-col .hero-logo-stage { margin-bottom: .5rem; }
+  .hero-glass { padding: 1.5rem; }
+}
+@media (max-width: 400px) {
+  .photo-hero h1 { font-size: 2.15rem; }
+}
