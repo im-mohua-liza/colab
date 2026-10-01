@@ -553,3 +553,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 1023px) {
   section.bg-navy > svg.absolute[aria-hidden="true"], #footer > svg.absolute[aria-hidden="true"] { display: none; }
 }
+/* 6. Tighter vertical rhythm: section padding sized for desktop leaves big empty gaps on
+      phones, so it shrinks by about a third (the Home hero has its own values above). */
+@media (max-width: 1023px) {
+  main > section.py-24 { padding-top: 4rem; padding-bottom: 4rem; }
+  main > section.py-20 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  main > section.py-16 { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+  main > section.pb-24:not(.photo-hero) { padding-bottom: 4rem; }
+  main > section.pb-16 { padding-bottom: 3rem; }
+}
