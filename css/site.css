@@ -34,7 +34,7 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: 5;
-  background-image: url(/colab/logo.png);
+  background-image: url(/colab/images/logo-watermark.svg);   /* transparent: tree + wordmark only, no square */
   background-repeat: no-repeat;
   background-position: center;
   background-size: min(58vw, 560px);
