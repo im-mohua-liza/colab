@@ -348,6 +348,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (prefers-reduced-motion: reduce) {
   .team-motion .hero-motion-slide { animation: none; transform: none; }
 }
+/* Phones/tablets: a tall screen made the wide team photo zoom in on one or two people
+   behind the text. Show the whole photo at its real proportions (994x649) under the
+   menu bar, still and sharp, with the text card below it, overlapping slightly. */
+@media (max-width: 1023px) {
+  .photo-hero-light:has(> .team-motion) { min-height: 0; display: block; background: #F6F9FB;
+    padding-top: calc(88px + 65.3vw - 1.5rem); padding-bottom: 3rem; }
+  .photo-hero-light > .team-motion.photo-hero-bg,
+  .photo-hero-light:has(> .team-motion) > .photo-hero-tint { inset: 88px 0 auto 0; height: 65.3vw; }
+  .photo-hero-light:has(> .team-motion) > .photo-hero-tint { background: linear-gradient(180deg, rgba(7,55,99,0) 55%, rgba(7,55,99,.18) 100%); }
+  .team-motion .hero-motion-slide { animation: none; transform: none; opacity: 0; background-position: center; }
+  .team-motion .hero-motion-slide:first-child { opacity: 1; }
+}
 
 /* ========== Micro-interactions: hover pops, nudges and wiggles (mouse users, motion allowed) ========== */
 @keyframes softWiggle { 0%,100% { transform: rotate(0); } 20% { transform: rotate(-4deg); } 40% { transform: rotate(3.5deg); } 60% { transform: rotate(-2deg); } 80% { transform: rotate(1deg); } }
