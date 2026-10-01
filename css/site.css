@@ -515,7 +515,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* 1. Home hero: logo on the first screen. The logo column moves above the text card,
       with the logo and the stat badge side by side; less padding all round. */
 @media (max-width: 1023px) {
-  .photo-hero { padding-top: 6.5rem; padding-bottom: 3rem; }
+  .photo-hero { padding-top: 7.25rem; padding-bottom: 3rem; }
   .photo-hero > .container-x { gap: 1.25rem; }
   .hero-logo-col { order: -1; height: auto; display: flex; align-items: center; justify-content: center; gap: 1rem; }
   .hero-logo-col .hero-logo-stage { width: auto; height: auto; padding-bottom: 0; flex: none; }
@@ -569,4 +569,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hub-tabs { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); }
   .marquee-track > div { width: 132px; height: 84px; }
   .marquee-track > div img { height: 30px; }
+}
+/* 8. Every page, small screens: drop purely decorative extras, lighten padding, and give
+      body text more contrast so pages read crisper and less washed out. */
+@media (max-width: 1023px) {
+  /* scrolling big-word banners, floating photo labels, coloured-circle rows (all aria-hidden) */
+  main > section:has(> .text-marquee), .text-marquee { display: none; }
+  main > section:has(> .text-marquee) + section:not([class*="pt-"]):not([class*="py-"]) { padding-top: 2.5rem; }
+  .glass-card.float-a, .glass-card.float-b { display: none; }
+  .photo-hero div:has(> span[aria-hidden="true"].rounded-full.w-9) { display: none; }
+  /* lighter padding in hero text boxes and cards */
+  .hero-glass, .hero-glass-light { padding: 1.5rem; }
+  .photo-hero p.text-lg { font-size: 1.0625rem; }
+  main .rounded-3xl.p-8, main .rounded-2xl.p-8, main .rounded-3xl.p-7, main .rounded-2xl.p-7 { padding: 1.5rem; }
+  /* crisper body text */
+  .text-navy\/60, .text-navy\/65, .text-navy\/70 { color: rgba(7,55,99,.84); }
+  /* About stats: labels fit inside their boxes */
+  .stat-pill { padding: .8rem .4rem; text-align: center; }
+  .stat-pill p.text-\[11px\] { font-size: 9.5px; }
+  /* hero link chips (e.g. Services) fit two per row */
+  .photo-hero a.glass-card-dark.rounded-full { padding: .5rem .85rem; font-size: 13px; }
 }
