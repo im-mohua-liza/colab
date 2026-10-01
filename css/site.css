@@ -532,3 +532,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 1023px) {
   body::before, body::after { display: none; }
 }
+/* 3. Explore hub: drop the outer white panel so its cards don't sit box-in-a-box
+      and the text gets the full width. */
+@media (max-width: 1023px) {
+  .hub-panel { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
+  .hub-panel-head { margin-bottom: 1.25rem; }
+}
