@@ -663,11 +663,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   a.mt-4.text-sm.font-semibold.inline-flex { min-height: 40px; margin-top: .5rem; }
   p > a.hover\:text-sky[href="/colab/journal/"] { display: inline-block; padding: .6rem 0; }
 }
-/* 10. Background videos (Contact, Journal) and their still-frame fallbacks on phones/tablets:
-       block-level, filling the hero, centred, cropped with cover, never wider than the screen.
-       The Contact hero uses svh so its height doesn't jump as the mobile address bar shows/hides. */
+/* 10. Background videos on phones/tablets (Contact, Journal, and any future hero video).
+       Filling a tall phone hero with `cover` cut each 16:9 video down to one or two of its four
+       people. Instead the video shows as a full-width band at its own shape (--video-ratio, set
+       by js/site.js from the real poster/video size; 16:9 fallback) right under the menu bar, so
+       the whole scene is visible, nothing stretched. The text card sits below it, overlapping
+       only a sliver of the bottom edge, with smaller type and padding. Desktop unchanged. */
 @media (max-width: 1023px) {
-  .photo-hero-bg video, .photo-hero-bg img { display: block; width: 100%; height: 100%; max-width: 100%;
-    object-fit: cover; object-position: center center; }
-  .photo-hero-light:has(.photo-hero-bg video) { min-height: 82vh; min-height: 82svh; }
+  .photo-hero:has(> .photo-hero-bg > video) { min-height: 0; display: block;
+    padding-top: calc(88px + 100vw / var(--video-ratio, 1.7778) - 1rem); padding-bottom: 2.5rem; }
+  .photo-hero-light:has(> .photo-hero-bg > video) { background: #F6F9FB; }
+  .photo-hero:has(> .photo-hero-bg > video) > .photo-hero-bg,
+  .photo-hero:has(> .photo-hero-bg > video) > .photo-hero-tint { inset: 88px 0 auto 0; height: auto; aspect-ratio: var(--video-ratio, 1.7778); }
+  /* light tint only along the bottom edge, so the video stays bright and prominent */
+  .photo-hero:has(> .photo-hero-bg > video) > .photo-hero-tint { background: linear-gradient(180deg, rgba(7,55,99,0) 60%, rgba(7,55,99,.35) 100%); }
+  /* box matches the video's shape, so cover crops nothing; no slow zoom on the poster either */
+  .photo-hero-bg > video, .photo-hero-bg:has(> video) > img { display: block; max-width: 100%; object-fit: cover; object-position: center; }
+  .photo-hero-bg:has(> video) > img { animation: none; transform: none; }
+  /* overlay text: smaller and tighter, so the video stays the main visual */
+  .photo-hero:has(> .photo-hero-bg > video) :is(.hero-glass, .hero-glass-light) { padding: 1.25rem 1.25rem 1.4rem; border-radius: 1.25rem; }
+  .photo-hero:has(> .photo-hero-bg > video) h1 { font-size: 1.7rem; line-height: 1.15; }
+  .photo-hero:has(> .photo-hero-bg > video) .tag { margin-bottom: .5rem; }
+  .photo-hero:has(> .photo-hero-bg > video) p.text-lg { font-size: .95rem; line-height: 1.55; margin-top: .65rem; }
+  .photo-hero:has(> .photo-hero-bg > video) .mt-8 { margin-top: 1rem; }
 }

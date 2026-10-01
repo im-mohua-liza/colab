@@ -47,6 +47,12 @@ if (burgerBtn && mobileMenu) {
    autoplay (Low Power Mode, data saver, reduced motion) or the file fails, the video simply
    never appears and the poster stays: the hero is never black, blank or broken. */
 document.querySelectorAll('.photo-hero-bg > video').forEach((video) => {
+  // Each video's own shape (from its poster, an exact frame, or the video itself) drives the
+  // phone layout in css/site.css, so every video is framed whole rather than one fixed crop.
+  const hero = video.closest('.photo-hero'), still = video.parentElement.querySelector('img');
+  const setRatio = (w, h) => { if (hero && w && h) hero.style.setProperty('--video-ratio', (w / h).toFixed(4)); };
+  if (still) { if (still.complete) setRatio(still.naturalWidth, still.naturalHeight); else still.addEventListener('load', () => setRatio(still.naturalWidth, still.naturalHeight)); }
+  video.addEventListener('loadedmetadata', () => setRatio(video.videoWidth, video.videoHeight));
   const fail = () => { video.classList.remove('is-playing'); video.pause(); video.hidden = true; };
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { video.removeAttribute('autoplay'); fail(); return; }
   video.addEventListener('playing', () => video.classList.add('is-playing'));
