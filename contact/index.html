@@ -129,7 +129,7 @@
 <!-- COLLABORATION CTA + FORM -->
 <section class="photo-hero photo-hero-light pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
   <div class="photo-hero-bg" aria-hidden="true">
-    <video id="contactHeroVideo" poster="/colab/images/video/contact-hero-poster.jpg" muted loop playsinline preload="none">
+    <video id="contactHeroVideo" poster="/colab/images/video/contact-hero-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="none">
       <source src="/colab/images/video/contact-hero.mp4" type="video/mp4">
     </video>
     <img id="contactHeroPoster" src="/colab/images/video/contact-hero-poster.jpg" alt="" style="display:none">
@@ -150,9 +150,11 @@
   const video = document.getElementById("contactHeroVideo");
   const poster = document.getElementById("contactHeroPoster");
   if (!video || !poster) return;
-  const showPoster = () => { video.style.display = "none"; poster.style.display = "block"; };
+  const showPoster = () => { video.pause(); video.style.display = "none"; poster.style.display = "block"; };
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { showPoster(); return; }
   video.addEventListener("error", showPoster);
+  const source = video.querySelector("source");
+  if (source) source.addEventListener("error", showPoster);   // a failed file fires on <source>, not <video>
   video.play().catch(showPoster);
 })();
 </script>

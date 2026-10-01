@@ -159,9 +159,11 @@ if (relatedPostsEl) {
   const video = document.getElementById('journalHeroVideo');
   const poster = document.getElementById('journalHeroPoster');
   if (!video || !poster) return;
-  const showPoster = () => { video.style.display = 'none'; poster.style.display = 'block'; };
+  const showPoster = () => { video.pause(); video.style.display = 'none'; poster.style.display = 'block'; };
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { showPoster(); return; }
   video.addEventListener('error', showPoster);
+  const source = video.querySelector('source');
+  if (source) source.addEventListener('error', showPoster);   // a failed file fires on <source>, not <video>
   video.preload = 'auto';
   video.play().catch(showPoster);
 })();
