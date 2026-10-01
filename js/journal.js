@@ -153,15 +153,4 @@ if (relatedPostsEl) {
   }
 }
 
-// Journal hero video: falls back to the static poster frame on reduced motion,
-// or if the video fails to load or play for any reason.
-(() => {
-  const video = document.getElementById('journalHeroVideo');
-  const poster = document.getElementById('journalHeroPoster');
-  if (!video || !poster) return;
-  const showPoster = () => { video.style.display = 'none'; poster.style.display = 'block'; };
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { showPoster(); return; }
-  video.addEventListener('error', showPoster);
-  video.preload = 'auto';
-  video.play().catch(showPoster);
-})();
+// (The Journal hero video and its poster fallback are handled by js/site.js, like every hero video.)

@@ -129,10 +129,10 @@
 <!-- COLLABORATION CTA + FORM -->
 <section class="photo-hero photo-hero-light pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
   <div class="photo-hero-bg" aria-hidden="true">
-    <video id="contactHeroVideo" poster="/colab/images/video/contact-hero-poster.jpg" muted loop playsinline preload="none">
+    <video id="contactHeroVideo" poster="/colab/images/video/contact-hero-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="none">
       <source src="/colab/images/video/contact-hero.mp4" type="video/mp4">
     </video>
-    <img id="contactHeroPoster" src="/colab/images/video/contact-hero-poster.jpg" alt="" style="display:none">
+    <img id="contactHeroPoster" src="/colab/images/video/contact-hero-poster.jpg" alt="" decoding="async" fetchpriority="high">
   </div>
   <div class="photo-hero-tint" aria-hidden="true"></div>
   <div class="container-x relative z-10">
@@ -144,18 +144,6 @@
   </div>
 </section>
 
-<script>
-// Contact hero video: falls back to its still frame on reduced motion, or if the video cannot play.
-(() => {
-  const video = document.getElementById("contactHeroVideo");
-  const poster = document.getElementById("contactHeroPoster");
-  if (!video || !poster) return;
-  const showPoster = () => { video.style.display = "none"; poster.style.display = "block"; };
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { showPoster(); return; }
-  video.addEventListener("error", showPoster);
-  video.play().catch(showPoster);
-})();
-</script>
 
 <!-- CONTACT FORM -->
 <section id="contact-form" class="py-20 lg:py-28 bg-paper">

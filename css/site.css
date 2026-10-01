@@ -262,6 +262,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .photo-hero-bg img { animation: none; }
 }
 .photo-hero-bg video { width: 100%; height: 100%; object-fit: cover; }
+/* Poster-first hero video (js/site.js): the poster frame is the base layer and always visible;
+   the video sits on top and fades in only once it is really playing. Navy behind both while
+   the poster loads, so nothing ever shows black or empty. */
+.photo-hero-bg:has(> video) { background: #073763; }
+.photo-hero-bg > video, .photo-hero-bg:has(> video) > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.photo-hero-bg > video { z-index: 1; opacity: 0; transition: opacity .8s ease; }
+.photo-hero-bg > video.is-playing { opacity: 1; }
+.photo-hero-bg > video.is-playing ~ img { animation-play-state: paused; }
 
 /* Menu: seven items, three with dropdowns (About, Services, Research). */
 @media (min-width:1024px) and (max-width:1279px) {
@@ -318,9 +326,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* Mobile menu: sub-links sit indented under their section; the list starts at the top so it can scroll. */
-#mobileMenu > .container-x { justify-content: flex-start; }
+#mobileMenu > .container-x { justify-content: flex-start; width: 100%; }
+/* Open menu sits under the top bar (z 40) so the X close button stays visible and tappable. */
+#mobileMenu { z-index: 39; }
 .mobile-sub { display: flex; flex-direction: column; padding: .35rem 0 .75rem 1rem; border-bottom: 1px solid rgba(7,55,99,.08); }
 .mobile-sub a { padding: .45rem 0; font-size: 1.05rem; font-weight: 600; color: rgba(7,55,99,.7); }
+/* Compact, fold-open menu (js/site.js adds .has-folds): every row at least 44px tall to tap,
+   sub-pages tucked behind a chevron so the whole menu fits on a phone screen. */
+#mobileMenu.has-folds > .container-x { padding-top: 6.25rem; padding-bottom: 2rem; gap: 0; }
+#mobileMenu.has-folds > .container-x > a:not(.btn-primary),
+#mobileMenu.has-folds .mobile-parent > a { display: flex; align-items: center; min-height: 52px; padding: .35rem 0; font-size: 1.35rem; }
+#mobileMenu.has-folds .mobile-parent { display: flex; align-items: center; border-bottom: 1px solid rgba(7,55,99,.08); }
+#mobileMenu.has-folds .mobile-parent > a { flex: 1; border-bottom-width: 0; }
+.mobile-sub-toggle { flex: none; width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 9999px; color: #073763; transition: background-color .2s ease, transform .25s ease; }
+.mobile-sub-toggle:hover { background: rgba(7,55,99,.06); }
+.mobile-sub-toggle[aria-expanded="true"] { transform: rotate(180deg); }
+#mobileMenu.has-folds .mobile-sub:not(.is-open) { display: none; }
+#mobileMenu.has-folds .mobile-sub { padding: .15rem 0 .5rem 1rem; }
+#mobileMenu.has-folds .mobile-sub a { display: flex; align-items: center; min-height: 44px; padding: 0; }
+#mobileMenu.has-folds .btn-primary { margin-top: 1.25rem; }
+#burgerBtn { width: 44px; height: 44px; }
+@media (prefers-reduced-motion: reduce) { .mobile-sub-toggle { transition: none; } }
 
 /* Light photo hero (Contact): full-colour photo with a slow camera-style pan, light frosted card. */
 @keyframes photoHeroPan { from { transform: scale(1.18) translate(-3%, -1.5%); } to { transform: scale(1.18) translate(3%, 1.5%); } }
@@ -347,6 +374,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 @media (prefers-reduced-motion: reduce) {
   .team-motion .hero-motion-slide { animation: none; transform: none; }
+}
+/* Phones/tablets: a tall screen made the wide team photo zoom in on one or two people
+   behind the text. Show the whole photo at its real proportions (994x649) under the
+   menu bar, still and sharp, with the text card below it, overlapping slightly. */
+@media (max-width: 1023px) {
+  .photo-hero-light:has(> .team-motion) { min-height: 0; display: block; background: #F6F9FB;
+    padding-top: calc(88px + 65.3vw - 1.5rem); padding-bottom: 3rem; }
+  .photo-hero-light > .team-motion.photo-hero-bg,
+  .photo-hero-light:has(> .team-motion) > .photo-hero-tint { inset: 88px 0 auto 0; height: auto; aspect-ratio: 994 / 649; }
+  .photo-hero-light:has(> .team-motion) > .photo-hero-tint { background: linear-gradient(180deg, rgba(7,55,99,0) 55%, rgba(7,55,99,.18) 100%); }
+  .team-motion .hero-motion-slide { animation: none; transform: none; opacity: 0; background-size: contain; background-repeat: no-repeat; background-position: center top; }
+  .team-motion .hero-motion-slide:first-child { opacity: 1; }
+
+  /* About "Why This Work Matters" cards: the landscape photos (410x253) were forced into
+     3:4 portrait boxes, cutting off about half of each, and the title/description only
+     appeared on mouse hover, so touch screens never showed them. Show each photo whole
+     at its own shape, no zoom, with the text always visible underneath. */
+  .showcase-card.aspect-\[3\/4\] { aspect-ratio: auto; background: #073763; display: flex; flex-direction: column; }
+  .showcase-card > img.object-cover { height: auto; aspect-ratio: 410 / 253; object-fit: cover; object-position: center; scale: 1 !important; transform: none !important; }
+  .showcase-card .showcase-overlay { position: static; opacity: 1; transform: none; background: none; padding: 1.1rem 1.25rem 1.35rem; }
 }
 
 /* ========== Micro-interactions: hover pops, nudges and wiggles (mouse users, motion allowed) ========== */
@@ -589,4 +636,38 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .stat-pill p.text-\[11px\] { font-size: 9.5px; }
   /* hero link chips (e.g. Services) fit two per row */
   .photo-hero a.glass-card-dark.rounded-full { padding: .5rem .85rem; font-size: 13px; }
+}
+/* 9. Shorter long pages and comfortable tap areas on phones (under 640px). */
+@media (max-width: 639px) {
+  /* Projects: each card a compact row (photo left, text right) instead of a tall tile */
+  #projectGrid { gap: .85rem; }
+  #projectGrid > article { flex-direction: row; }
+  #projectGrid > article > div.h-40 { width: 108px; height: auto; min-height: 100%; flex: none; }
+  #projectGrid > article > div.p-7 { padding: .9rem 1rem; }
+  #projectGrid > article > div.p-7 > div.mb-5 { margin-bottom: .45rem; }
+  #projectGrid > article h3 { font-size: 1.05rem; margin-bottom: .2rem; }
+  #projectGrid > article p { font-size: 13.5px; }
+  #projectGrid > article > div.p-7 > span:last-child { margin-top: .45rem; font-size: 13px; }
+  /* About team: two people per row; an opened bio spans the full width */
+  #teamGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: .75rem; row-gap: 2.25rem; }
+  #teamGrid img { width: 6rem; height: 6rem; }
+  #teamGrid h3 { margin-top: 1rem; font-size: 1rem; }
+  #teamGrid > article:has(.team-bio-panel.is-open) { grid-column: 1 / -1; }
+  #footer h3 + ul.text-paper\/65 > li { margin-bottom: .1rem !important; }
+}
+/* Touch screens (phones and tablets): tap areas of at least ~36-40px for footer links,
+   card "Read More" links and the journal back link. */
+@media (max-width: 1023px) {
+  #footer ul li > a { display: inline-flex; align-items: center; min-height: 36px; }
+  #footer .container-x > div:last-child a { display: inline-block; padding: .55rem .25rem; }
+  a.mt-4.text-sm.font-semibold.inline-flex { min-height: 40px; margin-top: .5rem; }
+  p > a.hover\:text-sky[href="/colab/journal/"] { display: inline-block; padding: .6rem 0; }
+}
+/* 10. Background videos (Contact, Journal) and their still-frame fallbacks on phones/tablets:
+       block-level, filling the hero, centred, cropped with cover, never wider than the screen.
+       The Contact hero uses svh so its height doesn't jump as the mobile address bar shows/hides. */
+@media (max-width: 1023px) {
+  .photo-hero-bg video, .photo-hero-bg img { display: block; width: 100%; height: 100%; max-width: 100%;
+    object-fit: cover; object-position: center center; }
+  .photo-hero-light:has(.photo-hero-bg video) { min-height: 82vh; min-height: 82svh; }
 }
