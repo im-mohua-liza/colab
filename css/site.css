@@ -443,3 +443,57 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .policy-copy a { color: #12A7B6; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .policy-note { margin: 0 0 2em; padding: .9rem 1.1rem; border-radius: .9rem; background: #FFF6DD; border: 1px solid rgba(232,169,58,.45); color: #073763; font-size: 14px; }
 .policy-todo { background: #FFE9A8; color: #073763; padding: .05em .35em; border-radius: .3em; font-weight: 600; }
+
+/* Home hero: the CoLab logo grows like a tree (js/hero-tree.js rebuilds logo-white.svg from its own paths).
+   Seed -> wood grows from the base -> leaves bud as it reaches them -> the wordmark is unveiled by a
+   soft left-to-right sweep (SVG mask in the JS); then leaves sway,
+   fall now and then, and grow back. The finished logo is identical to the file. */
+.hero-logo-stage { position: relative; z-index: 0; width: 100%; height: 100%; padding-bottom: 104px; display: flex; align-items: flex-end; justify-content: center; }
+.hero-logo-glow { position: absolute; left: 50%; top: calc(50% - 60px); width: min(100%, 460px); aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; background: radial-gradient(circle, rgba(26,206,223,.22) 0%, rgba(26,206,223,.08) 42%, rgba(26,206,223,0) 70%); pointer-events: none; }
+.hero-logo { position: relative; z-index: 1; width: min(74%, 250px); height: auto;
+  filter: drop-shadow(0 10px 30px rgba(3,24,46,.45)); }
+.tree-pending .hero-logo { opacity: 0; }
+.hero-tree { overflow: visible; }
+.hero-tree .tree-leaf, .hero-tree .tree-leaf path, .hero-tree .tree-seed { transform-box: fill-box; transform-origin: center; }
+.hero-tree .tree-leaf { opacity: 0; transform: scale(0); }
+.hero-tree .tree-seed { opacity: 0; }
+.hero-tree.is-growing .tree-seed { animation: treeSeed 2.4s ease-out both; }
+.hero-tree.is-growing .tree-leaf { animation: treeBud 1s cubic-bezier(.34,1.4,.64,1) var(--bud-delay) both; }
+/* Once grown, leaves rest in place and sway gently; a fallen leaf fades out, then buds again. */
+.hero-tree.is-grown .tree-leaf { animation: none; opacity: 1; transform: none; transition: opacity .3s ease; }
+.hero-tree.is-grown .tree-leaf path { animation: treeSway var(--sway-dur) ease-in-out var(--sway-delay) infinite; }
+.hero-tree.is-grown .tree-leaf.is-gone { opacity: 0; transition-duration: .15s; }
+.hero-tree.is-grown .tree-leaf.is-regrow { animation: treeBud 1.8s cubic-bezier(.34,1.3,.64,1) both; }
+@keyframes treeSeed { 0% { opacity: 0; transform: scale(0); } 22% { opacity: 1; transform: scale(1.35); } 40% { transform: scale(1); } 100% { opacity: 0; transform: scale(.5); } }
+@keyframes treeBud { 0% { opacity: 0; transform: scale(0) rotate(-20deg); } 40% { opacity: 1; } 100% { opacity: 1; transform: scale(1) rotate(0); } }
+@keyframes treeSway { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(var(--sway-deg)); } 75% { transform: rotate(calc(var(--sway-deg) * -1)); } }
+.hero-logo-leaves { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.hero-leaf { position: absolute; width: var(--w); height: var(--h); animation: heroLeafDrop var(--dur) linear forwards; will-change: transform, opacity; }
+.hero-leaf svg { display: block; width: 100%; height: 100%; overflow: visible; animation: heroLeafFlutter var(--flutter) ease-in-out infinite alternate; }
+/* A detached leaf lifts slightly on the breeze, then falls with a sideways drift and fades out. */
+@keyframes heroLeafDrop {
+  0%   { opacity: 1; transform: translate(0, 0) rotate(0); }
+  16%  { opacity: 1; transform: translate(var(--hx), -4px) rotate(var(--r0)); animation-timing-function: cubic-bezier(.45,0,.75,.6); }
+  75%  { opacity: .85; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--r1)); }
+}
+@keyframes heroLeafFlutter {
+  from { transform: translateX(calc(var(--sway) * -1)) rotate(-16deg); }
+  to   { transform: translateX(var(--sway)) rotate(16deg); }
+}
+/* Off screen or tab hidden: freeze the breeze so nothing animates unseen. */
+.hero-tree.is-paused .tree-leaf, .hero-tree.is-paused .tree-leaf path, .hero-logo-leaves.is-paused .hero-leaf,
+.hero-logo-leaves.is-paused .hero-leaf svg { animation-play-state: paused; }
+/* Phones and tablets: skip the soft shadow, which would be repainted on every leaf movement. */
+@media (max-width: 1023px) { .hero-logo { filter: none; } }
+/* Reduced motion: the fully grown logo, static. No growth, sway, falling or regrowing leaves. */
+@media (prefers-reduced-motion: reduce) {
+  .tree-pending .hero-logo { opacity: 1; }
+  .hero-tree .tree-leaf, .hero-tree .tree-leaf path { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-tree .tree-seed { animation: none !important; opacity: 0 !important; }
+  .hero-logo-leaves { display: none; }
+}
+/* Taller screens have room above the column, so the logo grows upward there. */
+@media (min-width: 640px) { .hero-logo { width: min(74%, 290px); } }
+@media (min-width: 1024px) { .hero-logo { width: min(80%, 380px); } .hero-logo-glow { top: calc(50% - 80px); } }
