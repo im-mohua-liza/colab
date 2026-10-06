@@ -765,3 +765,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .vh-eyebrow, .vh-lede, .vh-ctas { animation: none; opacity: 1; }
   .vh-scroll i { animation: none; }
 }
+
+/* ---------- Services "What We Do": stacking cards on phones/tablets (after 4th Wheel) ----------
+   Each service card pins under the menu bar as you scroll and the next one slides up over it,
+   leaving a sliver of the earlier cards showing. Photo on top, then title, text and a button.
+   Desktop keeps the four-column row (photos hidden there). */
+.svc-img { display: none; }
+@media (max-width: 1023px) {
+  .svc-stack { display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px; }
+  .svc-stack > a { position: sticky; top: calc(100px + var(--i, 0) * 14px); padding: 0 !important; overflow: hidden;
+    background: #fff; border-radius: 22px; box-shadow: 0 -10px 30px -18px rgba(7,55,99,.35), 0 18px 40px -28px rgba(7,55,99,.45); transform: none !important; }
+  .svc-stack > a:nth-child(2) { --i: 1; } .svc-stack > a:nth-child(3) { --i: 2; } .svc-stack > a:nth-child(4) { --i: 3; }
+  .svc-stack .svc-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #EAF0F5; }
+  .svc-stack .svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .svc-stack > a > .icon-badge { display: none; }
+  .svc-stack > a > h3 { margin: 1.2rem 1.4rem .5rem; font-size: 1.4rem; }
+  .svc-stack > a > p { margin: 0 1.4rem; }
+  .svc-stack > a > span:last-child { margin: 1.1rem 1.4rem 1.4rem; justify-content: space-between; padding: .75rem .75rem .75rem 1.2rem;
+    border-radius: 9999px; background: #073763; color: #F6F9FB; font-size: 14px; }
+  .svc-stack > a > span:last-child > span { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+    border: 1.5px solid rgba(246,249,251,.7); border-radius: 9999px; }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .svc-stack { max-width: 560px; margin-left: auto; margin-right: auto; }
+}
