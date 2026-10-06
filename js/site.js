@@ -47,8 +47,6 @@ if (burgerBtn && mobileMenu) {
    autoplay (Low Power Mode, data saver, reduced motion) or the file fails, the video simply
    never appears and the poster stays: the hero is never black, blank or broken. */
 document.querySelectorAll('.photo-hero-bg > video, .vh-panel > video').forEach((video) => {
-  // a panel hidden at this screen size (e.g. the side clips on phones) is not loaded at all
-  if (video.parentElement.classList.contains('vh-panel') && getComputedStyle(video.parentElement).display === 'none') { video.removeAttribute('autoplay'); video.preload = 'none'; return; }
   // Each video's own shape (from its poster, an exact frame, or the video itself) drives the
   // phone layout in css/site.css, so every video is framed whole rather than one fixed crop.
   const hero = video.closest('.photo-hero'), still = video.parentElement.querySelector('img');

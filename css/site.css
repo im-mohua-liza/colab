@@ -740,10 +740,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .vh-scroll { display: none; }
 }
 @media (max-width: 767px) {
-  /* phones: one full-screen clip (the middle one), like Curio on phones; the side clips are not shown or loaded */
-  .vh-tri { grid-template-columns: 1fr; gap: 0; }
-  .vh-panel:not(:nth-child(2)) { display: none; }
-  .vh-panel:nth-child(2) { --focus: 38% 50% !important; }
+  /* phones: all three clips stay side by side as tall strips, each framed on its people */
   .vh-in { padding: 100px 20px 96px; }
   .vh-title { font-size: clamp(2rem, 9.4vw, 3rem); line-height: 1.02; }
   .vh-eyebrow { font-size: min(10px, 2.6vw); letter-spacing: .06em; white-space: nowrap; }
@@ -809,3 +806,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    (#videos, #annual-report, ...) still opens the tabbed hub (js/site.js adds .hub-open). */
 #explore:not(.hub-open) .hub-tabs-wrap, #explore:not(.hub-open) .hub-stage { display: none; }
 #explore.hub-open .home-stack { display: none; }
+
+/* ---------- Phones: simpler, calmer layout ----------
+   Video opening: just logo, headline and two small buttons (tagline line and paragraph hidden).
+   Stacking cards: shorter photo, smaller type, a plain text link instead of a big dark button.
+   Collaborate: the four audience chips are hidden; one clear button remains. */
+@media (max-width: 767px) {
+  .vh-eyebrow, .vh-lede { display: none; }
+  .vh-in .hero-logo { width: 64px; }
+  .vh-title { margin-bottom: 22px; }
+  .vh-ctas { gap: 10px; }
+  .vh-ctas a { padding: .7rem 1.15rem; font-size: 13.5px; }
+  .vh-panel:nth-child(1) { --focus: 30% 50% !important; } .vh-panel:nth-child(2) { --focus: 38% 50% !important; } .vh-panel:nth-child(3) { --focus: 38% 50% !important; }
+  :is(.svc-stack, .home-stack) { gap: 18px; }
+  :is(.svc-stack, .home-stack) > a { border-radius: 18px; }
+  :is(.svc-stack, .home-stack) .svc-img { aspect-ratio: 16 / 8; }
+  :is(.svc-stack, .home-stack) > a > h3 { margin: .9rem 1.1rem .3rem; font-size: 1.15rem; }
+  :is(.svc-stack, .home-stack) > a > p { margin: 0 1.1rem; font-size: 14px; line-height: 1.5; }
+  :is(.svc-stack, .home-stack) > a > span:last-child { margin: .7rem 1.1rem 1rem; padding: 0; background: none; color: #0C6D76; font-size: 14px; justify-content: flex-start; gap: .4rem; }
+  :is(.svc-stack, .home-stack) > a > span:last-child > span { width: auto; height: auto; border: 0; }
+  .collab-chips { display: none; }
+}
