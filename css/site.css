@@ -817,7 +817,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .vh-title { margin-bottom: 22px; }
   .vh-ctas { gap: 10px; }
   .vh-ctas a { padding: .7rem 1.15rem; font-size: 13.5px; }
-  .vh-panel:nth-child(1) { --focus: 30% 50% !important; } .vh-panel:nth-child(2) { --focus: 38% 50% !important; } .vh-panel:nth-child(3) { --focus: 38% 50% !important; }
+  .vh-panel:nth-child(1) { --focus: 30% 50% !important; } .vh-panel:nth-child(2) { --focus: 64% 50% !important; } .vh-panel:nth-child(3) { --focus: 38% 50% !important; }
+  .vh-shade { background: linear-gradient(180deg, rgba(7,55,99,.55) 0%, rgba(7,55,99,.25) 30%, rgba(7,55,99,.5) 58%, rgba(7,55,99,.35) 80%, rgba(7,55,99,.6) 100%); }
+  .vh-title { text-shadow: 0 2px 18px rgba(3,24,46,.55); }
   :is(.svc-stack, .home-stack) { gap: 18px; }
   :is(.svc-stack, .home-stack) > a { border-radius: 18px; }
   :is(.svc-stack, .home-stack) .svc-img { aspect-ratio: 16 / 8; }
@@ -826,4 +828,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   :is(.svc-stack, .home-stack) > a > span:last-child { margin: .7rem 1.1rem 1rem; padding: 0; background: none; color: #0C6D76; font-size: 14px; justify-content: flex-start; gap: .4rem; }
   :is(.svc-stack, .home-stack) > a > span:last-child > span { width: auto; height: auto; border: 0; }
   .collab-chips { display: none; }
+}
+
+/* Phones: the footer keeps only the Contact block (address, email, social links) and the
+   copyright/legal line; the logo blurb, Quick Links, Resources and Newsletter are hidden. */
+@media (max-width: 767px) {
+  #footer .container-x > .grid > div:not(:nth-child(4)) { display: none; }
+  #footer .container-x > .grid { padding-bottom: 2rem; }
+  #footer { padding-top: 2.5rem; }
 }
