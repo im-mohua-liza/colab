@@ -689,12 +689,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ---------- Home: full-screen video opening (after the Curio Kashmir hero) ----------
-   One full-screen looping clip behind a large headline that rises into view, with the
+   Three looping clips side by side (one on phones) behind a large headline that rises into view, with the
    growing-tree logo above it, a navy shade for contrast, a wave into the next section,
    corner labels and a scroll cue. Phones stack the three clips as bands so each scene stays
    mostly whole. The header sits transparent over the video until the page scrolls. */
 .video-hero { position: relative; isolation: isolate; height: 100vh; height: 100svh; min-height: 620px; overflow: hidden; background: #073763; color: #F6F9FB; }
-.vh-tri { position: absolute; inset: 0; z-index: -2; display: grid; grid-template-columns: 1fr; background: #073763; }
+.vh-tri { position: absolute; inset: 0; z-index: -2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; background: #073763; }
 .vh-panel { position: relative; overflow: hidden; }
 .vh-panel > video, .vh-panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%);
   transform: scale(1.08); animation: vhZoom 24s ease-out forwards; }
@@ -836,20 +836,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   #footer { padding-top: 2.5rem; }
 }
 
-/* ---------- Phones: the three hero clips take turns full-screen ----------
-   One clip fills the screen and crossfades to the next every few seconds (js/site.js), each framed
-   on its people; only the visible clip plays. Three dots show which one is on and can be tapped. */
+/* ---------- Phones: only the classroom clip, full-screen ----------
+   Desktop shows three clips side by side; on phones the two side clips are hidden and not
+   loaded (js/site.js skips videos in hidden panels), and the classroom clip fills the screen. */
 @media (max-width: 767px) {
-  .vh-tri { display: block; }
-  .vh-panel { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
-  .vh-panel.is-active, .vh-tri:not(.is-cycling) .vh-panel:nth-child(2), .vh-panel:only-child { opacity: 1; }
-  .vh-panel:nth-child(1) { --focus: 24% 50% !important; }
-  .vh-panel:only-child { --focus: 66% 50% !important; }
+  .vh-tri { grid-template-columns: 1fr; gap: 0; }
+  .vh-panel:not(:nth-child(2)) { display: none; }
   .vh-panel:nth-child(2) { --focus: 66% 50% !important; }
-  .vh-panel:nth-child(3) { --focus: 30% 50% !important; }
-  .vh-dots { position: absolute; z-index: 4; left: 50%; bottom: 66px; transform: translateX(-50%); display: flex; gap: 4px; }
-  .vh-dots button { width: 28px; height: 28px; padding: 0; border: 0; background: none; display: grid; place-items: center; cursor: pointer; }
-  .vh-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 9999px; background: rgba(246,249,251,.5); transition: width .3s ease, background .3s ease; }
-  .vh-dots button[aria-current="true"]::before { width: 22px; background: #1ACEDF; }
 }
-@media (min-width: 768px) { .vh-dots { display: none; } }
+
