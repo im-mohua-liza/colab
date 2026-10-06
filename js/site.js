@@ -47,6 +47,8 @@ if (burgerBtn && mobileMenu) {
    autoplay (Low Power Mode, data saver, reduced motion) or the file fails, the video simply
    never appears and the poster stays: the hero is never black, blank or broken. */
 document.querySelectorAll('.photo-hero-bg > video, .vh-panel > video').forEach((video) => {
+  // a panel hidden at this screen size (the side clips on phones) is not loaded at all
+  if (video.parentElement.classList.contains('vh-panel') && getComputedStyle(video.parentElement).display === 'none') { video.removeAttribute('autoplay'); video.preload = 'none'; return; }
   // Each video's own shape (from its poster, an exact frame, or the video itself) drives the
   // phone layout in css/site.css, so every video is framed whole rather than one fixed crop.
   const hero = video.closest('.photo-hero'), still = video.parentElement.querySelector('img');
@@ -203,41 +205,3 @@ if (collabMsgEl && new URLSearchParams(location.search).get('sent') === '1') {
   window.addEventListener('hashchange', check);
 })();
 
-/* ---------- Home video opening on phones: one clip at a time, crossfading ---------- */
-(() => {
-  const tri = document.querySelector('.vh-tri');
-  if (!tri) return;
-  const panels = [...tri.querySelectorAll('.vh-panel')];
-  const phone = window.matchMedia('(max-width: 767px)');
-  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (panels.length < 2) return;
-  const dots = document.createElement('div');
-  dots.className = 'vh-dots';
-  dots.setAttribute('aria-label', 'Choose background video');
-  panels.forEach((_, i) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Video ' + (i + 1) + ' of ' + panels.length);
-    b.addEventListener('click', () => { show(i); restart(); });
-    dots.appendChild(b);
-  });
-  tri.parentElement.appendChild(dots);
-  let cur = 1, timer = 0;
-  function show(i) {
-    cur = i;
-    panels.forEach((p, k) => {
-      const on = k === i, v = p.querySelector('video');
-      p.classList.toggle('is-active', on);
-      if (v && !v.hidden) { if (on) { const r = v.play(); if (r) r.catch(() => {}); } else v.pause(); }
-    });
-    [...dots.children].forEach((b, k) => b.setAttribute('aria-current', String(k === i)));
-  }
-  function restart() { clearInterval(timer); if (!calm) timer = setInterval(() => show((cur + 1) % panels.length), 6000); }
-  function apply() {
-    if (phone.matches) { tri.classList.add('is-cycling'); show(cur); restart(); }
-    else { tri.classList.remove('is-cycling'); clearInterval(timer); panels.forEach((p) => { p.classList.remove('is-active'); const v = p.querySelector('video'); if (v && !v.hidden) { const r = v.play(); if (r) r.catch(() => {}); } }); }
-  }
-  phone.addEventListener('change', apply);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) clearInterval(timer); else if (phone.matches) restart(); });
-  apply();
-})();
