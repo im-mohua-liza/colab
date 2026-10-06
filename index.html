@@ -31,9 +31,9 @@
 
 <link rel="icon" type="image/png" href="/colab/logo.png">
 <link rel="apple-touch-icon" href="/colab/logo.png">
-<link rel="stylesheet" href="/colab/css/tailwind.css?v=20261006b">
-<link rel="stylesheet" href="/colab/css/site.css?v=20261006b">
-<link rel="stylesheet" href="/colab/css/enhance.css?v=20261006b">
+<link rel="stylesheet" href="/colab/css/tailwind.css?v=20261006c">
+<link rel="stylesheet" href="/colab/css/site.css?v=20261006c">
+<link rel="stylesheet" href="/colab/css/enhance.css?v=20261006c">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "CoLab Global Consulting", "alternateName": "CoLab", "url": "https://colabglobal.org/", "logo": "https://im-mohua-liza.github.io/colab/logo.png", "foundingDate": "2019", "description": "A research, design and innovation lab working at the intersection of evidence, design and collaboration to improve education outcomes.", "address": {"@type": "PostalAddress", "streetAddress": "605, 15th Cross, Outer Ring Road, 1st Phase, J P Nagar", "addressLocality": "Bangalore", "postalCode": "560078", "addressRegion": "Karnataka", "addressCountry": "IN"}, "email": "info@colabglobalconsulting.com", "sameAs": []}</script>
 </head>
 <body class="font-sans antialiased">
@@ -139,7 +139,7 @@
       <img src="/colab/images/video/journal-hero-poster.jpg" alt="" decoding="async" fetchpriority="high">
     </div>
     <div class="vh-panel" style="--focus:45% 50%">
-      <video autoplay muted loop playsinline webkit-playsinline preload="none" poster="/colab/images/video/home-hero-class-poster.jpg"><source src="/colab/images/video/home-hero-class.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/colab/images/video/home-hero-class-poster.jpg"><source src="/colab/images/video/home-hero-class-m.mp4" type="video/mp4" media="(max-width: 767px)"><source src="/colab/images/video/home-hero-class.mp4" type="video/mp4"></video>
       <img src="/colab/images/video/home-hero-class-poster.jpg" alt="" decoding="async" fetchpriority="high">
     </div>
     <div class="vh-panel" style="--focus:50% 45%">
@@ -147,6 +147,8 @@
       <img src="/colab/images/video/contact-hero-poster.jpg" alt="" decoding="async">
     </div>
   </div>
+  <script>/* desktop: start the two side clips straight away instead of waiting for site.js (phones never load them) */
+  if (window.matchMedia("(min-width: 768px)").matches) document.querySelectorAll(".vh-panel > video:not([autoplay])").forEach(function (v) { v.preload = "auto"; v.autoplay = true; });</script>
   <div class="vh-shade" aria-hidden="true"></div>
 
   <div class="vh-in">
@@ -613,10 +615,10 @@
 
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy text-paper text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">This page is part of the full multi-page build.</div>
 
-<script src="/colab/js/journal.js?v=20261006b" defer></script>
-<script src="/colab/js/site.js?v=20261006b" defer></script>
-<script src="/colab/js/motion.js?v=20261006b" defer></script>
-<script src="/colab/js/hero-tree.js?v=20261006b" defer></script>
+<script src="/colab/js/journal.js?v=20261006c" defer></script>
+<script src="/colab/js/site.js?v=20261006c" defer></script>
+<script src="/colab/js/motion.js?v=20261006c" defer></script>
+<script src="/colab/js/hero-tree.js?v=20261006c" defer></script>
 
 <script>
 fetch('/colab/content/stats.json').then(r => r.json()).then(s => {

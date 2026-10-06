@@ -267,7 +267,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    the poster loads, so nothing ever shows black or empty. */
 .photo-hero-bg:has(> video) { background: #073763; }
 .photo-hero-bg > video, .photo-hero-bg:has(> video) > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.photo-hero-bg > video { z-index: 1; opacity: 0; transition: opacity .8s ease; }
+.photo-hero-bg > video { z-index: 1; opacity: 0; transition: opacity .35s ease; }
 .photo-hero-bg > video.is-playing { opacity: 1; }
 .photo-hero-bg > video.is-playing ~ img { animation-play-state: paused; }
 
@@ -698,7 +698,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .vh-panel { position: relative; overflow: hidden; }
 .vh-panel > video, .vh-panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%);
   transform: scale(1.08); animation: vhZoom 24s ease-out forwards; }
-.vh-panel > video { z-index: 1; opacity: 0; transition: opacity .8s ease; }
+.vh-panel > video { z-index: 1; opacity: 0; transition: opacity .35s ease; }
+/* the phone clip is pre-cropped to portrait around the same spot the poster shows, so it sits centred */
+.vh-panel > video.is-portrait { object-position: 50% 50%; }
 .vh-panel > video.is-playing { opacity: 1; }
 .vh-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(7,55,99,.5) 0%, rgba(7,55,99,.74) 100%),

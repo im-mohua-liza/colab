@@ -55,6 +55,8 @@ document.querySelectorAll('.photo-hero-bg > video, .vh-panel > video').forEach((
   const setRatio = (w, h) => { if (hero && w && h) hero.style.setProperty('--video-ratio', (w / h).toFixed(4)); };
   if (still) { if (still.complete) setRatio(still.naturalWidth, still.naturalHeight); else still.addEventListener('load', () => setRatio(still.naturalWidth, still.naturalHeight)); }
   video.addEventListener('loadedmetadata', () => setRatio(video.videoWidth, video.videoHeight));
+  const markShape = () => video.classList.toggle('is-portrait', video.videoHeight > video.videoWidth);
+  if (video.readyState >= 1) markShape(); else video.addEventListener('loadedmetadata', markShape);
   const fail = () => { video.classList.remove('is-playing'); video.pause(); video.hidden = true; };
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { video.removeAttribute('autoplay'); fail(); return; }
   video.addEventListener('playing', () => video.classList.add('is-playing'));
