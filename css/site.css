@@ -689,12 +689,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ---------- Home: full-screen video opening (after the Curio Kashmir hero) ----------
-   Three looping clips side by side behind a large headline that rises into view, with the
+   One full-screen looping clip behind a large headline that rises into view, with the
    growing-tree logo above it, a navy shade for contrast, a wave into the next section,
    corner labels and a scroll cue. Phones stack the three clips as bands so each scene stays
    mostly whole. The header sits transparent over the video until the page scrolls. */
 .video-hero { position: relative; isolation: isolate; height: 100vh; height: 100svh; min-height: 620px; overflow: hidden; background: #073763; color: #F6F9FB; }
-.vh-tri { position: absolute; inset: 0; z-index: -2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; background: #073763; }
+.vh-tri { position: absolute; inset: 0; z-index: -2; display: grid; grid-template-columns: 1fr; background: #073763; }
 .vh-panel { position: relative; overflow: hidden; }
 .vh-panel > video, .vh-panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%);
   transform: scale(1.08); animation: vhZoom 24s ease-out forwards; }
@@ -842,8 +842,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 767px) {
   .vh-tri { display: block; }
   .vh-panel { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
-  .vh-panel.is-active, .vh-tri:not(.is-cycling) .vh-panel:nth-child(2) { opacity: 1; }
+  .vh-panel.is-active, .vh-tri:not(.is-cycling) .vh-panel:nth-child(2), .vh-panel:only-child { opacity: 1; }
   .vh-panel:nth-child(1) { --focus: 24% 50% !important; }
+  .vh-panel:only-child { --focus: 66% 50% !important; }
   .vh-panel:nth-child(2) { --focus: 66% 50% !important; }
   .vh-panel:nth-child(3) { --focus: 30% 50% !important; }
   .vh-dots { position: absolute; z-index: 4; left: 50%; bottom: 66px; transform: translateX(-50%); display: flex; gap: 4px; }
