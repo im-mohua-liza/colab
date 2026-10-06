@@ -46,7 +46,9 @@ if (burgerBtn && mobileMenu) {
    sits on top, invisible, and fades in only when it is actually playing. If a browser blocks
    autoplay (Low Power Mode, data saver, reduced motion) or the file fails, the video simply
    never appears and the poster stays: the hero is never black, blank or broken. */
-document.querySelectorAll('.photo-hero-bg > video').forEach((video) => {
+document.querySelectorAll('.photo-hero-bg > video, .vh-panel > video').forEach((video) => {
+  // a panel hidden at this screen size (e.g. the side clips on phones) is not loaded at all
+  if (video.parentElement.classList.contains('vh-panel') && getComputedStyle(video.parentElement).display === 'none') { video.removeAttribute('autoplay'); video.preload = 'none'; return; }
   // Each video's own shape (from its poster, an exact frame, or the video itself) drives the
   // phone layout in css/site.css, so every video is framed whole rather than one fixed crop.
   const hero = video.closest('.photo-hero'), still = video.parentElement.querySelector('img');
@@ -86,10 +88,12 @@ if (journeySteps.length) {
 /* ---------- Nav scroll shadow ---------- */
 const navEl = document.getElementById('nav');
 if (navEl) {
-  window.addEventListener('scroll', () => {
+  const onScroll = () => {
     navEl.classList.toggle('scrolled', window.scrollY > 20);
     navEl.style.paddingTop = window.scrollY > 20 ? '0' : '';
-  }, { passive: true });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();   // right state on load too (e.g. a reload halfway down the page)
 }
 
 /* ---------- Scroll reveal (also covers .img-reveal image entrances) ---------- */

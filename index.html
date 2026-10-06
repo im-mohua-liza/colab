@@ -41,7 +41,7 @@
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-navy focus:text-paper focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
 
 <!-- NAV -->
-<header id="nav" class="fixed top-0 inset-x-0 z-40 bg-navy">
+<header id="nav" class="nav-over-hero fixed top-0 inset-x-0 z-40 bg-navy">
   <div class="container-x flex items-center justify-between py-5">
     <a href="/colab/" class="flex items-center gap-3 group shrink-0">
       <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" class="h-12 w-auto">
@@ -131,39 +131,47 @@
 <main id="main">
 
 <!-- HERO -->
-<section class="photo-hero pt-40 pb-24 lg:pt-52 lg:pb-32 overflow-hidden">
-  <div class="photo-hero-bg" aria-hidden="true"><img src="/colab/images/student-portrait.webp" alt="" decoding="async" fetchpriority="high"></div>
-  <div class="photo-hero-tint" aria-hidden="true"></div>
-  <div class="container-x grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center relative z-10">
-    <div class="min-w-0 hero-glass rounded-[2rem] p-7 sm:p-10">
-      <p class="reveal tag text-sky mb-6">
-        Evidence &nbsp;→&nbsp; Design &nbsp;→&nbsp; Collaboration &nbsp;→&nbsp; Impact
-      </p>
-      <h1 class="reveal reveal-delay-1 text-[2.5rem] leading-[1.1] sm:text-6xl lg:text-[4.2rem] lg:leading-[1.05] font-extrabold tracking-tight text-paper">
-        Designing for<br><span class="underline-sky">Education Equity</span>
-      </h1>
-      <p class="reveal reveal-delay-2 mt-7 text-lg text-paper/85 max-w-lg leading-relaxed">
-        Building evidence, designing solutions and collaborating to create meaningful impact in education.
-      </p>
-      <div class="reveal reveal-delay-3 mt-10 flex flex-wrap items-center gap-4">
-        <a href="/colab/projects/" class="btn-primary px-7 py-3.5 rounded-full font-semibold text-[15px]">Explore Our Work</a>
-        <a href="/colab/contact/" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-[15px] text-paper">Collaborate With Us</a>
-      </div>
+<section class="video-hero" id="top">
+  <!-- Three looping clips side by side (stacked on phones). Poster frames sit underneath; each video fades in once it really plays (js/site.js). -->
+  <div class="vh-tri" aria-hidden="true">
+    <div class="vh-panel" style="--focus:50% 40%">
+      <video muted loop playsinline webkit-playsinline preload="none" poster="/colab/images/video/journal-hero-poster.jpg"><source src="/colab/images/video/journal-hero.mp4" type="video/mp4"></video>
+      <img src="/colab/images/video/journal-hero-poster.jpg" alt="" decoding="async" fetchpriority="high">
     </div>
-
-    <div class="hero-logo-col reveal reveal-delay-4 relative h-[380px] sm:h-[440px] min-w-0">
-      <div class="hero-logo-stage tree-pending" data-hero-tree>
-        <span class="hero-logo-glow" aria-hidden="true"></span>
-        <div class="hero-logo-leaves" aria-hidden="true"></div>
-        <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" class="hero-logo" decoding="async" fetchpriority="high">
-        <script>setTimeout(function(){var s=document.querySelector("[data-hero-tree]");if(s)s.classList.remove("tree-pending")},4000)</script>
-      </div>
-      <div class="absolute -bottom-2 left-4 sm:left-10 bg-white/90 backdrop-blur rounded-2xl border hairline px-5 py-4 shadow-lg max-w-[220px]">
-        <p class="text-2xl font-extrabold text-navy" id="heroStatValue">10+</p>
-        <p class="text-xs text-navy/70 mt-0.5" id="heroStatNote">Research outputs shaping solutions across the ecosystem</p>
-      </div>
+    <div class="vh-panel" style="--focus:45% 50%">
+      <video autoplay muted loop playsinline webkit-playsinline preload="none" poster="/colab/images/video/home-hero-class-poster.jpg"><source src="/colab/images/video/home-hero-class.mp4" type="video/mp4"></video>
+      <img src="/colab/images/video/home-hero-class-poster.jpg" alt="" decoding="async" fetchpriority="high">
+    </div>
+    <div class="vh-panel" style="--focus:50% 45%">
+      <video muted loop playsinline webkit-playsinline preload="none" poster="/colab/images/video/contact-hero-poster.jpg"><source src="/colab/images/video/contact-hero.mp4" type="video/mp4"></video>
+      <img src="/colab/images/video/contact-hero-poster.jpg" alt="" decoding="async">
     </div>
   </div>
+  <div class="vh-shade" aria-hidden="true"></div>
+
+  <div class="vh-in">
+    <div class="hero-logo-stage tree-pending" data-hero-tree>
+      <span class="hero-logo-glow" aria-hidden="true"></span>
+      <div class="hero-logo-leaves" aria-hidden="true"></div>
+      <img src="/colab/logo-white.svg" alt="CoLab" width="80" height="75" class="hero-logo" decoding="async" fetchpriority="high">
+      <script>setTimeout(function(){var s=document.querySelector("[data-hero-tree]");if(s)s.classList.remove("tree-pending")},4000)</script>
+    </div>
+    <p class="vh-eyebrow">Evidence &nbsp;→&nbsp; Design &nbsp;→&nbsp; Collaboration &nbsp;→&nbsp; Impact</p>
+    <h1 class="vh-title"><span class="ln"><span>Designing for</span></span><span class="ln"><span><em>Education Equity</em></span></span></h1>
+    <p class="vh-lede">Building evidence, designing solutions and collaborating to create meaningful impact in education.</p>
+    <div class="vh-ctas">
+      <a href="/colab/projects/" class="btn-gold px-7 py-3.5 rounded-full font-semibold text-[15px]">Explore Our Work</a>
+      <a href="/colab/contact/" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-[15px] text-paper">Collaborate With Us</a>
+    </div>
+  </div>
+
+  <svg class="vh-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 70 C240 20 420 110 720 62 S1180 18 1440 58 V120 H0Z" fill="#1ACEDF" opacity=".25"/>
+    <path d="M0 92 C260 58 470 122 760 88 S1220 60 1440 86 V120 H0Z" fill="#FFFFFF"/>
+  </svg>
+  <p class="vh-meta">Bangalore, India<br>Est. 2019</p>
+  <p class="vh-meta r"><span id="heroStatValue">10+</span><br><span id="heroStatNote">Research outputs shaping solutions across the ecosystem</span></p>
+  <a href="#explore" class="vh-scroll" aria-label="Scroll to Explore CoLab"><span>Scroll</span><i aria-hidden="true"></i></a>
 </section>
 
 <!-- PARTNERS -->
