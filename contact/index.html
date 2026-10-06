@@ -29,8 +29,8 @@
 
 <link rel="icon" type="image/png" href="/colab/logo.png">
 <link rel="apple-touch-icon" href="/colab/logo.png">
-<link rel="stylesheet" href="/colab/css/tailwind.css">
-<link rel="stylesheet" href="/colab/css/site.css">
+<link rel="stylesheet" href="/colab/css/tailwind.css?v=20261006b">
+<link rel="stylesheet" href="/colab/css/site.css?v=20261006b">
 </head>
 <body class="font-sans antialiased">
 
@@ -368,7 +368,7 @@ collabForm.addEventListener('submit', async (e) => {
     if(!box) return; var paid = new URLSearchParams(location.search).get('seat') === 'paid' && s && s.price > 0;
     box.value = 'Register me for: ' + (s ? s.title + ' (' + s.date_text + ')' : q) + (paid ? '. Seat: ' + s.price_text + '. Please send me the payment link.' : ''); box.focus(); }).catch(function(){}); })();
 </script>
-<script src="/colab/js/site.js" defer></script>
-<script src="/colab/js/motion.js" defer></script>
+<script src="/colab/js/site.js?v=20261006b" defer></script>
+<script src="/colab/js/motion.js?v=20261006b" defer></script>
 </body>
 </html>
