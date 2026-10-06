@@ -195,3 +195,12 @@ if (collabMsgEl && new URLSearchParams(location.search).get('sent') === '1') {
   collabMsgEl.style.color = '#5B8C5A';
   collabMsgEl.scrollIntoView({ block: 'center' });
 }
+
+/* ---------- Home Explore: open the tabbed hub on phones when a link targets one of its tabs ---------- */
+(() => {
+  const explore = document.getElementById('explore');
+  if (!explore || !explore.querySelector('.home-stack')) return;
+  const check = () => { const id = location.hash.slice(1); if (id && explore.querySelector('[data-tab="' + id + '"]')) explore.classList.add('hub-open'); };
+  check();
+  window.addEventListener('hashchange', check);
+})();

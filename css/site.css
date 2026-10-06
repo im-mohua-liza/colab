@@ -765,3 +765,47 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .vh-eyebrow, .vh-lede, .vh-ctas { animation: none; opacity: 1; }
   .vh-scroll i { animation: none; }
 }
+
+/* ---------- Stacking cards (after 4th Wheel): Services "What We Do" and the Home Explore topics ----------
+   Each card pins under the menu bar as you scroll and the next one slides up over it, leaving a
+   sliver of the earlier cards showing. Phones/tablets: photo on top, then title, text, button.
+   Desktop: heading pinned on the left, compact horizontal cards stacking on the right. */
+.svc-img { display: none; }
+:is(.svc-stack, .home-stack) { display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px; }
+:is(.svc-stack, .home-stack) > a { position: sticky; top: calc(100px + var(--i, 0) * 10px); display: flex; flex-direction: column; padding: 0 !important; overflow: hidden;
+  background: #fff; border: 1px solid rgba(7,55,99,.08); border-radius: 22px; transform: none !important;
+  box-shadow: 0 -10px 30px -18px rgba(7,55,99,.35), 0 18px 40px -28px rgba(7,55,99,.45); }
+:is(.svc-stack, .home-stack) > a:nth-child(2) { --i: 1; } :is(.svc-stack, .home-stack) > a:nth-child(3) { --i: 2; } :is(.svc-stack, .home-stack) > a:nth-child(4) { --i: 3; }
+:is(.svc-stack, .home-stack) > a:nth-child(5) { --i: 4; } :is(.svc-stack, .home-stack) > a:nth-child(6) { --i: 5; } :is(.svc-stack, .home-stack) > a:nth-child(7) { --i: 6; }
+:is(.svc-stack, .home-stack) .svc-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #EAF0F5; }
+:is(.svc-stack, .home-stack) .svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+:is(.svc-stack, .home-stack) > a > .icon-badge { display: none; }
+:is(.svc-stack, .home-stack) > a > h3 { margin: 1.2rem 1.4rem .5rem; font-size: 1.4rem; }
+:is(.svc-stack, .home-stack) > a > p { margin: 0 1.4rem; flex: none; }
+:is(.svc-stack, .home-stack) > a > span:last-child { margin: 1.1rem 1.4rem 1.4rem; justify-content: space-between; padding: .75rem .75rem .75rem 1.2rem;
+  border-radius: 9999px; background: #073763; color: #F6F9FB; font-size: 14px; }
+:is(.svc-stack, .home-stack) > a > span:last-child > span { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(246,249,251,.7); border-radius: 9999px; transition: transform .25s ease; }
+:is(.svc-stack, .home-stack) > a:hover > span:last-child > span { transform: translateX(3px); }
+:is(.svc-stack, .home-stack) > a:focus-visible { outline: 3px solid #1ACEDF; outline-offset: 3px; }
+@media (min-width: 640px) and (max-width: 1023px) {
+  :is(.svc-stack, .home-stack) { max-width: 560px; margin-left: auto; margin-right: auto; }
+}
+@media (min-width: 1024px) {
+  /* desktop, after 4th Wheel: heading and intro pinned on the left, compact cards (photo left,
+     words right) sliding over each other on the right */
+  .container-x:has(> :is(.svc-stack, .home-stack)) { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); column-gap: 64px; align-items: start; }
+  #explore.hub-open > .container-x { display: block; }
+  .container-x:has(> :is(.svc-stack, .home-stack)) > div:first-child { position: sticky; top: 130px; max-width: none; margin: 0; text-align: left; }
+  :is(.svc-stack, .home-stack) { margin-top: 0 !important; gap: 36px; padding-bottom: 40px; }
+  :is(.svc-stack, .home-stack) > a { top: calc(120px + var(--i, 0) * 12px); display: grid; grid-template-columns: 40% 1fr; grid-template-rows: 1fr auto auto auto 1fr; min-height: 300px; }
+  :is(.svc-stack, .home-stack) .svc-img { grid-row: 1 / -1; grid-column: 1; aspect-ratio: auto; height: 100%; }
+  :is(.svc-stack, .home-stack) > a > h3 { grid-column: 2; grid-row: 2; margin: 0 2rem .55rem; font-size: 1.65rem; line-height: 1.15; }
+  :is(.svc-stack, .home-stack) > a > p { grid-column: 2; grid-row: 3; margin: 0 2rem; font-size: 15.5px; }
+  :is(.svc-stack, .home-stack) > a > span:last-child { grid-column: 2; grid-row: 4; justify-self: start; gap: 1.8rem; margin: 1.3rem 2rem 0; }
+}
+
+/* Home: the Explore tabs give way to the topic cards above; a link to a specific tab
+   (#videos, #annual-report, ...) still opens the tabbed hub (js/site.js adds .hub-open). */
+#explore:not(.hub-open) .hub-tabs-wrap, #explore:not(.hub-open) .hub-stage { display: none; }
+#explore.hub-open .home-stack { display: none; }
