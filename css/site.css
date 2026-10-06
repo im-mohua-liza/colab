@@ -740,7 +740,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .vh-scroll { display: none; }
 }
 @media (max-width: 767px) {
-  /* phones: all three clips stay side by side as tall strips, each framed on its people */
   .vh-in { padding: 100px 20px 96px; }
   .vh-title { font-size: clamp(2rem, 9.4vw, 3rem); line-height: 1.02; }
   .vh-eyebrow { font-size: min(10px, 2.6vw); letter-spacing: .06em; white-space: nowrap; }
@@ -817,7 +816,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .vh-title { margin-bottom: 22px; }
   .vh-ctas { gap: 10px; }
   .vh-ctas a { padding: .7rem 1.15rem; font-size: 13.5px; }
-  .vh-panel:nth-child(1) { --focus: 30% 50% !important; } .vh-panel:nth-child(2) { --focus: 64% 50% !important; } .vh-panel:nth-child(3) { --focus: 38% 50% !important; }
   .vh-shade { background: linear-gradient(180deg, rgba(7,55,99,.55) 0%, rgba(7,55,99,.25) 30%, rgba(7,55,99,.5) 58%, rgba(7,55,99,.35) 80%, rgba(7,55,99,.6) 100%); }
   .vh-title { text-shadow: 0 2px 18px rgba(3,24,46,.55); }
   :is(.svc-stack, .home-stack) { gap: 18px; }
@@ -837,3 +835,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   #footer .container-x > .grid { padding-bottom: 2rem; }
   #footer { padding-top: 2.5rem; }
 }
+
+/* ---------- Phones: the three hero clips take turns full-screen ----------
+   One clip fills the screen and crossfades to the next every few seconds (js/site.js), each framed
+   on its people; only the visible clip plays. Three dots show which one is on and can be tapped. */
+@media (max-width: 767px) {
+  .vh-tri { display: block; }
+  .vh-panel { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
+  .vh-panel.is-active, .vh-tri:not(.is-cycling) .vh-panel:nth-child(2) { opacity: 1; }
+  .vh-panel:nth-child(1) { --focus: 24% 50% !important; }
+  .vh-panel:nth-child(2) { --focus: 66% 50% !important; }
+  .vh-panel:nth-child(3) { --focus: 30% 50% !important; }
+  .vh-dots { position: absolute; z-index: 4; left: 50%; bottom: 66px; transform: translateX(-50%); display: flex; gap: 4px; }
+  .vh-dots button { width: 28px; height: 28px; padding: 0; border: 0; background: none; display: grid; place-items: center; cursor: pointer; }
+  .vh-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 9999px; background: rgba(246,249,251,.5); transition: width .3s ease, background .3s ease; }
+  .vh-dots button[aria-current="true"]::before { width: 22px; background: #1ACEDF; }
+}
+@media (min-width: 768px) { .vh-dots { display: none; } }
